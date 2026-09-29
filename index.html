@@ -192,4 +192,546 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .error-message.show{display:block}
 .success-message{background:#dcfce7;color:#166534;padding:16px;border-radius:12px;margin-top:20px;text-align:center;font-weight:600;display:none}
 .success-message.show{display:block}
-.auth-modal{display:none;position:fixed
+.auth-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.6);z-index:2000;justify-content:center;align-items:center;padding:20px}
+.auth-modal.active{display:flex}
+.auth-box{background:#fff;border-radius:20px;padding:30px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto}
+.auth-box h2{margin-bottom:20px;text-align:center;font-size:1.3rem}
+.auth-input{width:100%;padding:14px;border:1px solid var(--border);border-radius:10px;margin-bottom:12px;font-size:.95rem;outline:none}
+.auth-input:focus{border-color:var(--primary)}
+.auth-btn{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:10px}
+.auth-btn:disabled{opacity:.6;cursor:not-allowed}
+.auth-error{display:none;background:#fee2e2;color:#991b1b;padding:10px 12px;border-radius:8px;font-size:.82rem;margin-bottom:8px}
+.google-btn{width:100%;padding:13px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;font-weight:600;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
+.divider{text-align:center;color:#94a3b8;font-size:.8rem;margin:8px 0}
+.checkbox-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;padding:10px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)}
+.checkbox-row input[type=checkbox]{margin-top:3px;width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:var(--primary)}
+.checkbox-row label{font-size:.82rem;color:#475569;line-height:1.5;cursor:pointer}
+.checkbox-row a{color:var(--primary);font-weight:600;text-decoration:underline;cursor:pointer}
+.admin-panel{background:var(--card);border:2px solid var(--primary);border-radius:16px;padding:20px;margin-top:20px;display:none}
+.admin-panel.show{display:block}
+.admin-title{font-size:1.15rem;font-weight:800;color:var(--primary-dark);margin-bottom:16px}
+.admin-tabs{display:flex;gap:8px;margin-bottom:16px;border-bottom:1px solid var(--border);overflow-x:auto}
+.admin-tab{padding:10px 16px;background:none;border:none;font-weight:600;font-size:.85rem;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.admin-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.admin-tab-content{display:none}
+.admin-tab-content.active{display:block}
+.data-item{background:#f1f5f9;border-radius:8px;padding:12px;margin-bottom:10px;font-size:.82rem}
+.data-item.rejected{background:#fee2e2;border-left:4px solid var(--danger)}
+.data-item.rejected strong{color:#991b1b}
+.data-item.support{background:#eff6ff;border-left:4px solid #3b82f6}
+.admin-input{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;font-size:.92rem;outline:none}
+.admin-btn{background:var(--primary);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-size:.88rem}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e293b;color:#fff;padding:13px 22px;border-radius:12px;font-size:.88rem;z-index:3000;opacity:0;transition:all .3s;pointer-events:none;max-width:90%;text-align:center;font-weight:500}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.success{background:var(--primary-dark)}
+.toast.error{background:var(--danger)}
+.empty-state{text-align:center;padding:40px 20px;color:var(--muted);font-size:.88rem}
+.sync-status{background:#dbeafe;border:1px solid var(--primary);border-radius:8px;padding:10px 12px;margin-bottom:16px;font-size:.8rem;color:#1e40af;font-weight:500}
+.step-section{display:none}
+.step-section.active{display:block}
+.static-page h1{font-size:1.5rem;font-weight:800;margin-bottom:6px}
+.static-page .page-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:24px}
+.static-page h2{font-size:1.1rem;font-weight:700;margin:24px 0 10px}
+.static-page p{font-size:.9rem;color:#334155;line-height:1.7;margin-bottom:12px}
+.static-page ul{margin:8px 0 16px 22px}
+.static-page li{font-size:.9rem;color:#334155;line-height:1.7;margin-bottom:6px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
+.info-card strong{display:block;margin-bottom:4px;font-size:.92rem}
+.info-card span{color:var(--muted);font-size:.88rem;line-height:1.6}
+.site-footer{background:#1e293b;color:#cbd5e1;padding:40px 20px 90px;margin-top:40px}
+.footer-inner{max-width:900px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:24px}
+.footer-col h4{color:#fff;font-size:.88rem;font-weight:700;margin-bottom:12px}
+.footer-col a{display:block;color:#94a3b8;font-size:.8rem;text-decoration:none;margin-bottom:8px;cursor:pointer}
+.footer-bottom{border-top:1px solid #334155;padding-top:20px;text-align:center;font-size:.78rem;color:#64748b}
+@media(min-width:768px){.container{max-width:720px}.country-list{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:repeat(4,1fr)}}
+.payment-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.75);z-index:4000;justify-content:center;align-items:center;padding:20px;overflow-y:auto}
+.payment-modal.active{display:flex}
+.payment-box{background:#fff;border-radius:20px;width:100%;max-width:420px;padding:24px;margin:auto}
+.payment-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.payment-logo{font-size:1rem;font-weight:700;color:#1e293b}
+.payment-close{background:none;border:none;font-size:1.3rem;color:#94a3b8;cursor:pointer;padding:4px 8px}
+.payment-provider{text-align:center;font-size:.75rem;color:var(--muted);margin-bottom:16px}
+.payment-provider span:first-child{font-weight:700;color:#1e40af;font-size:.9rem}
+.payment-amount{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:14px;text-align:center;margin-bottom:16px}
+.payment-amount-label{font-size:.75rem;color:#1e40af;font-weight:600}
+.payment-amount-value{font-size:1.6rem;font-weight:800;color:#1e40af;margin-top:4px}
+.card-preview{background:linear-gradient(135deg,#1e293b,#334155);border-radius:14px;padding:18px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
+.card-chip{font-size:1.8rem;margin-bottom:16px}
+.card-number-preview{font-size:1.15rem;letter-spacing:2px;font-weight:600;margin-bottom:18px;font-family:'Courier New',monospace}
+.card-bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.card-label{font-size:.6rem;opacity:.7;letter-spacing:.5px;margin-bottom:2px}
+.card-value{font-size:.82rem;font-weight:600;letter-spacing:.5px}
+.payment-form{display:flex;flex-direction:column;gap:12px}
+.payment-field{display:flex;flex-direction:column;gap:6px}
+.payment-field label{font-size:.78rem;font-weight:600;color:#475569}
+.payment-field input{padding:13px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.95rem;outline:none}
+.payment-field input:focus{border-color:var(--primary)}
+.payment-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.payment-submit{padding:15px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:6px}
+.payment-submit:disabled{opacity:.6;cursor:not-allowed}
+.payment-secure{text-align:center;font-size:.72rem;color:var(--muted);margin-top:8px}
+.payment-error{display:none;background:#fee2e2;color:#991b1b;padding:10px 12px;border-radius:8px;font-size:.82rem;text-align:center;margin-top:8px}
+.payment-error.show{display:block}
+.payment-rejected{display:none;text-align:center;padding:30px 20px}
+.payment-rejected.show{display:block}
+.payment-rejected-icon{font-size:4rem;margin-bottom:14px}
+.payment-rejected h3{font-size:1.3rem;color:#991b1b;margin-bottom:8px}
+.payment-rejected p{font-size:.9rem;color:var(--muted);line-height:1.6}
+.legal-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.75);z-index:5000;justify-content:center;align-items:center;padding:20px}
+.legal-modal.active{display:flex}
+.legal-box{background:#fff;border-radius:20px;width:100%;max-width:500px;max-height:80vh;overflow-y:auto;padding:24px}
+.legal-box h2{font-size:1.2rem;font-weight:800;margin-bottom:14px;color:var(--primary-dark)}
+.legal-box h3{font-size:.95rem;font-weight:700;margin:16px 0 8px;color:var(--text)}
+.legal-box p{font-size:.85rem;color:#475569;line-height:1.7;margin-bottom:10px}
+.legal-box ul{margin:6px 0 12px 20px}
+.legal-box li{font-size:.85rem;color:#475569;line-height:1.6;margin-bottom:4px}
+.legal-close{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin-top:14px}
+.chat-button{position:fixed;bottom:90px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#3b82f6,#2563eb);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(59,130,246,.4);z-index:1500;transition:all .2s}
+.chat-button:hover{transform:scale(1.1)}
+.chat-badge{position:absolute;top:0;right:0;background:#ef4444;color:#fff;font-size:.7rem;font-weight:700;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center}
+.chat-modal{display:none;position:fixed;bottom:90px;right:20px;width:340px;max-width:calc(100% - 40px);height:450px;background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:1600;flex-direction:column;overflow:hidden}
+.chat-modal.active{display:flex}
+.chat-header{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}
+.chat-header h3{font-size:1rem;font-weight:700}
+.chat-header p{font-size:.72rem;opacity:.9}
+.chat-close{background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer}
+.chat-body{flex:1;overflow-y:auto;padding:16px;background:#f8fafc}
+.chat-msg{margin-bottom:12px;padding:10px 14px;border-radius:14px;font-size:.85rem;max-width:85%;line-height:1.5;word-wrap:break-word}
+.chat-msg.user{background:#3b82f6;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+.chat-msg.bot{background:#fff;color:#1e293b;border:1px solid #e2e8f0;border-bottom-left-radius:4px}
+.chat-footer{padding:12px;background:#fff;border-top:1px solid #e2e8f0;display:flex;gap:8px}
+.chat-footer input{flex:1;padding:10px 14px;border:1px solid #e2e8f0;border-radius:20px;font-size:.88rem;outline:none}
+.chat-footer input:focus{border-color:var(--primary)}
+.chat-footer button{background:var(--primary);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.chat-footer button:disabled{opacity:.6;cursor:not-allowed}
+</style>
+</head>
+<body>
+
+<div class="landing-header" id="landingHeader">
+    <div class="landing-logo">📱 Onay Merkezi</div>
+    <div class="auth-buttons" id="authButtons">
+        <button class="btn-login" onclick="openLogin()">Giriş Yap</button>
+        <button class="btn-register" onclick="openRegister()">Kayıt Ol</button>
+    </div>
+</div>
+
+<div class="app-header" id="appHeader" style="display:none;">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <div>
+            <div class="header-title">Onay Merkezi - Sanal Numara</div>
+            <div class="header-subtitle">WhatsApp, Telegram, Instagram anında SMS onay</div>
+        </div>
+        <button class="btn-logout" onclick="logout()">Çıkış</button>
+    </div>
+</div>
+
+<div class="balance-bar" id="balanceBar" style="display:none;">
+    <div>
+        <div class="balance-label">Bakiyeniz</div>
+        <div class="balance-amount" id="userBalance">₺0.00</div>
+    </div>
+    <button class="add-balance-btn" onclick="showDeposit()">+ Bakiye Yükle</button>
+</div>
+
+<div class="steps-container" id="stepsContainer" style="display:none;">
+    <div class="step active" id="step1-indicator"><div class="step-number">1</div><div class="step-label">Servis</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step" id="step2-indicator"><div class="step-number">2</div><div class="step-label">Ülke</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step" id="step2-5-indicator" style="display:none;"><div class="step-number">3</div><div class="step-label">Operatör</div></div>
+    <div class="step-arrow" id="step2-5-arrow" style="display:none;">→</div>
+    <div class="step" id="step3-indicator"><div class="step-number">4</div><div class="step-label">Numara</div></div>
+</div>
+
+<div class="container">
+
+<div id="step1" class="step-section active">
+    <div class="intro-card">
+        <h1>SMS Onay - Sanal Numara Alma</h1>
+        <p>WhatsApp, Telegram, Instagram için anında SMS onay kodu alın. 2 dakikada teslim, iade garantili.</p>
+    </div>
+
+    <div class="hero-steps">
+        <div class="hero-step">
+            <div class="hero-step-num">1</div>
+            <div class="hero-step-label">Servis Seçin</div>
+        </div>
+        <div class="hero-step-arrow">→</div>
+        <div class="hero-step">
+            <div class="hero-step-num dim">2</div>
+            <div class="hero-step-label">Ülke Seçin</div>
+        </div>
+        <div class="hero-step-arrow">→</div>
+        <div class="hero-step">
+            <div class="hero-step-num dim">3</div>
+            <div class="hero-step-label">Numara Alın</div>
+        </div>
+    </div>
+
+    <div class="section-header"><div class="section-title">1. Servis Seçin</div></div>
+
+    <div class="service-list" id="serviceList">
+        <div class="service-search">
+            <span class="search-ico">🔍</span>
+            <input type="text" placeholder="Servis ara..." id="serviceSearch" onkeyup="filterServices()">
+        </div>
+        <div id="serviceRows"></div>
+    </div>
+
+    <div class="section-header" style="margin-top:24px;"><div class="section-title">🎮 Oyun Jetonları</div></div>
+    <div class="compact-services">
+        <div class="compact-card" onclick="openGameCategory('pubg')">
+            <div class="compact-card-icon pubg">🎯</div>
+            <div class="compact-card-name">PUBG</div>
+            <div class="compact-card-price">28,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('ff')">
+            <div class="compact-card-icon freefire">🔥</div>
+            <div class="compact-card-name">Free Fire</div>
+            <div class="compact-card-price">29,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('valorant')">
+            <div class="compact-card-icon valorant">🎮</div>
+            <div class="compact-card-name">Valorant</div>
+            <div class="compact-card-price">99,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('ml')">
+            <div class="compact-card-icon ml">⚔️</div>
+            <div class="compact-card-name">Mobile Legends</div>
+            <div class="compact-card-price">16,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('steam')">
+            <div class="compact-card-icon steam">🕹️</div>
+            <div class="compact-card-name">Steam</div>
+            <div class="compact-card-price">142,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('all')">
+            <div class="compact-card-icon game-all">📦</div>
+            <div class="compact-card-name">Tümü</div>
+            <div class="compact-card-price">Tüm oyunlar</div>
+        </div>
+    </div>
+
+    <div class="live-section">
+        <div class="live-header"><span style="font-size:1.5rem;">🔥</span><span class="live-title">Canlı Başarılar</span></div>
+        <div class="live-subtitle"><span class="live-dot"></span>Son 30 dakikada tamamlanan onaylar</div>
+        <div class="success-list" id="liveSuccess"></div>
+    </div>
+
+    <div class="section-header" style="margin-top:24px;"><div class="section-title">Neden Onay Merkezi?</div></div>
+    <div class="why-section">
+        <div class="why-row"><div class="why-icon">🔒</div><div class="why-text"><h4>Güvenli Ödeme</h4><p>Kart ve IBAN ile güvenli işlem</p></div></div>
+        <div class="why-row"><div class="why-icon">⚡</div><div class="why-text"><h4>Hızlı İşlem</h4><p>Saniyeler içinde numara teslimi</p></div></div>
+        <div class="why-row"><div class="why-icon">📦</div><div class="why-text"><h4>Sipariş Takibi</h4><p>Tüm siparişler panelinde kayıtlı</p></div></div>
+        <div class="why-row"><div class="why-icon">💬</div><div class="why-text"><h4>Canlı Destek</h4><p>Sorun yaşarsan yanındayız</p></div></div>
+    </div>
+
+    <div class="section-header" style="margin-top:24px;"><div class="section-title">Sık Sorulan Sorular</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sanal numara nasıl kullanılır? <span>▼</span></div><div class="faq-a">Ülke ve paket seçtikten sonra size verilen numarayı ilgili platforma girin. SMS kodu sipariş ekranında otomatik görüntülenir.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sipariş nasıl verilir? <span>▼</span></div><div class="faq-a">Hizmeti ve paketi seçin. Bakiyeniz yeterliyse sipariş butonuna basın. Yetersizse bakiye yükleyin.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">SMS kodu nereden görülür? <span>▼</span></div><div class="faq-a">Sipariş oluşturduğunuzda ekranda SMS beklenir. Kod geldiğinde aynı ekranda gösterilir.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Siparişimi nereden takip ederim? <span>▼</span></div><div class="faq-a">Alt menüdeki "Siparişler" sekmesinden geçmiş siparişlerinizi görebilirsiniz.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ödeme nasıl yapılır? <span>▼</span></div><div class="faq-a">Kart ile veya IBAN üzerinden havale/EFT ile bakiye yükleyebilirsiniz.</div></div>
+</div>
+
+<div id="step2" class="step-section">
+    <a class="back-button" onclick="goToStep(1)">← Geri</a>
+    <div class="section-header"><div class="section-title">2. Ülke Seçin</div></div>
+    <div class="search-box"><span class="search-icon">🔍</span><input type="text" placeholder="Ülke ara..." id="countrySearch" onkeyup="filterCountries()"></div>
+    <div class="filter-chips" id="countryChips">
+        <button class="chip active" onclick="filterCountryByRegion('all', this)">Tümü</button>
+        <button class="chip" onclick="filterCountryByRegion('popular', this)">🔥 Popüler</button>
+        <button class="chip" onclick="filterCountryByRegion('europe', this)">🇪🇺 Avrupa</button>
+        <button class="chip" onclick="filterCountryByRegion('asia', this)">🌏 Asya</button>
+        <button class="chip" onclick="filterCountryByRegion('america', this)">🌎 Amerika</button>
+        <button class="chip" onclick="filterCountryByRegion('africa', this)">🌍 Afrika</button>
+        <button class="chip" onclick="filterCountryByRegion('middleeast', this)">🕌 Orta Doğu</button>
+    </div>
+    <div class="country-list" id="countryList"></div>
+</div>
+
+<div id="step2-5" class="step-section">
+    <a class="back-button" onclick="goToStep(2)">← Geri</a>
+    <div class="section-header"><div class="section-title">3. Operatör Seçin</div></div>
+    <div class="operator-header" id="operatorHeader">
+        <span class="operator-header-flag" id="operatorHeaderFlag">🇹🇷</span>
+        <span class="operator-header-name" id="operatorHeaderName">Türkiye</span>
+        <span style="margin-left:auto;font-size:.75rem;color:var(--muted);" id="operatorHeaderService">WhatsApp</span>
+    </div>
+    <div id="operatorList"></div>
+</div>
+
+<div id="step3" class="step-section">
+    <a class="back-button" onclick="goToStep(2.5)">← Geri</a>
+    <div class="section-header"><div class="section-title">4. Numara Alın</div></div>
+    <div id="numberList"></div>
+</div>
+
+<div id="depositSection" class="step-section">
+    <a class="back-button" onclick="closeDeposit()">← Geri</a>
+    <div class="section-header"><div class="section-title">Bakiye Yükle</div></div>
+    <div class="sync-status" id="syncStatus">🌐 Bağlantı kuruluyor...</div>
+    <div class="deposit-card">
+        <label class="form-label">Yüklenecek Tutar</label>
+        <div class="amount-selector">
+            <button class="amount-btn selected" onclick="selectAmount(100, this)">₺100</button>
+            <button class="amount-btn" onclick="selectAmount(200, this)">₺200</button>
+            <button class="amount-btn" onclick="selectAmount(500, this)">₺500</button>
+            <button class="amount-btn" onclick="selectAmount(1000, this)">₺1000</button>
+            <button class="amount-btn" onclick="selectAmount(2000, this)">₺2000</button>
+            <button class="amount-btn" onclick="selectAmount(5000, this)">₺5000</button>
+        </div>
+        <div class="iban-box">
+            <div class="iban-label">IBAN ile Havale/EFT</div>
+            <div class="iban-value" id="ibanDisplay">TR00 0000 0000 0000 0000 0000 00</div>
+            <div class="iban-name" id="ibanNameDisplay">Hesap Sahibi: -</div>
+            <button class="copy-btn" style="margin-top:10px;" onclick="copyIban()">📋 IBAN'ı Kopyala</button>
+        </div>
+        <div class="provider-note">ℹ️ <strong>Güvenli Ödeme:</strong> Kart ile ödemek için butona basın. IBAN için havale yapıp dekontu gönderin.</div>
+        <button class="pay-button" onclick="payWithCard()"><span>🔒</span> <span>Kart ile Öde (₺<span id="selectedAmountLabel">100</span>)</span></button>
+        <button class="pay-button" style="background:linear-gradient(135deg,#f59e0b,#d97706);margin-top:10px;" onclick="notifyIbanPayment()"><span>🏦</span> <span>IBAN ile Ödedim, Bildir</span></button>
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+    </div>
+</div>
+
+<div id="historySection" class="step-section">
+    <a class="back-button" onclick="goHome()">← Geri</a>
+    <div class="section-header"><div class="section-title">Sipariş Geçmişim</div></div>
+    <div id="historyList"></div>
+</div>
+
+<div id="page-about" class="step-section static-page">
+    <a class="back-button" onclick="goHome()">← Ana Sayfa</a>
+    <h1>Hakkımızda</h1>
+    <p class="page-subtitle">Güvenilir, hızlı ve uygun fiyatlı SMS onay hizmeti</p>
+    <div class="info-card"><strong>Biz Kimiz?</strong><span>Onay Merkezi, WhatsApp, Telegram, Instagram ve diğer platformlar için doğrulama hizmetleri sunan bir dijital iletişim servisidir. Türkiye başta olmak üzere 60'tan fazla ülkede hizmet vermekteyiz.</span></div>
+    <div class="info-card"><strong>Misyonumuz</strong><span>Kullanıcılarımıza en hızlı, en güvenli ve en uygun fiyatlı sanal numara hizmetini sunmak.</span></div>
+</div>
+
+<div id="page-contact" class="step-section static-page">
+    <a class="back-button" onclick="goHome()">← Ana Sayfa</a>
+    <h1>İletişim</h1>
+    <p class="page-subtitle">Sorularınız için bize ulaşın</p>
+    <div class="info-card"><strong>📧 E-posta</strong><span>destek@onaymerkezi.org</span></div>
+</div>
+
+<div id="page-faq" class="step-section static-page">
+    <a class="back-button" onclick="goHome()">← Ana Sayfa</a>
+    <h1>SSS</h1>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sanal numara nedir? <span>▼</span></div><div class="faq-a">Fiziki SIM kart gerektirmeden internet üzerinden kullanabileceğiniz bir telefon numarasıdır.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Numara ne kadar süreyle geçerli? <span>▼</span></div><div class="faq-a">Numaralar 10 dakika boyunca size tahsis edilir.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Bakiye nasıl yüklerim? <span>▼</span></div><div class="faq-a">Kart ile veya IBAN ile havale/EFT yaparak.</div></div>
+</div>
+
+<div id="page-privacy" class="step-section static-page">
+    <a class="back-button" onclick="goHome()">← Ana Sayfa</a>
+    <h1>Gizlilik Politikası</h1>
+    <p class="page-subtitle">Son güncelleme: 24 Eylül 2026</p>
+    <p>Bu Gizlilik Politikası, Onay Merkezi tarafından işletilen web sitesi üzerinden toplanan kişisel verilerin nasıl işlendiğini açıklar.</p>
+</div>
+
+<div id="page-terms" class="step-section static-page">
+    <a class="back-button" onclick="goHome()">← Ana Sayfa</a>
+    <h1>Kullanım Koşulları</h1>
+    <p class="page-subtitle">Son güncelleme: 24 Eylül 2026</p>
+    <p>Hizmet Sağlayıcı, kullanıcılara WhatsApp ve diğer platformlarda SMS doğrulaması yapabilmeleri için geçici sanal numara temin eder.</p>
+</div>
+
+<div id="page-kvkk" class="step-section static-page">
+    <a class="back-button" onclick="goHome()">← Ana Sayfa</a>
+    <h1>KVKK Aydınlatma Metni</h1>
+    <p class="page-subtitle">6698 Sayılı KVKK Kapsamında</p>
+    <p>6698 sayılı KVKK uyarınca kişisel verileriniz, veri sorumlusu olarak Onay Merkezi tarafından işlenebilecektir.</p>
+</div>
+
+<div id="page-careers" class="step-section static-page">
+    <a class="back-button" onclick="goHome()">← Ana Sayfa</a>
+    <h1>İnsan Kaynakları</h1>
+    <div class="info-card"><strong>💻 Full-Stack Geliştirici</strong><span>Tam Zamanlı · Uzaktan</span></div>
+    <div class="info-card"><strong>🎧 Müşteri Destek Uzmanı</strong><span>Tam Zamanlı · Ofis</span></div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Onay Merkezi</h4>
+                <p style="color:#94a3b8;font-size:.78rem;line-height:1.7;margin-bottom:12px;">Türkiye'nin en hızlı ve güvenli SMS onay platformu. WhatsApp, Telegram, Instagram ve 60+ platform için anında sanal numara.</p>
+                <div style="display:flex;gap:8px;margin-top:12px;">
+                    <a href="https://onaymerkezi.org" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#334155;border-radius:10px;color:#cbd5e1;text-decoration:none;font-size:1rem;">🌐</a>
+                    <a href="mailto:destek@onaymerkezi.org" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#334155;border-radius:10px;color:#cbd5e1;text-decoration:none;font-size:1rem;">✉️</a>
+                    <a onclick="showSupport()" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#334155;border-radius:10px;color:#cbd5e1;text-decoration:none;font-size:1rem;cursor:pointer;">💬</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Hızlı Bağlantılar</h4>
+                <a onclick="goHome()">Ana Sayfa</a>
+                <a onclick="goHome()">Sanal Numara</a>
+                <a onclick="showDeposit()">Bakiye Yükle</a>
+                <a onclick="showHistory()">Siparişlerim</a>
+                <a onclick="showPage('faq')">Sık Sorulan Sorular</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <a onclick="showPage('about')">Hakkımızda</a>
+                <a onclick="showPage('careers')">İnsan Kaynakları</a>
+                <a onclick="showPage('contact')">İletişim</a>
+                <a onclick="showPage('faq')">SSS</a>
+            </div>
+            <div class="footer-col">
+                <h4>Yasal</h4>
+                <a onclick="showPage('privacy')">Gizlilik Politikası</a>
+                <a onclick="showPage('terms')">Kullanım Koşulları</a>
+                <a onclick="showPage('kvkk')">KVKK Aydınlatma Metni</a>
+                <a onclick="openLegal('terms')">İptal ve İade Koşulları</a>
+                <a onclick="openLegal('privacy')">Çerez Politikası</a>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display:flex;flex-direction:column;gap:12px;align-items:center;">
+            <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:.78rem;color:#94a3b8;">
+                <span>🔒 256-bit SSL Güvenli Ödeme</span>
+                <span>⚡ 7/24 Otomatik Teslimat</span>
+                <span>💯 İade Garantisi</span>
+                <span>🇹🇷 Türkiye'nin Lider Platformu</span>
+            </div>
+            <div style="font-size:.78rem;color:#64748b;">© 2026 Onay Merkezi — Tüm hakları saklıdır. | destek@onaymerkezi.org</div>
+        </div>
+    </div>
+</footer>
+
+<div class="bottom-nav" id="bottomNav" style="display:none;">
+    <div class="nav-item active" onclick="goHome()"><span>🏠</span><span>Ana Sayfa</span></div>
+    <div class="nav-item" onclick="showHistory()"><span>📜</span><span>Siparişler</span></div>
+    <div class="nav-item" onclick="showDeposit()"><span>💳</span><span>Bakiye</span></div>
+    <div class="nav-item" onclick="showSupport()"><span>🎧</span><span>Destek</span></div>
+</div>
+
+<div class="auth-modal" id="loginModal">
+    <div class="auth-box">
+        <h2>🔐 Giriş Yap</h2>
+        <button class="google-btn" onclick="googleLogin()">
+            <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20.4H24v7.2h11.3c-1.6 4.7-6.1 8.1-11.3 8.1-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 12.9 4.8 4 13.7 4 24.8s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.8z"/><path fill="#FF3D00" d="M6.3 14.7l5.9 4.3C13.9 15.1 18.6 12.4 24 12.4c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 16.3 4.8 9.7 9.2 6.3 14.7z"/><path fill="#4CAF50" d="M24 44.8c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.6 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-7.9l-5.9 4.6C10.2 40.5 16.5 44.8 24 44.8z"/><path fill="#1976D2" d="M43.6 20.5H42V20.4H24v7.2h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.2 5.2c-.4.4 6.6-4.8 6.6-13.7 0-1.3-.1-2.6-.4-3.8z"/></svg>
+            Google ile Giriş Yap
+        </button>
+        <div class="divider">veya e-posta ile</div>
+        <div class="auth-error" id="loginError"></div>
+        <input type="email" class="auth-input" id="loginEmail" placeholder="Email adresiniz">
+        <input type="password" class="auth-input" id="loginPassword" placeholder="Şifreniz">
+        <button class="auth-btn" id="loginBtn" onclick="login()">Giriş Yap</button>
+        <p style="text-align:center;margin-top:15px;color:var(--muted);font-size:.88rem;">Hesabınız yok mu? <a href="#" onclick="openRegister();return false;" style="color:var(--primary);font-weight:600;">Kayıt Ol</a></p>
+        <p style="text-align:center;margin-top:10px;"><a href="#" onclick="closeAuth();return false;" style="color:var(--muted);font-size:.82rem;">Kapat</a></p>
+    </div>
+</div>
+
+<div class="auth-modal" id="registerModal">
+    <div class="auth-box">
+        <h2>📝 Kayıt Ol</h2>
+        <button class="google-btn" onclick="googleLogin()">
+            <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20.4H24v7.2h11.3c-1.6 4.7-6.1 8.1-11.3 8.1-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 12.9 4.8 4 13.7 4 24.8s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.8z"/><path fill="#FF3D00" d="M6.3 14.7l5.9 4.3C13.9 15.1 18.6 12.4 24 12.4c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 16.3 4.8 9.7 9.2 6.3 14.7z"/><path fill="#4CAF50" d="M24 44.8c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.6 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-7.9l-5.9 4.6C10.2 40.5 16.5 44.8 24 44.8z"/><path fill="#1976D2" d="M43.6 20.5H42V20.4H24v7.2h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.2 5.2c-.4.4 6.6-4.8 6.6-13.7 0-1.3-.1-2.6-.4-3.8z"/></svg>
+            Google ile Kayıt Ol
+        </button>
+        <div class="divider">veya e-posta ile</div>
+        <div class="auth-error" id="registerError"></div>
+        <input type="text" class="auth-input" id="regName" placeholder="Ad Soyad">
+        <input type="email" class="auth-input" id="regEmail" placeholder="Email adresiniz">
+        <input type="password" class="auth-input" id="regPassword" placeholder="Şifre (en az 6 karakter)">
+        <input type="password" class="auth-input" id="regPassword2" placeholder="Şifre Tekrar">
+        <div class="checkbox-row">
+            <input type="checkbox" id="chkTerms">
+            <label for="chkTerms"><a onclick="openLegal('terms')">Kullanım Koşulları</a>'nı ve <a onclick="openLegal('privacy')">Gizlilik Politikası</a>'nı okudum, kabul ediyorum.</label>
+        </div>
+        <div class="checkbox-row">
+            <input type="checkbox" id="chkKvkk">
+            <label for="chkKvkk"><a onclick="openLegal('kvkk')">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin işlenmesine onay veriyorum.</label>
+        </div>
+        <button class="auth-btn" id="registerBtn" onclick="register()">Kayıt Ol</button>
+        <p style="text-align:center;margin-top:15px;color:var(--muted);font-size:.88rem;">Zaten hesabınız var mı? <a href="#" onclick="openLogin();return false;" style="color:var(--primary);font-weight:600;">Giriş Yap</a></p>
+        <p style="text-align:center;margin-top:10px;"><a href="#" onclick="closeAuth();return false;" style="color:var(--muted);font-size:.82rem;">Kapat</a></p>
+    </div>
+</div>
+
+<div class="payment-modal" id="paymentModal">
+    <div class="payment-box">
+        <div class="payment-header">
+            <div class="payment-logo">🔒 Güvenli Ödeme</div>
+            <button class="payment-close" onclick="closePaymentModal()">✕</button>
+        </div>
+        <div class="payment-provider"><span>iyzico</span> <span style="opacity:.6;">ile korunmaktadır</span></div>
+        <div class="payment-amount">
+            <div class="payment-amount-label">Ödenecek Tutar</div>
+            <div class="payment-amount-value" id="paymentAmountDisplay">₺100</div>
+        </div>
+        <div class="card-preview">
+            <div class="card-chip">💳</div>
+            <div class="card-number-preview" id="cardNumberPreview">•••• •••• •••• ••••</div>
+            <div class="card-bottom">
+                <div>
+                    <div class="card-label">KART SAHİBİ</div>
+                    <div class="card-value" id="cardNamePreview">AD SOYAD</div>
+                </div>
+                <div>
+                    <div class="card-label">SON KUL.</div>
+                    <div class="card-value" id="cardExpiryPreview">AA/YY</div>
+                </div>
+            </div>
+        </div>
+        <div class="payment-form">
+            <div class="payment-field">
+                <label>Kart Numarası</label>
+                <input type="text" id="payCardNumber" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCardNumber(this)">
+            </div>
+            <div class="payment-row">
+                <div class="payment-field">
+                    <label>Son Kullanma</label>
+                    <input type="text" id="payCardExpiry" placeholder="AA/YY" maxlength="5" oninput="formatExpiry(this)">
+                </div>
+                <div class="payment-field">
+                    <label>CVV</label>
+                    <input type="text" id="payCardCvv" placeholder="000" maxlength="4" oninput="formatCvv(this)">
+                </div>
+            </div>
+            <div class="payment-field">
+                <label>Kart Üzerindeki İsim</label>
+                <input type="text" id="payCardName" placeholder="AD SOYAD" oninput="document.getElementById('cardNamePreview').textContent=this.value.toUpperCase()||'AD SOYAD'">
+            </div>
+            <button class="payment-submit" id="paymentSubmitBtn" onclick="submitPayment()">🔒 ₺<span id="paymentSubmitAmount">100</span> Öde</button>
+            <div class="payment-secure">🔐 256-bit SSL ile şifrelenmiş · PCI-DSS uyumlu</div>
+            <div class="payment-error" id="paymentError"></div>
+        </div>
+    </div>
+</div>
+
+<div class="chat-button" id="chatButton" onclick="toggleChat()">
+    💬
+    <div class="chat-badge" id="chatBadge" style="display:none;">1</div>
+</div>
+
+<div class="chat-modal" id="chatModal">
+    <div class="chat-header">
+        <div>
+            <h3>💬 Canlı Destek</h3>
+            <p>Genellikle 5 dakika içinde yanıt veririz</p>
+        </div>
+        <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <div class="chat-msg bot">Merhaba! Size nasıl yardımcı olabiliriz? Mesajınızı yazın, en kısa sürede dönüş yapacağız.</div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Mesajınızı yazın..." onkeypress="if(event.key==='Enter') sendChat()">
+        <button onclick="sendChat()" id="chatSendBtn">➤</button>
+    </div>
+</div>
+
+<div class="legal-modal" id="legalModal">
+    <div class="legal-box" id="legalBox"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
