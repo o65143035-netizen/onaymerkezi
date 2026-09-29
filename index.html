@@ -851,28 +851,41 @@ function toggleGameDetail(key) {
     const existing = document.getElementById('gamedetail_' + key);
     if (existing) { existing.remove(); return; }
     document.querySelectorAll('.game-detail').forEach(d => d.remove());
+    const loadingHTML = '<div class="game-detail" id="gamedetail_' + key + '"><h5>' + g.name + ' — ' + g.qty + '</h5><div class="game-detail-row"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div><button class="game-buy-btn" disabled>⏳ Bakiye kontrol ediliyor...</button></div>';
+    document.querySelector('.game-list').insertAdjacentHTML('afterend', loadingHTML);
+    if (currentUser) {
+        get(ref(db, 'users/' + currentUser.uid)).then(snap => {
+            if (snap.exists()) { balance = snap.val().balance || 0; updateBalanceUI(); }
+            renderGameDetailButton(key, g);
+        }).catch(() => renderGameDetailButton(key, g));
+    } else {
+        renderGameDetailButton(key, g);
+    }
+}
+
+function renderGameDetailButton(key, g) {
+    const el = document.getElementById('gamedetail_' + key);
+    if (!el) return;
     const isLoggedIn = !!currentUser;
     const can = isLoggedIn && balance >= g.price;
-    let btnText, btnAction, btnClass;
+    let btnText, btnAction, btnClass, warningHtml = '';
     if (!isLoggedIn) {
         btnText = '🔐 Giriş Yap';
         btnAction = 'openLogin()';
         btnClass = 'game-buy-btn insufficient';
+        warningHtml = '<div style="color:#ef4444;font-weight:600;font-size:.75rem;margin-top:8px;">Satın almak için giriş yapmalısınız.</div>';
     } else if (!can) {
+        const eksik = (g.price - balance).toFixed(2);
         btnText = '💰 Bakiye Yükle';
         btnAction = 'showDeposit()';
         btnClass = 'game-buy-btn insufficient';
+        warningHtml = '<div style="color:#ef4444;font-weight:600;font-size:.75rem;background:#fee2e2;border-radius:8px;padding:10px;margin-top:8px;">⚠️ Bakiyeniz yetersiz! Bu işlem için <strong>₺' + eksik + '</strong> daha yüklemeniz gerekiyor.</div>';
     } else {
         btnText = '🛒 Satın Al (₺' + g.price.toFixed(2) + ')';
         btnAction = 'buyGameItem(\'' + key + '\')';
         btnClass = 'game-buy-btn';
     }
-    const detailHTML = '<div class="game-detail" id="gamedetail_' + key + '">' +
-        '<h5>' + g.name + ' — ' + g.qty + '</h5>' +
-        '<div class="game-detail-row"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div>' +
-        '<button class="' + btnClass + '" onclick="' + btnAction + '">' + btnText + '</button>' +
-    '</div>';
-    document.querySelector('.game-list').insertAdjacentHTML('afterend', detailHTML);
+    el.innerHTML = '<h5>' + g.name + ' — ' + g.qty + '</h5><div class="game-detail-row"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div><button class="' + btnClass + '" onclick="' + btnAction + '">' + btnText + '</button>' + warningHtml;
 }
 
 async function buyGameItem(key) {
@@ -1056,26 +1069,42 @@ function renderNumberCard() {
     if (!currentCountry || !currentWaType) return;
     if (activeOrder) { renderActiveOrder(); return; }
     const p = getPrice();
-    const isLoggedIn = !!currentUser;
-    const can = isLoggedIn && balance >= p;
     const svc = SERVICES_CONFIG[currentWaType];
     const tn = svc ? svc.name : currentWaType;
     const opName = currentOperator ? currentOperator.name : '';
-    let btnText, btnAction, btnClass;
+    c.innerHTML = '<div class="number-card"><div class="number-header"><div class="number-info"><div class="number-flag">' + currentCountry.flag + '</div><div class="number-details"><h3>' + tn + ' - ' + currentCountry.name + '</h3><p>' + (opName ? 'Operatör: ' + opName : 'Sanal numara anında teslim edilir') + '</p></div></div><div class="number-price-tag">₺' + p.toFixed(2) + '</div></div><button class="buy-button" disabled>⏳ Bakiye kontrol ediliyor...</button></div>';
+    if (currentUser) {
+        get(ref(db, 'users/' + currentUser.uid)).then(snap => {
+            if (snap.exists()) { balance = snap.val().balance || 0; updateBalanceUI(); }
+            renderNumberCardButton(p, tn, opName);
+        }).catch(() => renderNumberCardButton(p, tn, opName));
+    } else {
+        renderNumberCardButton(p, tn, opName);
+    }
+}
+
+function renderNumberCardButton(p, tn, opName) {
+    const c = document.getElementById('numberList');
+    const isLoggedIn = !!currentUser;
+    const can = isLoggedIn && balance >= p;
+    let btnText, btnAction, btnClass, warningHtml = '';
     if (!isLoggedIn) {
         btnText = '🔐 Giriş Yap';
         btnAction = 'openLogin()';
         btnClass = 'buy-button insufficient';
+        warningHtml = '<div class="empty-state" style="color:#ef4444;font-weight:600;">Satın almak için giriş yapmalısınız.</div>';
     } else if (!can) {
+        const eksik = (p - balance).toFixed(2);
         btnText = '💰 Bakiye Yükle';
         btnAction = 'showDeposit()';
         btnClass = 'buy-button insufficient';
+        warningHtml = '<div class="empty-state" style="color:#ef4444;font-weight:600;background:#fee2e2;border-radius:10px;padding:14px;margin-top:10px;">⚠️ Bakiyeniz yetersiz! Bu işlem için <strong>₺' + eksik + '</strong> daha yüklemeniz gerekiyor.</div>';
     } else {
         btnText = '📱 Numarayı Satın Al';
         btnAction = 'buyNumber()';
         btnClass = 'buy-button';
     }
-    c.innerHTML = '<div class="number-card"><div class="number-header"><div class="number-info"><div class="number-flag">' + currentCountry.flag + '</div><div class="number-details"><h3>' + tn + ' - ' + currentCountry.name + '</h3><p>' + (opName ? 'Operatör: ' + opName : 'Sanal numara anında teslim edilir') + '</p></div></div><div class="number-price-tag">₺' + p.toFixed(2) + '</div></div><button class="' + btnClass + '" onclick="' + btnAction + '">' + btnText + '</button></div>' + (isLoggedIn && !can ? '<div class="empty-state">Bu işlem için ₺' + (p - balance).toFixed(2) + ' daha bakiye gerekiyor.</div>' : '');
+    c.innerHTML = '<div class="number-card"><div class="number-header"><div class="number-info"><div class="number-flag">' + currentCountry.flag + '</div><div class="number-details"><h3>' + tn + ' - ' + currentCountry.name + '</h3><p>' + (opName ? 'Operatör: ' + opName : 'Sanal numara anında teslim edilir') + '</p></div></div><div class="number-price-tag">₺' + p.toFixed(2) + '</div></div><button class="' + btnClass + '" onclick="' + btnAction + '">' + btnText + '</button></div>' + warningHtml;
 }
 
 async function buyNumber() {
@@ -1785,6 +1814,9 @@ onValue(ref(db, 'users'), (snap) => {
     if (me && me.balance !== undefined && me.balance !== balance) {
         balance = me.balance;
         updateBalanceUI();
+        if (document.getElementById('step3').classList.contains('active')) {
+            renderNumberCard();
+        }
     }
 });
 
