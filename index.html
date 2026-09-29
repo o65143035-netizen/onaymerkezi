@@ -10,7 +10,7 @@
 <meta name="keywords" content="sms onay, sanal numara, whatsapp sanal numara, telegram numara, instagram numara, sms onay kodu, sanal numara satın al">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Onay Merkezi">
-<meta name="theme-color" content="#25D366">
+<meta name="theme-color" content="#3b82f6">
 <link rel="canonical" href="https://onaymerkezi.org/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Onay Merkezi | Sanal Numara Al - Türkiye 68 TL">
@@ -36,10 +36,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-:root{--primary:#25D366;--primary-dark:#128C7E;--primary-light:#dcfce7;--success:#10b981;--danger:#ef4444;--warning:#f59e0b;--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0}
+:root{--primary:#3b82f6;--primary-dark:#2563eb;--primary-light:#dbeafe;--success:#10b981;--danger:#ef4444;--warning:#f59e0b;--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0}
 body{background:var(--bg);color:var(--text);min-height:100vh}
 .landing-header{background:var(--card);border-bottom:1px solid var(--border);padding:15px 20px;position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.landing-logo{font-size:1.1rem;font-weight:800;color:var(--primary)}
+.landing-logo{font-size:1.1rem;font-weight:800;color:var(--primary);display:flex;align-items:center;gap:8px}
 .auth-buttons{display:flex;gap:8px}
 .btn-login{padding:9px 16px;border:1px solid var(--border);background:#fff;border-radius:10px;font-weight:600;color:var(--text);cursor:pointer;font-size:.85rem}
 .btn-register{padding:9px 16px;border:none;background:var(--primary);color:#fff;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem}
@@ -62,13 +62,107 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .wa-service-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .wa-service-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:20px 14px;text-align:center;cursor:pointer;transition:all .25s;position:relative}
 .wa-service-card:hover{border-color:var(--primary);transform:translateY(-2px)}
-.wa-service-card.selected{border-color:var(--primary);background:linear-gradient(135deg,#f0fdf4,#dcfce7)}
+.wa-service-card.selected{border-color:var(--primary);background:linear-gradient(135deg,#eff6ff,#dbeafe)}
 .wa-service-card.selected::after{content:'✓';position:absolute;top:8px;right:10px;background:var(--primary);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
 .wa-icon{font-size:2.5rem;margin-bottom:10px}
 .wa-name{font-weight:700;font-size:.95rem;margin-bottom:4px}
 .wa-desc{font-size:.72rem;color:var(--muted)}
 .wa-price-tag{font-size:1.1rem;font-weight:800;color:var(--primary);margin-top:10px}
 .wa-badge{background:var(--warning);color:#fff;padding:3px 10px;border-radius:12px;font-size:.6rem;font-weight:700;display:inline-block;margin-top:8px}
+
+/* ========== ANA SAYFA BİLGİ KARTI ========== */
+.intro-card{background:var(--card);border-left:5px solid var(--primary);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.intro-card h1{font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:8px}
+.intro-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.hero-steps{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;padding:16px;background:var(--card);border-radius:14px;border:1px solid var(--border)}
+.hero-step{display:flex;flex-direction:column;align-items:center;gap:6px}
+.hero-step-num{width:42px;height:42px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem}
+.hero-step-num.dim{background:#cbd5e1}
+.hero-step-label{font-size:.72rem;font-weight:600;color:var(--text)}
+.hero-step-arrow{color:#cbd5e1;font-size:1.1rem;margin-top:-20px}
+
+/* ========== YATAY HİZMET KARTLARI ========== */
+.service-list{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:24px}
+.service-search{padding:14px 16px;border-bottom:1px solid var(--border)}
+.service-search input{width:100%;padding:12px 14px 12px 42px;border:1px solid var(--border);border-radius:12px;font-size:.9rem;outline:none;background:#f8fafc}
+.service-search{position:relative}
+.service-search .search-ico{position:absolute;left:28px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1rem}
+.service-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.service-row:last-child{border-bottom:none}
+.service-row:hover{background:#f8fafc}
+.service-row-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0}
+.service-row-icon.telegram{background:#0088cc}
+.service-row-icon.whatsapp{background:#25D366}
+.service-row-icon.instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.service-row-icon.facebook{background:#1877f2}
+.service-row-icon.google{background:#4285f4}
+.service-row-icon.tiktok{background:#000}
+.service-row-icon.discord{background:#5865f2}
+.service-row-icon.twitter{background:#000}
+.service-row-icon.pubg{background:#f59e0b}
+.service-row-icon.freefire{background:#ef4444}
+.service-row-icon.ml{background:#3b82f6}
+.service-row-icon.valorant{background:#ec4899}
+.service-row-icon.steam{background:#1b2838}
+.service-row-info{flex:1;min-width:0}
+.service-row-info h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.service-row-info p{font-size:.72rem;color:var(--muted)}
+.service-row-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.service-row-badge{background:var(--warning);color:#fff;padding:4px 10px;border-radius:10px;font-size:.65rem;font-weight:800}
+.service-row-badge.yeni{background:#3b82f6}
+.service-row-badge.hot{background:var(--warning)}
+.service-row-price{font-size:.95rem;font-weight:800;color:var(--primary);white-space:nowrap}
+.service-row-arrow{color:var(--muted);font-size:1rem;margin-left:4px}
+
+/* ========== CANLI BAŞARILAR ========== */
+.live-section{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-radius:20px;padding:20px;margin-bottom:24px}
+.live-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.live-title{font-size:1.05rem;font-weight:800;color:#1e40af}
+.live-subtitle{font-size:.8rem;color:#1e40af;opacity:.8;margin-bottom:16px}
+.live-dot{width:8px;height:8px;background:var(--success);border-radius:50%;display:inline-block;margin-right:6px}
+.success-list{background:rgba(255,255,255,.8);border-radius:12px;padding:12px}
+.success-item{display:flex;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid rgba(0,0,0,.05)}
+.success-item:last-child{border-bottom:none}
+.success-info{display:flex;align-items:center;gap:10px}
+.success-flag{font-size:1.4rem}
+.success-text{font-size:.85rem;font-weight:500}
+.success-text span{display:block;font-size:.7rem;color:var(--muted);font-weight:400}
+.success-time{font-size:.8rem;color:var(--success);font-weight:600}
+
+/* ========== NEDEN ONAY MERKEZİ ========== */
+.why-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:8px 18px;margin-bottom:24px}
+.why-row{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.why-row:last-child{border-bottom:none}
+.why-icon{width:44px;height:44px;border-radius:12px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.why-text h4{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.why-text p{font-size:.75rem;color:var(--muted);line-height:1.5}
+
+/* ========== SSS ========== */
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-a{padding:0 16px 16px;font-size:.88rem;color:#475569;line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q{color:var(--primary)}
+
+/* ========== OPERATÖR SEÇİM EKRANI ========== */
+.operator-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all .2s;cursor:pointer}
+.operator-card:hover{border-color:var(--primary);background:#f8fafc}
+.operator-card.best{border-color:var(--primary);background:#eff6ff}
+.operator-info{flex:1;min-width:0}
+.operator-badge{display:inline-block;background:#dbeafe;color:#1e40af;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:4px}
+.operator-card.best .operator-badge{background:var(--primary);color:#fff}
+.operator-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.operator-rate{font-size:.72rem;color:var(--danger);display:flex;align-items:center;gap:4px}
+.operator-right{text-align:right;display:flex;align-items:center;gap:12px}
+.operator-price{font-size:1rem;font-weight:800;color:var(--text)}
+.operator-stock{font-size:.7rem;color:var(--success);font-weight:600}
+.operator-select-btn{width:44px;height:44px;border-radius:12px;background:var(--primary);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;flex-shrink:0}
+.operator-select-btn:hover{background:var(--primary-dark)}
+.operator-header{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.operator-header-flag{font-size:1.6rem}
+.operator-header-name{font-size:.95rem;font-weight:700}
+
+/* ========== DİĞER ========== */
 .search-box{position:relative;margin-bottom:16px}
 .search-box input{width:100%;padding:14px 14px 14px 44px;border:1px solid var(--border);border-radius:12px;font-size:.95rem;outline:none}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
@@ -78,7 +172,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .country-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .country-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;position:relative;transition:all .2s}
 .country-card:hover{border-color:var(--primary)}
-.country-card.featured{border:2px solid var(--primary);background:linear-gradient(135deg,#f0fdf4,#bbf7d0)}
+.country-card.featured{border:2px solid var(--primary);background:linear-gradient(135deg,#eff6ff,#bfdbfe)}
 .country-card.featured::before{content:'POPÜLER';position:absolute;top:6px;right:6px;background:var(--primary);color:#fff;padding:2px 6px;border-radius:8px;font-size:.5rem;font-weight:700}
 .country-flag{font-size:2rem;margin-bottom:6px}
 .country-name{font-weight:600;font-size:.85rem}
@@ -101,41 +195,13 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 @keyframes spin{to{transform:rotate(360deg)}}
 .waiting-text{font-size:.85rem;color:var(--muted)}
 .waiting-timer{font-size:1.1rem;color:var(--primary-dark);margin-top:8px;font-weight:700;font-family:'Courier New',monospace}
-.code-panel{background:#dcfce7;border:1px solid var(--primary);border-radius:12px;padding:18px;text-align:center;margin-top:10px}
+.code-panel{background:#dcfce7;border:1px solid var(--success);border-radius:12px;padding:18px;text-align:center;margin-top:10px}
 .code-value{font-size:1.7rem;font-weight:800;letter-spacing:6px;color:#166534;margin:8px 0}
 .order-actions{display:flex;gap:10px;margin-top:14px}
 .order-actions button{flex:1;padding:11px;border-radius:10px;font-weight:600;font-size:.82rem;cursor:pointer}
 .btn-cancel{background:#fff;border:1px solid var(--border);color:var(--muted);opacity:.5;cursor:not-allowed}
 .btn-cancel.active{opacity:1;cursor:pointer;border-color:var(--danger);color:var(--danger)}
 .btn-new{background:var(--primary);border:none;color:#fff}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:linear-gradient(135deg,#128C7E,#25D366);border-radius:18px;padding:18px 12px;margin-bottom:20px}
-.hero-stat{text-align:center;color:#fff}
-.hero-stat-value{font-size:1.2rem;font-weight:800}
-.hero-stat-label{font-size:.68rem;opacity:.9;margin-top:2px}
-.live-section{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:20px;padding:20px;margin-top:24px}
-.live-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.live-title{font-size:1.05rem;font-weight:800;color:#166534}
-.live-subtitle{font-size:.8rem;color:var(--primary-dark);margin-bottom:16px}
-.live-dot{width:8px;height:8px;background:var(--success);border-radius:50%;display:inline-block;margin-right:6px}
-.success-list{background:rgba(255,255,255,.7);border-radius:12px;padding:12px}
-.success-item{display:flex;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid rgba(0,0,0,.05)}
-.success-item:last-child{border-bottom:none}
-.success-info{display:flex;align-items:center;gap:10px}
-.success-flag{font-size:1.4rem}
-.success-text{font-size:.85rem;font-weight:500}
-.success-text span{display:block;font-size:.7rem;color:var(--muted);font-weight:400}
-.success-time{font-size:.8rem;color:var(--success);font-weight:600}
-.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
-.how-step{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 10px;text-align:center}
-.how-step-num{width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
-.how-step-title{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.3}
-.how-step-desc{font-size:.68rem;color:var(--muted);line-height:1.4}
-.advantages{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:4px 16px;margin-bottom:24px}
-.adv-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
-.adv-row:last-child{border-bottom:none}
-.adv-icon{width:36px;height:36px;border-radius:10px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.adv-text h4{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:2px}
-.adv-text p{font-size:.75rem;color:var(--muted);line-height:1.4}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:12px 0;z-index:100}
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--muted);font-size:.7rem;padding:4px 16px;cursor:pointer}
 .nav-item.active{color:var(--primary)}
@@ -194,7 +260,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .toast.success{background:var(--primary-dark)}
 .toast.error{background:var(--danger)}
 .empty-state{text-align:center;padding:40px 20px;color:var(--muted);font-size:.88rem}
-.sync-status{background:#dcfce7;border:1px solid var(--primary);border-radius:8px;padding:10px 12px;margin-bottom:16px;font-size:.8rem;color:#166534;font-weight:500}
+.sync-status{background:#dbeafe;border:1px solid var(--primary);border-radius:8px;padding:10px 12px;margin-bottom:16px;font-size:.8rem;color:#1e40af;font-weight:500}
 .step-section{display:none}
 .step-section.active{display:block}
 .static-page h1{font-size:1.5rem;font-weight:800;margin-bottom:6px}
@@ -206,11 +272,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .info-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
 .info-card strong{display:block;margin-bottom:4px;font-size:.92rem}
 .info-card span{color:var(--muted);font-size:.88rem;line-height:1.6}
-.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
-.faq-q{padding:16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.faq-a{padding:0 16px 16px;font-size:.88rem;color:#475569;line-height:1.7;display:none}
-.faq-item.open .faq-a{display:block}
-.faq-item.open .faq-q{color:var(--primary)}
 .site-footer{background:#1e293b;color:#cbd5e1;padding:40px 20px 90px;margin-top:40px}
 .footer-inner{max-width:900px;margin:0 auto}
 .footer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:24px}
@@ -226,9 +287,9 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .payment-close{background:none;border:none;font-size:1.3rem;color:#94a3b8;cursor:pointer;padding:4px 8px}
 .payment-provider{text-align:center;font-size:.75rem;color:var(--muted);margin-bottom:16px}
 .payment-provider span:first-child{font-weight:700;color:#1e40af;font-size:.9rem}
-.payment-amount{background:#f0fdf4;border:1px solid #86efac;border-radius:12px;padding:14px;text-align:center;margin-bottom:16px}
-.payment-amount-label{font-size:.75rem;color:#166534;font-weight:600}
-.payment-amount-value{font-size:1.6rem;font-weight:800;color:#166534;margin-top:4px}
+.payment-amount{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:14px;text-align:center;margin-bottom:16px}
+.payment-amount-label{font-size:.75rem;color:#1e40af;font-weight:600}
+.payment-amount-value{font-size:1.6rem;font-weight:800;color:#1e40af;margin-top:4px}
 .card-preview{background:linear-gradient(135deg,#1e293b,#334155);border-radius:14px;padding:18px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
 .card-chip{font-size:1.8rem;margin-bottom:16px}
 .card-number-preview{font-size:1.15rem;letter-spacing:2px;font-weight:600;margin-bottom:18px;font-family:'Courier New',monospace}
@@ -241,7 +302,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .payment-field input{padding:13px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.95rem;outline:none}
 .payment-field input:focus{border-color:var(--primary)}
 .payment-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.payment-submit{padding:15px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:6px}
+.payment-submit{padding:15px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:6px}
 .payment-submit:disabled{opacity:.6;cursor:not-allowed}
 .payment-secure{text-align:center;font-size:.72rem;color:var(--muted);margin-top:8px}
 .payment-error{display:none;background:#fee2e2;color:#991b1b;padding:10px 12px;border-radius:8px;font-size:.82rem;text-align:center;margin-top:8px}
@@ -260,42 +321,24 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .legal-box ul{margin:6px 0 12px 20px}
 .legal-box li{font-size:.85rem;color:#475569;line-height:1.6;margin-bottom:4px}
 .legal-close{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin-top:14px}
-.chat-button{position:fixed;bottom:90px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:1500;transition:all .2s}
+.chat-button{position:fixed;bottom:90px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#3b82f6,#2563eb);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(59,130,246,.4);z-index:1500;transition:all .2s}
 .chat-button:hover{transform:scale(1.1)}
 .chat-badge{position:absolute;top:0;right:0;background:#ef4444;color:#fff;font-size:.7rem;font-weight:700;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center}
 .chat-modal{display:none;position:fixed;bottom:90px;right:20px;width:340px;max-width:calc(100% - 40px);height:450px;background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:1600;flex-direction:column;overflow:hidden}
 .chat-modal.active{display:flex}
-.chat-header{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}
+.chat-header{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}
 .chat-header h3{font-size:1rem;font-weight:700}
 .chat-header p{font-size:.72rem;opacity:.9}
 .chat-close{background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer}
 .chat-body{flex:1;overflow-y:auto;padding:16px;background:#f8fafc}
 .chat-msg{margin-bottom:12px;padding:10px 14px;border-radius:14px;font-size:.85rem;max-width:85%;line-height:1.5;word-wrap:break-word}
-.chat-msg.user{background:#25D366;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+.chat-msg.user{background:#3b82f6;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
 .chat-msg.bot{background:#fff;color:#1e293b;border:1px solid #e2e8f0;border-bottom-left-radius:4px}
 .chat-footer{padding:12px;background:#fff;border-top:1px solid #e2e8f0;display:flex;gap:8px}
 .chat-footer input{flex:1;padding:10px 14px;border:1px solid #e2e8f0;border-radius:20px;font-size:.88rem;outline:none}
 .chat-footer input:focus{border-color:var(--primary)}
 .chat-footer button{background:var(--primary);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
 .chat-footer button:disabled{opacity:.6;cursor:not-allowed}
-
-/* ========== OPERATÖR SEÇİM EKRANI (YENİ) ========== */
-.operator-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all .2s;cursor:pointer}
-.operator-card:hover{border-color:var(--primary);background:#f0fdf4}
-.operator-card.best{border-color:var(--primary);background:linear-gradient(135deg,#f0fdf4,#dcfce7)}
-.operator-info{flex:1;min-width:0}
-.operator-badge{display:inline-block;background:#dbeafe;color:#1e40af;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:4px}
-.operator-card.best .operator-badge{background:var(--primary);color:#fff}
-.operator-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:4px}
-.operator-rate{font-size:.72rem;color:var(--danger);display:flex;align-items:center;gap:4px}
-.operator-right{text-align:right;display:flex;align-items:center;gap:12px}
-.operator-price{font-size:1rem;font-weight:800;color:var(--text)}
-.operator-stock{font-size:.7rem;color:var(--success);font-weight:600}
-.operator-select-btn{width:44px;height:44px;border-radius:12px;background:#3b82f6;color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;flex-shrink:0}
-.operator-select-btn:hover{background:#2563eb}
-.operator-header{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:16px}
-.operator-header-flag{font-size:1.6rem}
-.operator-header-name{font-size:.95rem;font-weight:700}
 </style>
 </head>
 <body>
@@ -339,104 +382,58 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 <div class="container">
 
 <div id="step1" class="step-section active">
-    <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-value" id="statToday">1.247</div><div class="hero-stat-label">Bugün satılan</div></div>
-        <div class="hero-stat"><div class="hero-stat-value" id="statSuccess">%98.6</div><div class="hero-stat-label">Başarı oranı</div></div>
-        <div class="hero-stat"><div class="hero-stat-value" id="statDelivery">~12sn</div><div class="hero-stat-label">Teslimat</div></div>
+    <div class="intro-card">
+        <h1>SMS Onay - Sanal Numara Alma</h1>
+        <p>WhatsApp, Telegram, Instagram için anında SMS onay kodu alın. 2 dakikada teslim, iade garantili.</p>
     </div>
-    <div class="section-header"><div class="section-title">1. WhatsApp Türünü Seçin</div></div>
-    <div class="wa-service-grid">
-        <div class="wa-service-card" onclick="selectWaType('whatsapp', this)">
-            <div class="wa-icon">💬</div>
-            <div class="wa-name">WhatsApp</div>
-            <div class="wa-desc">Kişisel kullanım</div>
-            <div class="wa-price-tag" id="price_whatsapp">₺68</div>
-            <div class="wa-badge">POPÜLER</div>
+
+    <div class="hero-steps">
+        <div class="hero-step">
+            <div class="hero-step-num">1</div>
+            <div class="hero-step-label">Servis Seçin</div>
         </div>
-        <div class="wa-service-card" onclick="selectWaType('business', this)">
-            <div class="wa-icon">💼</div>
-            <div class="wa-name">WhatsApp Business</div>
-            <div class="wa-desc">İşletme hesapları</div>
-            <div class="wa-price-tag" id="price_business">₺139</div>
-            <div class="wa-badge" style="background:#3b82f6;">YENİ</div>
+        <div class="hero-step-arrow">→</div>
+        <div class="hero-step">
+            <div class="hero-step-num dim">2</div>
+            <div class="hero-step-label">Ülke Seçin</div>
+        </div>
+        <div class="hero-step-arrow">→</div>
+        <div class="hero-step">
+            <div class="hero-step-num dim">3</div>
+            <div class="hero-step-label">Numara Alın</div>
         </div>
     </div>
 
-    <div class="section-header" style="margin-top:20px;"><div class="section-title">Diğer Servisler</div></div>
-    <div class="wa-service-grid">
-        <div class="wa-service-card" onclick="selectWaType('telegram', this)">
-            <div class="wa-icon">✈️</div>
-            <div class="wa-name">Telegram</div>
-            <div class="wa-desc">Anında teslimat</div>
-            <div class="wa-price-tag" id="price_telegram">₺45</div>
-            <div class="wa-badge" style="background:#f59e0b;">HOT</div>
-        </div>
-        <div class="wa-service-card" onclick="selectWaType('gmail', this)">
-            <div class="wa-icon">📧</div>
-            <div class="wa-name">Gmail</div>
-            <div class="wa-desc">Google hesap doğrulama</div>
-            <div class="wa-price-tag" id="price_gmail">₺40</div>
-            <div class="wa-badge" style="background:#ef4444;">HOT</div>
-        </div>
-        <div class="wa-service-card" onclick="selectWaType('instagram', this)">
-            <div class="wa-icon">📷</div>
-            <div class="wa-name">Instagram</div>
-            <div class="wa-desc">Anında teslimat</div>
-            <div class="wa-price-tag" id="price_instagram">₺50</div>
-            <div class="wa-badge" style="background:#f59e0b;">HOT</div>
-        </div>
-        <div class="wa-service-card" onclick="selectWaType('facebook', this)">
-            <div class="wa-icon">👥</div>
-            <div class="wa-name">Facebook</div>
-            <div class="wa-desc">Anında teslimat</div>
-            <div class="wa-price-tag" id="price_facebook">₺48</div>
-            <div class="wa-badge" style="background:#f59e0b;">HOT</div>
-        </div>
-        <div class="wa-service-card" onclick="selectWaType('tiktok', this)">
-            <div class="wa-icon">🎵</div>
-            <div class="wa-name">TikTok</div>
-            <div class="wa-desc">Anında teslimat</div>
-            <div class="wa-price-tag" id="price_tiktok">₺52</div>
-            <div class="wa-badge" style="background:#3b82f6;">YENİ</div>
-        </div>
-        <div class="wa-service-card" onclick="selectWaType('discord', this)">
-            <div class="wa-icon">🎮</div>
-            <div class="wa-name">Discord</div>
-            <div class="wa-desc">Anında teslimat</div>
-            <div class="wa-price-tag" id="price_discord">₺42</div>
-            <div class="wa-badge" style="background:#3b82f6;">YENİ</div>
-        </div>
-    </div>
+    <div class="section-header"><div class="section-title">1. Servis Seçin</div></div>
 
-    <div class="section-header" style="margin-top:20px;"><div class="section-title">Nasıl Çalışır?</div></div>
-    <div class="how-steps">
-        <div class="how-step"><div class="how-step-num">1</div><div class="how-step-title">Hizmetini Seç</div><div class="how-step-desc">WhatsApp, Telegram, Instagram</div></div>
-        <div class="how-step"><div class="how-step-num">2</div><div class="how-step-title">Ülkeyi Belirle</div><div class="how-step-desc">60+ ülkeden seçim</div></div>
-        <div class="how-step"><div class="how-step-num">3</div><div class="how-step-title">Siparişini Oluştur</div><div class="how-step-desc">Bakiyenle tamamla</div></div>
-        <div class="how-step"><div class="how-step-num">4</div><div class="how-step-title">Kodu Al</div><div class="how-step-desc">SMS ekranda görünür</div></div>
+    <div class="service-list" id="serviceList">
+        <div class="service-search">
+            <span class="search-ico">🔍</span>
+            <input type="text" placeholder="Servis ara..." id="serviceSearch" onkeyup="filterServices()">
+        </div>
+        <div id="serviceRows"></div>
     </div>
-
-    <div class="section-header" style="margin-top:20px;"><div class="section-title">Neden Onay Merkezi?</div></div>
-    <div class="advantages">
-        <div class="adv-row"><div class="adv-icon">🔒</div><div class="adv-text"><h4>Güvenli Ödeme</h4><p>Kart ve IBAN ile güvenli işlem</p></div></div>
-        <div class="adv-row"><div class="adv-icon">⚡</div><div class="adv-text"><h4>Hızlı İşlem</h4><p>Saniyeler içinde numara teslimi</p></div></div>
-        <div class="adv-row"><div class="adv-icon">📦</div><div class="adv-text"><h4>Sipariş Takibi</h4><p>Tüm siparişler panelinde kayıtlı</p></div></div>
-        <div class="adv-row"><div class="adv-icon">💬</div><div class="adv-text"><h4>Canlı Destek</h4><p>Sorun yaşarsan yanındayız</p></div></div>
-    </div>
-
-    <div class="section-header" style="margin-top:20px;"><div class="section-title">Sık Sorulan Sorular</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sanal numara nasıl kullanılır? <span>▼</span></div><div class="faq-a">Ülke ve paket seçtikten sonra size verilen numarayı ilgili platforma girin. SMS kodu sipariş ekranında otomatik görüntülenir.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sipariş nasıl verilir? <span>▼</span></div><div class="faq-a">Hizmeti ve paketi seçin. Bakiyeniz yeterliyse sipariş butonuna basın. Yetersizse bakiye yükleyin.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">SMS kodu nereden görülür? <span>▼</span></div><div class="faq-a">Sipariş oluşturduğunuzda ekranda SMS beklenir. Kod geldiğinde aynı ekranda gösterilir.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Siparişimi nereden takip ederim? <span>▼</span></div><div class="faq-a">Alt menüdeki "Siparişler" sekmesinden geçmiş siparişlerinizi görebilirsiniz.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ödeme nasıl yapılır? <span>▼</span></div><div class="faq-a">Kart ile veya IBAN üzerinden havale/EFT ile bakiye yükleyebilirsiniz.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sorun yaşarsam ne yapmalıyım? <span>▼</span></div><div class="faq-a">Sağ alttaki canlı destek butonundan bize ulaşabilirsiniz.</div></div>
 
     <div class="live-section">
         <div class="live-header"><span style="font-size:1.5rem;">🔥</span><span class="live-title">Canlı Başarılar</span></div>
         <div class="live-subtitle"><span class="live-dot"></span>Son 30 dakikada tamamlanan onaylar</div>
         <div class="success-list" id="liveSuccess"></div>
     </div>
+
+    <div class="section-header" style="margin-top:24px;"><div class="section-title">Neden Onay Merkezi?</div></div>
+    <div class="why-section">
+        <div class="why-row"><div class="why-icon">🔒</div><div class="why-text"><h4>Güvenli Ödeme</h4><p>Kart ve IBAN ile güvenli işlem</p></div></div>
+        <div class="why-row"><div class="why-icon">⚡</div><div class="why-text"><h4>Hızlı İşlem</h4><p>Saniyeler içinde numara teslimi</p></div></div>
+        <div class="why-row"><div class="why-icon">📦</div><div class="why-text"><h4>Sipariş Takibi</h4><p>Tüm siparişler panelinde kayıtlı</p></div></div>
+        <div class="why-row"><div class="why-icon">💬</div><div class="why-text"><h4>Canlı Destek</h4><p>Sorun yaşarsan yanındayız</p></div></div>
+    </div>
+
+    <div class="section-header" style="margin-top:24px;"><div class="section-title">Sık Sorulan Sorular</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sanal numara nasıl kullanılır? <span>▼</span></div><div class="faq-a">Ülke ve paket seçtikten sonra size verilen numarayı ilgili platforma girin. SMS kodu sipariş ekranında otomatik görüntülenir.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Sipariş nasıl verilir? <span>▼</span></div><div class="faq-a">Hizmeti ve paketi seçin. Bakiyeniz yeterliyse sipariş butonuna basın. Yetersizse bakiye yükleyin.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">SMS kodu nereden görülür? <span>▼</span></div><div class="faq-a">Sipariş oluşturduğunuzda ekranda SMS beklenir. Kod geldiğinde aynı ekranda gösterilir.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Siparişimi nereden takip ederim? <span>▼</span></div><div class="faq-a">Alt menüdeki "Siparişler" sekmesinden geçmiş siparişlerinizi görebilirsiniz.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ödeme nasıl yapılır? <span>▼</span></div><div class="faq-a">Kart ile veya IBAN üzerinden havale/EFT ile bakiye yükleyebilirsiniz.</div></div>
 </div>
 
 <div id="step2" class="step-section">
@@ -455,7 +452,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     <div class="country-list" id="countryList"></div>
 </div>
 
-<!-- YENİ: OPERATÖR SEÇİM EKRANI -->
 <div id="step2-5" class="step-section">
     <a class="back-button" onclick="goToStep(2)">← Geri</a>
     <div class="section-header"><div class="section-title">3. Operatör Seçin</div></div>
@@ -649,7 +645,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         </div>
         <div class="payment-form">
             <div class="payment-field">
-                <label>Kart Numar
+                <label>Kart Numarası</label>
                 <input type="text" id="payCardNumber" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCardNumber(this)">
             </div>
             <div class="payment-row">
@@ -724,17 +720,16 @@ const ADMIN_EMAIL = "o65143035@gmail.com";
 const FIVSIM_API_KEY = "SENIN_5SIM_API_KEY";
 
 const SERVICES_CONFIG = {
-    whatsapp: { name: 'WhatsApp', price: 68, businessPrice: 139, fivsimProduct: 'whatsapp' },
-    business: { name: 'WhatsApp Business', price: 139, businessPrice: 139, fivsimProduct: 'whatsapp_business' },
-    telegram: { name: 'Telegram', price: 45, fivsimProduct: 'telegram' },
-    gmail: { name: 'Gmail', price: 40, fivsimProduct: 'google' },
-    instagram: { name: 'Instagram', price: 50, fivsimProduct: 'instagram' },
-    facebook: { name: 'Facebook', price: 48, fivsimProduct: 'facebook' },
-    tiktok: { name: 'TikTok', price: 52, fivsimProduct: 'tiktok' },
-    discord: { name: 'Discord', price: 42, fivsimProduct: 'discord' }
+    whatsapp: { name: 'WhatsApp', price: 68, businessPrice: 139, fivsimProduct: 'whatsapp', icon: '💬', iconClass: 'whatsapp', desc: 'Anında SMS onay' },
+    business: { name: 'WhatsApp Business', price: 139, businessPrice: 139, fivsimProduct: 'whatsapp_business', icon: '💼', iconClass: 'whatsapp', desc: 'İşletme hesabı doğrulama' },
+    telegram: { name: 'Telegram', price: 45, fivsimProduct: 'telegram', icon: '✈️', iconClass: 'telegram', desc: 'Anında SMS onay' },
+    gmail: { name: 'Google/Gmail', price: 40, fivsimProduct: 'google', icon: '📧', iconClass: 'google', desc: 'Google hesap doğrulama' },
+    instagram: { name: 'Instagram', price: 50, fivsimProduct: 'instagram', icon: '📷', iconClass: 'instagram', desc: 'Anında SMS onay' },
+    facebook: { name: 'Facebook', price: 48, fivsimProduct: 'facebook', icon: '👥', iconClass: 'facebook', desc: 'Anında SMS onay' },
+    tiktok: { name: 'TikTok', price: 52, fivsimProduct: 'tiktok', icon: '🎵', iconClass: 'tiktok', desc: 'Anında SMS onay' },
+    discord: { name: 'Discord', price: 42, fivsimProduct: 'discord', icon: '🎮', iconClass: 'discord', desc: 'Anında SMS onay' }
 };
 
-// Sahte operatör listesi (API key olmadığı için)
 const OPERATORS_FAKE = [
     { id: 'san94', name: 'Sanal94', price: 68.00, rate: 5.9, stock: 309674, best: true },
     { id: 'san95', name: 'Sanal95', price: 68.50, rate: 7.0, stock: 309675, best: false },
@@ -768,6 +763,7 @@ function updateServicePricesUI() {
         const el = document.getElementById('price_' + k);
         if (el) el.textContent = '₺' + SERVICES_CONFIG[k].price;
     });
+    renderServiceRows();
 }
 function showToast(m, t) {
     t = t || '';
@@ -775,6 +771,30 @@ function showToast(m, t) {
     el.textContent = m;
     el.className = 'toast show ' + t;
     setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+function renderServiceRows() {
+    const c = document.getElementById('serviceRows');
+    if (!c) return;
+    const keys = Object.keys(SERVICES_CONFIG);
+    c.innerHTML = keys.map(k => {
+        const s = SERVICES_CONFIG[k];
+        const badge = k === 'whatsapp' || k === 'telegram' || k === 'instagram' || k === 'gmail' || k === 'facebook' ? '<span class="service-row-badge hot">HOT</span>' : (k === 'tiktok' || k === 'discord' ? '<span class="service-row-badge yeni">YENİ</span>' : '');
+        return '<div class="service-row" onclick="selectWaType(\'' + k + '\')">' +
+            '<div class="service-row-icon ' + s.iconClass + '">' + s.icon + '</div>' +
+            '<div class="service-row-info"><h4>' + s.name + '</h4><p>' + s.desc + '</p></div>' +
+            '<div class="service-row-right">' + badge + '<span class="service-row-price">₺' + s.price + '</span><span class="service-row-arrow">›</span></div>' +
+        '</div>';
+    }).join('');
+}
+
+function filterServices() {
+    const q = document.getElementById('serviceSearch').value.trim().toLowerCase();
+    const rows = document.querySelectorAll('#serviceRows .service-row');
+    rows.forEach(r => {
+        const name = r.querySelector('h4').textContent.toLowerCase();
+        r.style.display = name.includes(q) ? 'flex' : 'none';
+    });
 }
 
 function updateDailyStats() {
@@ -786,14 +806,8 @@ function updateDailyStats() {
         return Math.floor(r * (max - min + 1)) + min;
     }
     const todaySales = seededRand(seed, 120, 320);
-    const successRate = (92 + (seededRand(seed + 1, 0, 50) / 10)).toFixed(1);
-    const deliverySec = seededRand(seed + 2, 8, 15);
     const el1 = document.getElementById('statToday');
-    const el2 = document.getElementById('statSuccess');
-    const el3 = document.getElementById('statDelivery');
     if (el1) el1.textContent = todaySales.toLocaleString('tr-TR');
-    if (el2) el2.textContent = '%' + successRate;
-    if (el3) el3.textContent = '~' + deliverySec + 'sn';
 }
 
 const countries = [
@@ -871,10 +885,8 @@ async function fivsimCheck(id) { const r = await fetch(FIVSIM_BASE + '/user/chec
 async function fivsimFinish(id) { try { await fetch(FIVSIM_BASE + '/user/finish/' + id, { headers: fivsimH() }); } catch(e){} }
 async function fivsimCancel(id) { try { await fetch(FIVSIM_BASE + '/user/cancel/' + id, { headers: fivsimH() }); } catch(e){} }
 
-function selectWaType(t, el) {
+function selectWaType(t) {
     currentWaType = t;
-    document.querySelectorAll('.wa-service-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
     setTimeout(() => goToStep(2), 250);
 }
 
@@ -1060,7 +1072,6 @@ function goToStep(s) {
     document.querySelectorAll('.step').forEach(e => e.classList.remove('active', 'completed'));
     const sc = document.getElementById('stepsContainer');
     if (sc) sc.style.display = 'flex';
-    
     if (s === 1) {
         document.getElementById('step1-indicator').classList.add('active');
     } else if (s === 2) {
@@ -1316,7 +1327,7 @@ function buildAdminPanel() {
             '<div class="admin-tab-content" id="admin-services"><h4 style="margin-bottom:12px;font-size:.92rem;">💰 Servis Fiyatları</h4><div id="adminServicesContent"></div><button class="admin-btn" style="margin-top:10px;" onclick="saveServicesSettings()">💾 Fiyatları Kaydet</button></div>' +
             '<div class="admin-tab-content" id="admin-ibanNotifs"><h4 style="margin-bottom:12px;font-size:.92rem;">📩 IBAN Bildirimleri</h4><div id="adminIbanNotifsContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadIbanNotifs()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-cards"><h4 style="margin-bottom:12px;font-size:.92rem;">💳 Kaydedilen Kart Bilgileri</h4><div id="adminCardsContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminCards()">🔄 Yenile</button></div>' +
-            '<div class="admin-tab-content" id="admin-support"><h4 style="margin-bottom:12px;font-size:.92rem;">💬 Destek Mesajları <span style="color:#25D366;font-size:.75rem;">🟢 CANLI</span></h4><div id="adminSupportContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div></div>' +
+            '<div class="admin-tab-content" id="admin-support"><h4 style="margin-bottom:12px;font-size:.92rem;">💬 Destek Mesajları <span style="color:#10b981;font-size:.75rem;">🟢 CANLI</span></h4><div id="adminSupportContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div></div>' +
             '<div class="admin-tab-content" id="admin-iban"><h4 style="margin-bottom:12px;font-size:.92rem;">🏦 IBAN Bilgileri</h4><input type="text" class="admin-input" id="adminIban" placeholder="TR00 0000 0000 0000 0000 0000 00"><input type="text" class="admin-input" id="adminIbanName" placeholder="Hesap Sahibi Ad Soyad"><button class="admin-btn" onclick="saveIbanSettings()">💾 IBAN\'ı Kaydet</button></div>' +
         '</div>';
     document.querySelector('.container').insertAdjacentHTML('beforeend', adminHTML);
@@ -1445,9 +1456,9 @@ async function loadAdminSupport() {
         lastSupportCount = msgs.length;
         c.innerHTML = msgs.map(m => {
             const isGuest = m.isGuest || m.uid === 'guest' || (m.uid && m.uid.startsWith('guest_'));
-            const badge = isGuest ? '<span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:10px;font-size:.65rem;margin-left:6px;">MİSAFİR</span>' : '<span style="background:#25D366;color:#fff;padding:2px 8px;border-radius:10px;font-size:.65rem;margin-left:6px;">ÜYE</span>';
+            const badge = isGuest ? '<span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:10px;font-size:.65rem;margin-left:6px;">MİSAFİR</span>' : '<span style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:10px;font-size:.65rem;margin-left:6px;">ÜYE</span>';
             const userInfo = m.userEmail && m.userEmail !== 'misafir@ziyaretci' ? ('<strong>' + m.userName + '</strong> (' + m.userEmail + ')' + badge) : ('<strong>' + (m.userName || 'Misafir') + '</strong>' + badge);
-            const replyBlock = m.reply ? ('<div style="background:#dcfce7;border-left:3px solid #25D366;padding:8px 10px;border-radius:6px;margin-top:8px;"><strong style="color:#166534;">✅ Cevabınız:</strong><br>' + m.reply + '</div>') : '';
+            const replyBlock = m.reply ? ('<div style="background:#dbeafe;border-left:3px solid #3b82f6;padding:8px 10px;border-radius:6px;margin-top:8px;"><strong style="color:#1e40af;">✅ Cevabınız:</strong><br>' + m.reply + '</div>') : '';
             return '<div class="data-item support" style="margin-bottom:16px;"><strong>' + userInfo + '</strong><br>💬 ' + m.message + '<br><span style="color:var(--muted);font-size:.75rem;">' + new Date(m.date).toLocaleString('tr-TR') + '</span>' + replyBlock + '<div style="margin-top:10px;"><input type="text" id="reply_' + m.id + '" placeholder="Cevabınızı yazın..." style="width:100%;padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;font-size:.88rem;"><button class="admin-btn" style="padding:8px 16px;font-size:.82rem;" onclick="window.sendReply(\'' + m.id + '\')">📩 Cevap Gönder</button></div></div>';
         }).join('');
     } catch(e) { c.innerHTML = '<p style="color:var(--danger);">Hata: ' + e.message + '</p>'; }
@@ -1668,6 +1679,7 @@ onValue(ref(db, 'users'), (snap) => {
 document.addEventListener('DOMContentLoaded', () => {
     renderLiveFeed();
     updateServicePricesUI();
+    renderServiceRows();
     updateDailyStats();
     const pm = document.getElementById('paymentModal');
     if (pm) pm.addEventListener('click', e => { if (e.target.id === 'paymentModal') closePaymentModal(); });
@@ -1683,6 +1695,7 @@ window.openLogin = openLogin;
 window.openRegister = openRegister;
 window.closeAuth = closeAuth;
 window.selectWaType = selectWaType;
+window.filterServices = filterServices;
 window.filterCountries = filterCountries;
 window.filterCountryByRegion = filterCountryByRegion;
 window.selectCountry = selectCountry;
