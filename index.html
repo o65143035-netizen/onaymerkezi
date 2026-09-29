@@ -787,6 +787,7 @@ let pollTimer = null;
 let siteSettings = { iban: "TR00 0000 0000 0000 0000 0000 00", ibanName: "Hesap Sahibi Ad Soyad" };
 let chatOpen = false;
 let lastSupportCount = 0;
+let pendingAction = null;
 
 function updateBalanceUI() {
     const el = document.getElementById('userBalance');
@@ -884,6 +885,11 @@ function toggleGameDetail(key) {
     if (!g) return;
     const existing = document.getElementById('gamedetail_' + key);
     if (existing) { existing.remove(); return; }
+    if (!currentUser) {
+        pendingAction = { type: 'game', gameKey: key };
+        showCenterAlert('Oyun jetonu almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login');
+        return;
+    }
     document.querySelectorAll('.game-detail').forEach(d => d.remove());
     const loadingHTML = '<div class="game-detail" id="gamedetail_' + key + '"><h5>' + g.name + ' — ' + g.qty + '</h5><div class="game-detail-row"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div><button class="game-buy-btn" disabled>⏳ Bakiye kontrol ediliyor...</button></div>';
     document.querySelector('.game-list').insertAdjacentHTML('afterend', loadingHTML);
@@ -1018,6 +1024,11 @@ async function fivsimCancel(id) { try { await fetch(FIVSIM_BASE + '/user/cancel/
 
 function selectWaType(t) {
     currentWaType = t;
+    if (!currentUser) {
+        pendingAction = { type: 'wa', waType: t };
+        showCenterAlert('Numara almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login');
+        return;
+    }
     setTimeout(() => goToStep(2), 250);
 }
 
@@ -1793,6 +1804,18 @@ onAuthStateChanged(auth, async (user) => {
             }
         } catch(e) {}
         enterApp();
+        if (pendingAction) {
+            const pa = pendingAction;
+            pendingAction = null;
+            setTimeout(() => {
+                if (pa.type === 'wa') {
+                    currentWaType = pa.waType;
+                    goToStep(2);
+                } else if (pa.type === 'game') {
+                    toggleGameDetail(pa.gameKey);
+                }
+            }, 500);
+        }
     } else {
         currentUser = null;
         balance = 0;
