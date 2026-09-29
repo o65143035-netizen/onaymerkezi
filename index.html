@@ -925,6 +925,7 @@ async function buyGameItem(key) {
     try { const _s = await get(ref(db, 'users/' + currentUser.uid)); if (_s.exists()) { balance = _s.val().balance || 0; updateBalanceUI(); } } catch(e) {}
     if (balance < g.price) {
         pendingBalanceAction = { type: 'game', gameKey: key };
+        showToast('⚠️ Bakiye Yetersiz', 'error');
         showDeposit();
         return;
     }
@@ -1149,6 +1150,7 @@ async function buyNumber() {
     try { const _s = await get(ref(db, 'users/' + currentUser.uid)); if (_s.exists()) { balance = _s.val().balance || 0; updateBalanceUI(); } } catch(e) {}
     if (balance < p) {
         pendingBalanceAction = { type: 'wa', waType: currentWaType, country: currentCountry, operator: currentOperator };
+        showToast('⚠️ Bakiye Yetersiz', 'error');
         showDeposit();
         return;
     }
