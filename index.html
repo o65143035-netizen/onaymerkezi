@@ -80,31 +80,18 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .service-row-badge.hot{background:var(--warning)}
 .service-row-price{font-size:.95rem;font-weight:800;color:var(--primary);white-space:nowrap}
 .service-row-arrow{color:var(--muted);font-size:1rem;margin-left:4px}
-.game-section{margin-top:24px;margin-bottom:24px}
-.game-list{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.game-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
-.game-row:last-child{border-bottom:none}
-.game-row:hover{background:#f8fafc}
-.game-row-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0}
-.game-row-icon.pubg{background:#f59e0b}
-.game-row-icon.freefire{background:#ef4444}
-.game-row-icon.ml{background:#3b82f6}
-.game-row-icon.valorant{background:#ec4899}
-.game-row-icon.steam{background:#1b2838}
-.game-row-info{flex:1;min-width:0}
-.game-row-info h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:2px}
-.game-row-info p{font-size:.72rem;color:var(--muted)}
-.game-row-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.game-row-price{font-size:.95rem;font-weight:800;color:var(--primary);white-space:nowrap}
-.game-row-arrow{color:var(--muted);font-size:1rem;margin-left:4px}
-.game-detail{background:var(--card);border:1px solid var(--primary);border-radius:14px;padding:16px;margin-top:10px;margin-bottom:10px}
-.game-detail h5{font-size:.85rem;font-weight:700;margin-bottom:10px;color:var(--primary-dark)}
-.game-detail-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.85rem}
-.game-detail-row:last-child{border-bottom:none}
-.game-detail-row .qty{color:var(--text);font-weight:600}
-.game-detail-row .price{color:var(--primary);font-weight:800;font-size:.95rem}
-.game-buy-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer;margin-top:12px}
-.game-buy-btn.insufficient{background:var(--warning)}
+.compact-services{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.compact-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .2s}
+.compact-card:hover{border-color:var(--primary);background:#f8fafc}
+.compact-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;margin:0 auto 8px}
+.compact-card-icon.pubg{background:#f59e0b}
+.compact-card-icon.freefire{background:#ef4444}
+.compact-card-icon.ml{background:#3b82f6}
+.compact-card-icon.valorant{background:#ec4899}
+.compact-card-icon.steam{background:#1b2838}
+.compact-card-icon.game-all{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.compact-card-name{font-size:.75rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.compact-card-price{font-size:.68rem;color:var(--muted)}
 .live-section{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-radius:20px;padding:20px;margin-bottom:24px}
 .live-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .live-title{font-size:1.05rem;font-weight:800;color:#1e40af}
@@ -393,9 +380,38 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         <div id="serviceRows"></div>
     </div>
 
-    <div class="game-section">
-        <div class="section-header"><div class="section-title">🎮 Oyun Jetonları</div></div>
-        <div class="game-list" id="gameList"></div>
+    <div class="section-header" style="margin-top:24px;"><div class="section-title">🎮 Oyun Jetonları</div></div>
+    <div class="compact-services">
+        <div class="compact-card" onclick="openGameCategory('pubg')">
+            <div class="compact-card-icon pubg">🎯</div>
+            <div class="compact-card-name">PUBG</div>
+            <div class="compact-card-price">28,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('ff')">
+            <div class="compact-card-icon freefire">🔥</div>
+            <div class="compact-card-name">Free Fire</div>
+            <div class="compact-card-price">29,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('valorant')">
+            <div class="compact-card-icon valorant">🎮</div>
+            <div class="compact-card-name">Valorant</div>
+            <div class="compact-card-price">99,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('ml')">
+            <div class="compact-card-icon ml">⚔️</div>
+            <div class="compact-card-name">Mobile Legends</div>
+            <div class="compact-card-price">16,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('steam')">
+            <div class="compact-card-icon steam">🕹️</div>
+            <div class="compact-card-name">Steam</div>
+            <div class="compact-card-price">142,90₺'den</div>
+        </div>
+        <div class="compact-card" onclick="openGameCategory('all')">
+            <div class="compact-card-icon game-all">📦</div>
+            <div class="compact-card-name">Tümü</div>
+            <div class="compact-card-price">Tüm oyunlar</div>
+        </div>
     </div>
 
     <div class="live-section">
@@ -787,7 +803,7 @@ let pollTimer = null;
 let siteSettings = { iban: "TR00 0000 0000 0000 0000 0000 00", ibanName: "Hesap Sahibi Ad Soyad" };
 let chatOpen = false;
 let lastSupportCount = 0;
-let pendingAction = null;
+let pendingBalanceAction = null;
 
 function updateBalanceUI() {
     const el = document.getElementById('userBalance');
@@ -799,7 +815,6 @@ function updateServicePricesUI() {
         if (el) el.textContent = '₺' + SERVICES_CONFIG[k].price;
     });
     renderServiceRows();
-    renderGameRows();
 }
 function showToast(m, t) {
     t = t || '';
@@ -807,39 +822,6 @@ function showToast(m, t) {
     el.textContent = m;
     el.className = 'toast show ' + t;
     setTimeout(() => el.classList.remove('show'), 3000);
-}
-
-function showCenterAlert(message, action) {
-    let el = document.getElementById('centerAlert');
-    if (el) el.remove();
-    el = document.createElement('div');
-    el.id = 'centerAlert';
-    el.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);background:#fff;border:3px solid ' + (action === 'login' ? '#3b82f6' : '#ef4444') + ';border-radius:20px;padding:28px 24px;max-width:340px;width:90%;z-index:99999;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;opacity:0;transition:all 0.3s;';
-    document.body.appendChild(el);
-    const icon = action === 'login' ? '🔐' : '⚠️';
-    const title = action === 'login' ? 'Giriş Yapmalısınız' : 'Bakiyeniz Yetersiz!';
-    const titleColor = action === 'login' ? '#1e40af' : '#991b1b';
-    const btnColor = action === 'login' ? '#3b82f6' : '#ef4444';
-    const btnText = action === 'login' ? '🔐 Giriş Yap / Kayıt Ol' : '💰 Bakiye Yükle';
-    const btnAction = action === 'login' ? 'closeCenterAlert();openLogin();' : 'closeCenterAlert();showDeposit();';
-    el.innerHTML = '<div style="font-size:3rem;margin-bottom:12px;">' + icon + '</div>' +
-        '<div style="font-size:1.05rem;font-weight:800;color:' + titleColor + ';margin-bottom:8px;">' + title + '</div>' +
-        '<div style="font-size:0.88rem;color:#475569;line-height:1.6;margin-bottom:20px;">' + message + '</div>' +
-        '<button onclick="' + btnAction + '" style="width:100%;padding:14px;background:' + btnColor + ';color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-bottom:8px;">' + btnText + '</button>' +
-        '<button onclick="closeCenterAlert()" style="width:100%;padding:10px;background:#f1f5f9;color:#64748b;border:none;border-radius:10px;font-weight:600;font-size:0.85rem;cursor:pointer;">Kapat</button>';
-    setTimeout(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'translate(-50%,-50%) scale(1)';
-    }, 10);
-}
-
-function closeCenterAlert() {
-    const el = document.getElementById('centerAlert');
-    if (el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translate(-50%,-50%) scale(0.9)';
-        setTimeout(() => el.remove(), 300);
-    }
 }
 
 function renderServiceRows() {
@@ -866,18 +848,31 @@ function filterServices() {
     });
 }
 
-function renderGameRows() {
-    const c = document.getElementById('gameList');
-    if (!c) return;
-    const keys = Object.keys(GAME_SERVICES);
-    c.innerHTML = keys.map(k => {
+function openGameCategory(cat) {
+    const gameKeys = Object.keys(GAME_SERVICES);
+    let match = [];
+    if (cat === 'pubg') match = gameKeys.filter(k => k.startsWith('pubg'));
+    else if (cat === 'ff') match = gameKeys.filter(k => k.startsWith('ff'));
+    else if (cat === 'valorant') match = gameKeys.filter(k => k.startsWith('valorant'));
+    else if (cat === 'ml') match = gameKeys.filter(k => k.startsWith('ml'));
+    else if (cat === 'steam') match = gameKeys.filter(k => k.startsWith('steam'));
+    else if (cat === 'all') match = gameKeys;
+    if (match.length === 0) return;
+    if (match.length === 1) {
+        toggleGameDetail(match[0]);
+        return;
+    }
+    document.querySelectorAll('.game-detail').forEach(d => d.remove());
+    const groupId = 'gamedetail_group_' + cat;
+    const existing = document.getElementById(groupId);
+    if (existing) { existing.remove(); return; }
+    const gFirst = GAME_SERVICES[match[0]];
+    let rowsHtml = match.map(k => {
         const g = GAME_SERVICES[k];
-        return '<div class="game-row" onclick="toggleGameDetail(\'' + k + '\')">' +
-            '<div class="game-row-icon ' + g.iconClass + '">' + g.icon + '</div>' +
-            '<div class="game-row-info"><h4>' + g.name + '</h4><p>' + g.qty + '</p></div>' +
-            '<div class="game-row-right"><span class="game-row-price">₺' + g.price.toFixed(2) + '</span><span class="game-row-arrow">›</span></div>' +
-        '</div>';
+        return '<div class="game-detail-row" style="cursor:pointer;" onclick="toggleGameDetail(\'' + k + '\')"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div>';
     }).join('');
+    const html = '<div class="game-detail" id="' + groupId + '"><h5>' + gFirst.name + ' — Paket Seçin</h5>' + rowsHtml + '</div>';
+    document.querySelector('.compact-services').insertAdjacentHTML('afterend', html);
 }
 
 function toggleGameDetail(key) {
@@ -885,14 +880,9 @@ function toggleGameDetail(key) {
     if (!g) return;
     const existing = document.getElementById('gamedetail_' + key);
     if (existing) { existing.remove(); return; }
-    if (!currentUser) {
-        pendingAction = { type: 'game', gameKey: key };
-        showCenterAlert('Oyun jetonu almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login');
-        return;
-    }
     document.querySelectorAll('.game-detail').forEach(d => d.remove());
     const loadingHTML = '<div class="game-detail" id="gamedetail_' + key + '"><h5>' + g.name + ' — ' + g.qty + '</h5><div class="game-detail-row"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div><button class="game-buy-btn" disabled>⏳ Bakiye kontrol ediliyor...</button></div>';
-    document.querySelector('.game-list').insertAdjacentHTML('afterend', loadingHTML);
+    document.querySelector('.compact-services').insertAdjacentHTML('afterend', loadingHTML);
     if (currentUser) {
         get(ref(db, 'users/' + currentUser.uid)).then(snap => {
             if (snap.exists()) { balance = snap.val().balance || 0; updateBalanceUI(); }
@@ -917,7 +907,7 @@ function renderGameDetailButton(key, g) {
     } else if (!can) {
         const eksik = (g.price - balance).toFixed(2);
         btnText = '💰 Bakiye Yükle';
-        btnAction = 'showDeposit()';
+        btnAction = 'buyGameItem(\'' + key + '\')';
         btnClass = 'game-buy-btn insufficient';
         warningHtml = '<div style="color:#ef4444;font-weight:600;font-size:.75rem;background:#fee2e2;border-radius:8px;padding:10px;margin-top:8px;">⚠️ Bakiyeniz yetersiz! Bu işlem için <strong>₺' + eksik + '</strong> daha yüklemeniz gerekiyor.</div>';
     } else {
@@ -931,9 +921,13 @@ function renderGameDetailButton(key, g) {
 async function buyGameItem(key) {
     const g = GAME_SERVICES[key];
     if (!g) return;
-    if (!currentUser) { showCenterAlert('Satın almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login'); return; }
+    if (!currentUser) { showToast('Satın almak için giriş yapmalısınız.', 'error'); openLogin(); return; }
     try { const _s = await get(ref(db, 'users/' + currentUser.uid)); if (_s.exists()) { balance = _s.val().balance || 0; updateBalanceUI(); } } catch(e) {}
-    if (balance < g.price) { showCenterAlert('Bu işlem için <strong>₺' + (g.price - balance).toFixed(2) + '</strong> daha bakiye yüklemeniz gerekiyor.', 'deposit'); return; }
+    if (balance < g.price) {
+        pendingBalanceAction = { type: 'game', gameKey: key };
+        showDeposit();
+        return;
+    }
     balance -= g.price;
     await update(ref(db, 'users/' + currentUser.uid), { balance: balance });
     updateBalanceUI();
@@ -1024,11 +1018,6 @@ async function fivsimCancel(id) { try { await fetch(FIVSIM_BASE + '/user/cancel/
 
 function selectWaType(t) {
     currentWaType = t;
-    if (!currentUser) {
-        pendingAction = { type: 'wa', waType: t };
-        showCenterAlert('Numara almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login');
-        return;
-    }
     setTimeout(() => goToStep(2), 250);
 }
 
@@ -1142,7 +1131,7 @@ function renderNumberCardButton(p, tn, opName) {
     } else if (!can) {
         const eksik = (p - balance).toFixed(2);
         btnText = '💰 Bakiye Yükle';
-        btnAction = 'showDeposit()';
+        btnAction = 'buyNumber()';
         btnClass = 'buy-button insufficient';
         warningHtml = '<div class="empty-state" style="color:#ef4444;font-weight:600;background:#fee2e2;border-radius:10px;padding:14px;margin-top:10px;">⚠️ Bakiyeniz yetersiz! Bu işlem için <strong>₺' + eksik + '</strong> daha yüklemeniz gerekiyor.</div>';
     } else {
@@ -1155,10 +1144,14 @@ function renderNumberCardButton(p, tn, opName) {
 
 async function buyNumber() {
     const p = getPrice();
-    if (!currentUser) { showCenterAlert('Satın almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login'); return; }
+    if (!currentUser) { showToast('Satın almak için giriş yapmalısınız.', 'error'); openLogin(); return; }
     if (!currentCountry || !currentWaType) return;
     try { const _s = await get(ref(db, 'users/' + currentUser.uid)); if (_s.exists()) { balance = _s.val().balance || 0; updateBalanceUI(); } } catch(e) {}
-    if (balance < p) { showCenterAlert('Bu işlem için <strong>₺' + (p - balance).toFixed(2) + '</strong> daha bakiye yüklemeniz gerekiyor.', 'deposit'); return; }
+    if (balance < p) {
+        pendingBalanceAction = { type: 'wa', waType: currentWaType, country: currentCountry, operator: currentOperator };
+        showDeposit();
+        return;
+    }
     const c = document.getElementById('numberList');
     c.innerHTML = '<div class="number-card"><div class="waiting-panel"><div class="waiting-spinner"></div><div class="waiting-text">Numara alınıyor...</div></div></div>';
     balance -= p;
@@ -1804,18 +1797,6 @@ onAuthStateChanged(auth, async (user) => {
             }
         } catch(e) {}
         enterApp();
-        if (pendingAction) {
-            const pa = pendingAction;
-            pendingAction = null;
-            setTimeout(() => {
-                if (pa.type === 'wa') {
-                    currentWaType = pa.waType;
-                    goToStep(2);
-                } else if (pa.type === 'game') {
-                    toggleGameDetail(pa.gameKey);
-                }
-            }, 500);
-        }
     } else {
         currentUser = null;
         balance = 0;
@@ -1871,10 +1852,33 @@ onValue(ref(db, 'users'), (snap) => {
     if (!snap.exists() || !currentUser) return;
     const me = snap.val()[currentUser.uid];
     if (me && me.balance !== undefined && me.balance !== balance) {
+        const oldBalance = balance;
         balance = me.balance;
         updateBalanceUI();
         if (document.getElementById('step3') && document.getElementById('step3').classList.contains('active')) {
             renderNumberCard();
+        }
+        if (pendingBalanceAction && balance > oldBalance) {
+            const pb = pendingBalanceAction;
+            pendingBalanceAction = null;
+            setTimeout(() => {
+                if (pb.type === 'wa' && pb.waType) {
+                    currentWaType = pb.waType;
+                    if (pb.country) currentCountry = pb.country;
+                    if (pb.operator) currentOperator = pb.operator;
+                    if (currentCountry && currentOperator) {
+                        goToStep(3);
+                        renderNumberCard();
+                    } else if (currentCountry) {
+                        renderOperators();
+                        goToStep(2.5);
+                    } else {
+                        goToStep(2);
+                    }
+                } else if (pb.type === 'game' && pb.gameKey) {
+                    toggleGameDetail(pb.gameKey);
+                }
+            }, 800);
         }
     }
 });
@@ -1883,7 +1887,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderLiveFeed();
     updateServicePricesUI();
     renderServiceRows();
-    renderGameRows();
     const pm = document.getElementById('paymentModal');
     if (pm) pm.addEventListener('click', e => { if (e.target.id === 'paymentModal') closePaymentModal(); });
     const lm = document.getElementById('legalModal');
@@ -1938,11 +1941,9 @@ window.toggleChat = toggleChat;
 window.sendChat = sendChat;
 window.openLegal = openLegal;
 window.closeLegal = closeLegal;
+window.openGameCategory = openGameCategory;
 window.toggleGameDetail = toggleGameDetail;
 window.buyGameItem = buyGameItem;
-window.renderGameRows = renderGameRows;
-window.showCenterAlert = showCenterAlert;
-window.closeCenterAlert = closeCenterAlert;
 </script>
 
 </body>
