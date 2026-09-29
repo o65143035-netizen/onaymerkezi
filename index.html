@@ -71,7 +71,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .service-row-icon.google{background:#4285f4}
 .service-row-icon.tiktok{background:#000}
 .service-row-icon.discord{background:#5865f2}
-.service-row-icon.twitter{background:#000}
 .service-row-info{flex:1;min-width:0}
 .service-row-info h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:2px}
 .service-row-info p{font-size:.72rem;color:var(--muted)}
@@ -809,6 +808,39 @@ function showToast(m, t) {
     setTimeout(() => el.classList.remove('show'), 3000);
 }
 
+function showCenterAlert(message, action) {
+    let el = document.getElementById('centerAlert');
+    if (el) el.remove();
+    el = document.createElement('div');
+    el.id = 'centerAlert';
+    el.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);background:#fff;border:3px solid ' + (action === 'login' ? '#3b82f6' : '#ef4444') + ';border-radius:20px;padding:28px 24px;max-width:340px;width:90%;z-index:99999;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;opacity:0;transition:all 0.3s;';
+    document.body.appendChild(el);
+    const icon = action === 'login' ? '🔐' : '⚠️';
+    const title = action === 'login' ? 'Giriş Yapmalısınız' : 'Bakiyeniz Yetersiz!';
+    const titleColor = action === 'login' ? '#1e40af' : '#991b1b';
+    const btnColor = action === 'login' ? '#3b82f6' : '#ef4444';
+    const btnText = action === 'login' ? '🔐 Giriş Yap / Kayıt Ol' : '💰 Bakiye Yükle';
+    const btnAction = action === 'login' ? 'closeCenterAlert();openLogin();' : 'closeCenterAlert();showDeposit();';
+    el.innerHTML = '<div style="font-size:3rem;margin-bottom:12px;">' + icon + '</div>' +
+        '<div style="font-size:1.05rem;font-weight:800;color:' + titleColor + ';margin-bottom:8px;">' + title + '</div>' +
+        '<div style="font-size:0.88rem;color:#475569;line-height:1.6;margin-bottom:20px;">' + message + '</div>' +
+        '<button onclick="' + btnAction + '" style="width:100%;padding:14px;background:' + btnColor + ';color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-bottom:8px;">' + btnText + '</button>' +
+        '<button onclick="closeCenterAlert()" style="width:100%;padding:10px;background:#f1f5f9;color:#64748b;border:none;border-radius:10px;font-weight:600;font-size:0.85rem;cursor:pointer;">Kapat</button>';
+    setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translate(-50%,-50%) scale(1)';
+    }, 10);
+}
+
+function closeCenterAlert() {
+    const el = document.getElementById('centerAlert');
+    if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translate(-50%,-50%) scale(0.9)';
+        setTimeout(() => el.remove(), 300);
+    }
+}
+
 function renderServiceRows() {
     const c = document.getElementById('serviceRows');
     if (!c) return;
@@ -893,9 +925,9 @@ function renderGameDetailButton(key, g) {
 async function buyGameItem(key) {
     const g = GAME_SERVICES[key];
     if (!g) return;
-    if (!currentUser) { showToast('Satın almak için giriş yapmalısınız.', 'error'); openLogin(); return; }
+    if (!currentUser) { showCenterAlert('Satın almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login'); return; }
     try { const _s = await get(ref(db, 'users/' + currentUser.uid)); if (_s.exists()) { balance = _s.val().balance || 0; updateBalanceUI(); } } catch(e) {}
-    if (balance < g.price) { showToast('⚠️ Bakiyeniz yetersiz! Bu işlem için ₺' + (g.price - balance).toFixed(2) + ' daha yüklemeniz gerekiyor.', 'error'); showDeposit(); return; }
+    if (balance < g.price) { showCenterAlert('Bu işlem için <strong>₺' + (g.price - balance).toFixed(2) + '</strong> daha bakiye yüklemeniz gerekiyor.', 'deposit'); return; }
     balance -= g.price;
     await update(ref(db, 'users/' + currentUser.uid), { balance: balance });
     updateBalanceUI();
@@ -1112,10 +1144,10 @@ function renderNumberCardButton(p, tn, opName) {
 
 async function buyNumber() {
     const p = getPrice();
-    if (!currentUser) { showToast('Satın almak için giriş yapmalısınız.', 'error'); openLogin(); return; }
+    if (!currentUser) { showCenterAlert('Satın almak için önce <strong>üye girişi</strong> yapmanız gerekiyor.', 'login'); return; }
     if (!currentCountry || !currentWaType) return;
     try { const _s = await get(ref(db, 'users/' + currentUser.uid)); if (_s.exists()) { balance = _s.val().balance || 0; updateBalanceUI(); } } catch(e) {}
-    if (balance < p) { showToast('⚠️ Bakiyeniz yetersiz! Bu işlem için ₺' + (p - balance).toFixed(2) + ' daha yüklemeniz gerekiyor.', 'error'); showDeposit(); return; }
+    if (balance < p) { showCenterAlert('Bu işlem için <strong>₺' + (p - balance).toFixed(2) + '</strong> daha bakiye yüklemeniz gerekiyor.', 'deposit'); return; }
     const c = document.getElementById('numberList');
     c.innerHTML = '<div class="number-card"><div class="waiting-panel"><div class="waiting-spinner"></div><div class="waiting-text">Numara alınıyor...</div></div></div>';
     balance -= p;
@@ -1886,6 +1918,8 @@ window.closeLegal = closeLegal;
 window.toggleGameDetail = toggleGameDetail;
 window.buyGameItem = buyGameItem;
 window.renderGameRows = renderGameRows;
+window.showCenterAlert = showCenterAlert;
+window.closeCenterAlert = closeCenterAlert;
 </script>
 
 </body>
