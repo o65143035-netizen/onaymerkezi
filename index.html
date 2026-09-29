@@ -21,18 +21,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Onay Merkezi | Türkiye 68 TL">
 <meta name="twitter:description" content="WhatsApp, Telegram, Instagram için sanal numara al.">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Onay Merkezi","url":"https://onaymerkezi.org/","inLanguage":"tr-TR"}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Onay Merkezi","url":"https://onaymerkezi.org/","contactPoint":{"@type":"ContactPoint","email":"destek@onaymerkezi.org","contactType":"customer service"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"Onay Merkezi - Sanal Numara","description":"WhatsApp, Telegram, Instagram için anında SMS onay kodlu sanal numara.","brand":{"@type":"Brand","name":"Onay Merkezi"},"offers":{"@type":"AggregateOffer","lowPrice":"18","highPrice":"150","priceCurrency":"TRY","availability":"https://schema.org/InStock","offerCount":"100"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sanal numara nedir?","acceptedAnswer":{"@type":"Answer","text":"Sanal numara, fiziki SIM kart gerektirmeden internet üzerinden kullanabileceğiniz bir telefon numarasıdır."}},{"@type":"Question","name":"Numara ne kadar süreyle geçerli?","acceptedAnswer":{"@type":"Answer","text":"Numaralar 10 dakika boyunca size tahsis edilir."}},{"@type":"Question","name":"Türkiye numarası ne kadar?","acceptedAnswer":{"@type":"Answer","text":"Türkiye WhatsApp numarası 68 TL, WhatsApp Business numarası 139 TL'dir."}}]}
-</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
@@ -555,12 +543,48 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 <footer class="site-footer">
     <div class="footer-inner">
         <div class="footer-grid">
-            <div class="footer-col"><h4>Kurumsal</h4><a onclick="showPage('about')">Hakkımızda</a><a onclick="showPage('careers')">İnsan Kaynakları</a><a onclick="showPage('contact')">İletişim</a></div>
-            <div class="footer-col"><h4>Yasal</h4><a onclick="showPage('privacy')">Gizlilik Politikası</a><a onclick="showPage('terms')">Kullanım Koşulları</a><a onclick="showPage('kvkk')">KVKK</a></div>
-            <div class="footer-col"><h4>Destek</h4><a onclick="showPage('faq')">SSS</a><a onclick="showPage('contact')">Müşteri Hizmetleri</a></div>
-            <div class="footer-col"><h4>Hizmetler</h4><a onclick="goHome()">WhatsApp Numara</a><a onclick="goHome()">Diğer Servisler</a><a onclick="showDeposit()">Bakiye Yükle</a></div>
+            <div class="footer-col">
+                <h4>Onay Merkezi</h4>
+                <p style="color:#94a3b8;font-size:.78rem;line-height:1.7;margin-bottom:12px;">Türkiye'nin en hızlı ve güvenli SMS onay platformu. WhatsApp, Telegram, Instagram ve 60+ platform için anında sanal numara.</p>
+                <div style="display:flex;gap:8px;margin-top:12px;">
+                    <a href="https://onaymerkezi.org" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#334155;border-radius:10px;color:#cbd5e1;text-decoration:none;font-size:1rem;">🌐</a>
+                    <a href="mailto:destek@onaymerkezi.org" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#334155;border-radius:10px;color:#cbd5e1;text-decoration:none;font-size:1rem;">✉️</a>
+                    <a onclick="showSupport()" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#334155;border-radius:10px;color:#cbd5e1;text-decoration:none;font-size:1rem;cursor:pointer;">💬</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Hızlı Bağlantılar</h4>
+                <a onclick="goHome()">Ana Sayfa</a>
+                <a onclick="goHome()">Sanal Numara</a>
+                <a onclick="showDeposit()">Bakiye Yükle</a>
+                <a onclick="showHistory()">Siparişlerim</a>
+                <a onclick="showPage('faq')">Sık Sorulan Sorular</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <a onclick="showPage('about')">Hakkımızda</a>
+                <a onclick="showPage('careers')">İnsan Kaynakları</a>
+                <a onclick="showPage('contact')">İletişim</a>
+                <a onclick="showPage('faq')">SSS</a>
+            </div>
+            <div class="footer-col">
+                <h4>Yasal</h4>
+                <a onclick="showPage('privacy')">Gizlilik Politikası</a>
+                <a onclick="showPage('terms')">Kullanım Koşulları</a>
+                <a onclick="showPage('kvkk')">KVKK Aydınlatma Metni</a>
+                <a onclick="openLegal('terms')">İptal ve İade Koşulları</a>
+                <a onclick="openLegal('privacy')">Çerez Politikası</a>
+            </div>
         </div>
-        <div class="footer-bottom">© 2026 Onay Merkezi — Tüm hakları saklıdır.</div>
+        <div class="footer-bottom" style="display:flex;flex-direction:column;gap:12px;align-items:center;">
+            <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:.78rem;color:#94a3b8;">
+                <span>🔒 256-bit SSL Güvenli Ödeme</span>
+                <span>⚡ 7/24 Otomatik Teslimat</span>
+                <span>💯 İade Garantisi</span>
+                <span>🇹🇷 Türkiye'nin Lider Platformu</span>
+            </div>
+            <div style="font-size:.78rem;color:#64748b;">© 2026 Onay Merkezi — Tüm hakları saklıdır. | destek@onaymerkezi.org</div>
+        </div>
     </div>
 </footer>
 
@@ -600,6 +624,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         <input type="text" class="auth-input" id="regName" placeholder="Ad Soyad">
         <input type="email" class="auth-input" id="regEmail" placeholder="Email adresiniz">
         <input type="password" class="auth-input" id="regPassword" placeholder="Şifre (en az 6 karakter)">
+        <input type="password" class="auth-input" id="regPassword2" placeholder="Şifre Tekrar">
         <div class="checkbox-row">
             <input type="checkbox" id="chkTerms">
             <label for="chkTerms"><a onclick="openLegal('terms')">Kullanım Koşulları</a>'nı ve <a onclick="openLegal('privacy')">Gizlilik Politikası</a>'nı okudum, kabul ediyorum.</label>
@@ -692,7 +717,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 </div>
 
 <div class="toast" id="toast"></div>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
@@ -827,11 +851,26 @@ function toggleGameDetail(key) {
     const existing = document.getElementById('gamedetail_' + key);
     if (existing) { existing.remove(); return; }
     document.querySelectorAll('.game-detail').forEach(d => d.remove());
-    const can = balance >= g.price;
+    const isLoggedIn = !!currentUser;
+    const can = isLoggedIn && balance >= g.price;
+    let btnText, btnAction, btnClass;
+    if (!isLoggedIn) {
+        btnText = '🔐 Giriş Yap';
+        btnAction = 'openLogin()';
+        btnClass = 'game-buy-btn insufficient';
+    } else if (!can) {
+        btnText = '💰 Bakiye Yükle';
+        btnAction = 'showDeposit()';
+        btnClass = 'game-buy-btn insufficient';
+    } else {
+        btnText = '🛒 Satın Al (₺' + g.price.toFixed(2) + ')';
+        btnAction = 'buyGameItem(\'' + key + '\')';
+        btnClass = 'game-buy-btn';
+    }
     const detailHTML = '<div class="game-detail" id="gamedetail_' + key + '">' +
         '<h5>' + g.name + ' — ' + g.qty + '</h5>' +
         '<div class="game-detail-row"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div>' +
-        '<button class="game-buy-btn' + (can ? '' : ' insufficient') + '" onclick="buyGameItem(\'' + key + '\')">' + (can ? '🛒 Satın Al (₺' + g.price.toFixed(2) + ')' : '💰 Bakiye Yükle') + '</button>' +
+        '<button class="' + btnClass + '" onclick="' + btnAction + '">' + btnText + '</button>' +
     '</div>';
     document.querySelector('.game-list').insertAdjacentHTML('afterend', detailHTML);
 }
@@ -852,19 +891,6 @@ async function buyGameItem(key) {
     await push(ref(db, 'game_orders_all'), { ...order, uid: currentUser.uid, userEmail: currentUser.email });
     showToast('✅ Siparişiniz alındı! En kısa sürede teslim edilecek.', 'success');
     document.querySelectorAll('.game-detail').forEach(d => d.remove());
-}
-
-function updateDailyStats() {
-    const today = new Date();
-    const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-    function seededRand(s, min, max) {
-        const x = Math.sin(s) * 10000;
-        const r = x - Math.floor(x);
-        return Math.floor(r * (max - min + 1)) + min;
-    }
-    const todaySales = seededRand(seed, 120, 320);
-    const el1 = document.getElementById('statToday');
-    if (el1) el1.textContent = todaySales.toLocaleString('tr-TR');
 }
 
 const countries = [
@@ -1030,26 +1056,38 @@ function renderNumberCard() {
     if (!currentCountry || !currentWaType) return;
     if (activeOrder) { renderActiveOrder(); return; }
     const p = getPrice();
-    const can = balance >= p;
+    const isLoggedIn = !!currentUser;
+    const can = isLoggedIn && balance >= p;
     const svc = SERVICES_CONFIG[currentWaType];
     const tn = svc ? svc.name : currentWaType;
     const opName = currentOperator ? currentOperator.name : '';
-    c.innerHTML = '<div class="number-card"><div class="number-header"><div class="number-info"><div class="number-flag">' + currentCountry.flag + '</div><div class="number-details"><h3>' + tn + ' - ' + currentCountry.name + '</h3><p>' + (opName ? 'Operatör: ' + opName : 'Sanal numara anında teslim edilir') + '</p></div></div><div class="number-price-tag">₺' + p.toFixed(2) + '</div></div><button class="buy-button' + (can ? '' : ' insufficient') + '" onclick="' + (can ? 'buyNumber()' : 'showDeposit()') + '">' + (can ? '📱 Numarayı Satın Al' : '💰 Bakiye Yükle') + '</button></div>' + (!can ? '<div class="empty-state">Bu işlem için ₺' + (p - balance).toFixed(2) + ' daha bakiye gerekiyor.</div>' : '');
+    let btnText, btnAction, btnClass;
+    if (!isLoggedIn) {
+        btnText = '🔐 Giriş Yap';
+        btnAction = 'openLogin()';
+        btnClass = 'buy-button insufficient';
+    } else if (!can) {
+        btnText = '💰 Bakiye Yükle';
+        btnAction = 'showDeposit()';
+        btnClass = 'buy-button insufficient';
+    } else {
+        btnText = '📱 Numarayı Satın Al';
+        btnAction = 'buyNumber()';
+        btnClass = 'buy-button';
+    }
+    c.innerHTML = '<div class="number-card"><div class="number-header"><div class="number-info"><div class="number-flag">' + currentCountry.flag + '</div><div class="number-details"><h3>' + tn + ' - ' + currentCountry.name + '</h3><p>' + (opName ? 'Operatör: ' + opName : 'Sanal numara anında teslim edilir') + '</p></div></div><div class="number-price-tag">₺' + p.toFixed(2) + '</div></div><button class="' + btnClass + '" onclick="' + btnAction + '">' + btnText + '</button></div>' + (isLoggedIn && !can ? '<div class="empty-state">Bu işlem için ₺' + (p - balance).toFixed(2) + ' daha bakiye gerekiyor.</div>' : '');
 }
 
 async function buyNumber() {
     const p = getPrice();
-    if (!currentCountry || !currentWaType || balance < p) {
-        if (balance < p) showDeposit();
-        return;
-    }
+    if (!currentUser) { showToast('Satın almak için giriş yapmalısınız.', 'error'); openLogin(); return; }
+    if (!currentCountry || !currentWaType) return;
+    if (balance < p) { showDeposit(); return; }
     const c = document.getElementById('numberList');
     c.innerHTML = '<div class="number-card"><div class="waiting-panel"><div class="waiting-spinner"></div><div class="waiting-text">Numara alınıyor...</div></div></div>';
-    
     balance -= p;
     if (currentUser) await update(ref(db, 'users/' + currentUser.uid), { balance: balance });
     updateBalanceUI();
-    
     const svc = SERVICES_CONFIG[currentWaType];
     activeOrder = {
         id: 'demo_' + Date.now(),
@@ -1332,10 +1370,12 @@ async function register() {
     const name = document.getElementById('regName').value.trim();
     const email = document.getElementById('regEmail').value.trim();
     const password = document.getElementById('regPassword').value;
+    const password2 = document.getElementById('regPassword2').value;
     const chkTermsEl = document.getElementById('chkTerms');
     const chkKvkkEl = document.getElementById('chkKvkk');
-    if (!name || !email || !password) { showAuthError('register', 'Tüm alanları doldurun.'); return; }
+    if (!name || !email || !password || !password2) { showAuthError('register', 'Tüm alanları doldurun.'); return; }
     if (password.length < 6) { showAuthError('register', 'Şifre en az 6 karakter olmalı.'); return; }
+    if (password !== password2) { showAuthError('register', 'Şifreler uyuşmuyor. Lütfen kontrol edin.'); return; }
     if (!chkTermsEl || !chkTermsEl.checked) { showAuthError('register', 'Kullanım Koşulları ve Gizlilik Politikası\'nı kabul etmelisiniz.'); return; }
     if (!chkKvkkEl || !chkKvkkEl.checked) { showAuthError('register', 'KVKK Aydınlatma Metni\'ni kabul etmelisiniz.'); return; }
     const btn = document.getElementById('registerBtn');
@@ -1753,7 +1793,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateServicePricesUI();
     renderServiceRows();
     renderGameRows();
-    updateDailyStats();
     const pm = document.getElementById('paymentModal');
     if (pm) pm.addEventListener('click', e => { if (e.target.id === 'paymentModal') closePaymentModal(); });
     const lm = document.getElementById('legalModal');
