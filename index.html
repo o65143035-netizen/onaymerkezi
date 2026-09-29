@@ -39,7 +39,7 @@
 :root{--primary:#3b82f6;--primary-dark:#2563eb;--primary-light:#dbeafe;--success:#10b981;--danger:#ef4444;--warning:#f59e0b;--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0}
 body{background:var(--bg);color:var(--text);min-height:100vh}
 .landing-header{background:var(--card);border-bottom:1px solid var(--border);padding:15px 20px;position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.landing-logo{font-size:1.1rem;font-weight:800;color:var(--primary);display:flex;align-items:center;gap:8px}
+.landing-logo{font-size:1.1rem;font-weight:800;color:var(--primary)}
 .auth-buttons{display:flex;gap:8px}
 .btn-login{padding:9px 16px;border:1px solid var(--border);background:#fff;border-radius:10px;font-weight:600;color:var(--text);cursor:pointer;font-size:.85rem}
 .btn-register{padding:9px 16px;border:none;background:var(--primary);color:#fff;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem}
@@ -59,18 +59,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .container{max-width:640px;margin:0 auto;padding:20px;padding-bottom:100px}
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .section-title{font-size:1.05rem;font-weight:600}
-.wa-service-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.wa-service-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:20px 14px;text-align:center;cursor:pointer;transition:all .25s;position:relative}
-.wa-service-card:hover{border-color:var(--primary);transform:translateY(-2px)}
-.wa-service-card.selected{border-color:var(--primary);background:linear-gradient(135deg,#eff6ff,#dbeafe)}
-.wa-service-card.selected::after{content:'✓';position:absolute;top:8px;right:10px;background:var(--primary);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
-.wa-icon{font-size:2.5rem;margin-bottom:10px}
-.wa-name{font-weight:700;font-size:.95rem;margin-bottom:4px}
-.wa-desc{font-size:.72rem;color:var(--muted)}
-.wa-price-tag{font-size:1.1rem;font-weight:800;color:var(--primary);margin-top:10px}
-.wa-badge{background:var(--warning);color:#fff;padding:3px 10px;border-radius:12px;font-size:.6rem;font-weight:700;display:inline-block;margin-top:8px}
-
-/* ========== ANA SAYFA BİLGİ KARTI ========== */
 .intro-card{background:var(--card);border-left:5px solid var(--primary);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .intro-card h1{font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:8px}
 .intro-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
@@ -80,12 +68,9 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .hero-step-num.dim{background:#cbd5e1}
 .hero-step-label{font-size:.72rem;font-weight:600;color:var(--text)}
 .hero-step-arrow{color:#cbd5e1;font-size:1.1rem;margin-top:-20px}
-
-/* ========== YATAY HİZMET KARTLARI ========== */
 .service-list{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:24px}
-.service-search{padding:14px 16px;border-bottom:1px solid var(--border)}
+.service-search{padding:14px 16px;border-bottom:1px solid var(--border);position:relative}
 .service-search input{width:100%;padding:12px 14px 12px 42px;border:1px solid var(--border);border-radius:12px;font-size:.9rem;outline:none;background:#f8fafc}
-.service-search{position:relative}
 .service-search .search-ico{position:absolute;left:28px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1rem}
 .service-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
 .service-row:last-child{border-bottom:none}
@@ -98,12 +83,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .service-row-icon.google{background:#4285f4}
 .service-row-icon.tiktok{background:#000}
 .service-row-icon.discord{background:#5865f2}
-.service-row-icon.twitter{background:#000}
-.service-row-icon.pubg{background:#f59e0b}
-.service-row-icon.freefire{background:#ef4444}
-.service-row-icon.ml{background:#3b82f6}
-.service-row-icon.valorant{background:#ec4899}
-.service-row-icon.steam{background:#1b2838}
 .service-row-info{flex:1;min-width:0}
 .service-row-info h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:2px}
 .service-row-info p{font-size:.72rem;color:var(--muted)}
@@ -113,8 +92,31 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .service-row-badge.hot{background:var(--warning)}
 .service-row-price{font-size:.95rem;font-weight:800;color:var(--primary);white-space:nowrap}
 .service-row-arrow{color:var(--muted);font-size:1rem;margin-left:4px}
-
-/* ========== CANLI BAŞARILAR ========== */
+.game-section{margin-top:24px;margin-bottom:24px}
+.game-list{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.game-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.game-row:last-child{border-bottom:none}
+.game-row:hover{background:#f8fafc}
+.game-row-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0}
+.game-row-icon.pubg{background:#f59e0b}
+.game-row-icon.freefire{background:#ef4444}
+.game-row-icon.ml{background:#3b82f6}
+.game-row-icon.valorant{background:#ec4899}
+.game-row-icon.steam{background:#1b2838}
+.game-row-info{flex:1;min-width:0}
+.game-row-info h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.game-row-info p{font-size:.72rem;color:var(--muted)}
+.game-row-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.game-row-price{font-size:.95rem;font-weight:800;color:var(--primary);white-space:nowrap}
+.game-row-arrow{color:var(--muted);font-size:1rem;margin-left:4px}
+.game-detail{background:var(--card);border:1px solid var(--primary);border-radius:14px;padding:16px;margin-top:10px;margin-bottom:10px}
+.game-detail h5{font-size:.85rem;font-weight:700;margin-bottom:10px;color:var(--primary-dark)}
+.game-detail-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.85rem}
+.game-detail-row:last-child{border-bottom:none}
+.game-detail-row .qty{color:var(--text);font-weight:600}
+.game-detail-row .price{color:var(--primary);font-weight:800;font-size:.95rem}
+.game-buy-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer;margin-top:12px}
+.game-buy-btn.insufficient{background:var(--warning)}
 .live-section{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-radius:20px;padding:20px;margin-bottom:24px}
 .live-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .live-title{font-size:1.05rem;font-weight:800;color:#1e40af}
@@ -128,23 +130,17 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .success-text{font-size:.85rem;font-weight:500}
 .success-text span{display:block;font-size:.7rem;color:var(--muted);font-weight:400}
 .success-time{font-size:.8rem;color:var(--success);font-weight:600}
-
-/* ========== NEDEN ONAY MERKEZİ ========== */
 .why-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:8px 18px;margin-bottom:24px}
 .why-row{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
 .why-row:last-child{border-bottom:none}
 .why-icon{width:44px;height:44px;border-radius:12px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
 .why-text h4{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:2px}
 .why-text p{font-size:.75rem;color:var(--muted);line-height:1.5}
-
-/* ========== SSS ========== */
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
 .faq-q{padding:16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .faq-a{padding:0 16px 16px;font-size:.88rem;color:#475569;line-height:1.7;display:none}
 .faq-item.open .faq-a{display:block}
 .faq-item.open .faq-q{color:var(--primary)}
-
-/* ========== OPERATÖR SEÇİM EKRANI ========== */
 .operator-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all .2s;cursor:pointer}
 .operator-card:hover{border-color:var(--primary);background:#f8fafc}
 .operator-card.best{border-color:var(--primary);background:#eff6ff}
@@ -157,12 +153,9 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .operator-price{font-size:1rem;font-weight:800;color:var(--text)}
 .operator-stock{font-size:.7rem;color:var(--success);font-weight:600}
 .operator-select-btn{width:44px;height:44px;border-radius:12px;background:var(--primary);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;flex-shrink:0}
-.operator-select-btn:hover{background:var(--primary-dark)}
 .operator-header{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:16px}
 .operator-header-flag{font-size:1.6rem}
 .operator-header-name{font-size:.95rem;font-weight:700}
-
-/* ========== DİĞER ========== */
 .search-box{position:relative;margin-bottom:16px}
 .search-box input{width:100%;padding:14px 14px 14px 44px;border:1px solid var(--border);border-radius:12px;font-size:.95rem;outline:none}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
@@ -187,7 +180,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .number-details p{font-size:.8rem;color:var(--muted)}
 .number-price-tag{font-size:1.2rem;font-weight:800;color:var(--primary)}
 .buy-button{width:100%;padding:15px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer}
-.buy-button:disabled{background:#cbd5e1;cursor:not-allowed}
+.buy-button.insufficient{background:var(--warning)}
 .number-display{display:flex;align-items:center;justify-content:space-between;background:#f1f5f9;border-radius:12px;padding:14px 16px;margin-bottom:16px;font-weight:800;font-size:1rem;word-break:break-all}
 .copy-btn{background:#fff;border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:.75rem;font-weight:600;cursor:pointer;color:var(--primary)}
 .waiting-panel{text-align:center;padding:24px 12px}
@@ -199,8 +192,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .code-value{font-size:1.7rem;font-weight:800;letter-spacing:6px;color:#166534;margin:8px 0}
 .order-actions{display:flex;gap:10px;margin-top:14px}
 .order-actions button{flex:1;padding:11px;border-radius:10px;font-weight:600;font-size:.82rem;cursor:pointer}
-.btn-cancel{background:#fff;border:1px solid var(--border);color:var(--muted);opacity:.5;cursor:not-allowed}
-.btn-cancel.active{opacity:1;cursor:pointer;border-color:var(--danger);color:var(--danger)}
 .btn-new{background:var(--primary);border:none;color:#fff}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:12px 0;z-index:100}
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--muted);font-size:.7rem;padding:4px 16px;cursor:pointer}
@@ -412,6 +403,11 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
             <input type="text" placeholder="Servis ara..." id="serviceSearch" onkeyup="filterServices()">
         </div>
         <div id="serviceRows"></div>
+    </div>
+
+    <div class="game-section">
+        <div class="section-header"><div class="section-title">🎮 Oyun Jetonları</div></div>
+        <div class="game-list" id="gameList"></div>
     </div>
 
     <div class="live-section">
@@ -730,6 +726,19 @@ const SERVICES_CONFIG = {
     discord: { name: 'Discord', price: 42, fivsimProduct: 'discord', icon: '🎮', iconClass: 'discord', desc: 'Anında SMS onay' }
 };
 
+const GAME_SERVICES = {
+    pubg_60: { name: 'PUBG Mobile', qty: '60 UC', price: 28.90, icon: '🎯', iconClass: 'pubg' },
+    pubg_325: { name: 'PUBG Mobile', qty: '325 UC', price: 139.90, icon: '🎯', iconClass: 'pubg' },
+    ff_100: { name: 'Free Fire', qty: '100 Elmas', price: 29.90, icon: '🔥', iconClass: 'freefire' },
+    ff_310: { name: 'Free Fire', qty: '310 Elmas', price: 89.90, icon: '🔥', iconClass: 'freefire' },
+    ff_520: { name: 'Free Fire', qty: '520 Elmas', price: 139.90, icon: '🔥', iconClass: 'freefire' },
+    ml_86: { name: 'Mobile Legends', qty: '86 Elmas', price: 16.90, icon: '⚔️', iconClass: 'ml' },
+    valorant_475: { name: 'Valorant', qty: '475 VP', price: 99.90, icon: '🎮', iconClass: 'valorant' },
+    valorant_1000: { name: 'Valorant', qty: '1000 VP', price: 199.90, icon: '🎮', iconClass: 'valorant' },
+    steam_5: { name: 'Steam Cüzdan', qty: '5 USD', price: 142.90, icon: '🕹️', iconClass: 'steam' },
+    steam_10: { name: 'Steam Cüzdan', qty: '10 USD', price: 285.90, icon: '🕹️', iconClass: 'steam' }
+};
+
 const OPERATORS_FAKE = [
     { id: 'san94', name: 'Sanal94', price: 68.00, rate: 5.9, stock: 309674, best: true },
     { id: 'san95', name: 'Sanal95', price: 68.50, rate: 7.0, stock: 309675, best: false },
@@ -764,6 +773,7 @@ function updateServicePricesUI() {
         if (el) el.textContent = '₺' + SERVICES_CONFIG[k].price;
     });
     renderServiceRows();
+    renderGameRows();
 }
 function showToast(m, t) {
     t = t || '';
@@ -795,6 +805,53 @@ function filterServices() {
         const name = r.querySelector('h4').textContent.toLowerCase();
         r.style.display = name.includes(q) ? 'flex' : 'none';
     });
+}
+
+function renderGameRows() {
+    const c = document.getElementById('gameList');
+    if (!c) return;
+    const keys = Object.keys(GAME_SERVICES);
+    c.innerHTML = keys.map(k => {
+        const g = GAME_SERVICES[k];
+        return '<div class="game-row" onclick="toggleGameDetail(\'' + k + '\')">' +
+            '<div class="game-row-icon ' + g.iconClass + '">' + g.icon + '</div>' +
+            '<div class="game-row-info"><h4>' + g.name + '</h4><p>' + g.qty + '</p></div>' +
+            '<div class="game-row-right"><span class="game-row-price">₺' + g.price.toFixed(2) + '</span><span class="game-row-arrow">›</span></div>' +
+        '</div>';
+    }).join('');
+}
+
+function toggleGameDetail(key) {
+    const g = GAME_SERVICES[key];
+    if (!g) return;
+    const existing = document.getElementById('gamedetail_' + key);
+    if (existing) { existing.remove(); return; }
+    document.querySelectorAll('.game-detail').forEach(d => d.remove());
+    const can = balance >= g.price;
+    const detailHTML = '<div class="game-detail" id="gamedetail_' + key + '">' +
+        '<h5>' + g.name + ' — ' + g.qty + '</h5>' +
+        '<div class="game-detail-row"><span class="qty">' + g.qty + '</span><span class="price">₺' + g.price.toFixed(2) + '</span></div>' +
+        '<button class="game-buy-btn' + (can ? '' : ' insufficient') + '" onclick="buyGameItem(\'' + key + '\')">' + (can ? '🛒 Satın Al (₺' + g.price.toFixed(2) + ')' : '💰 Bakiye Yükle') + '</button>' +
+    '</div>';
+    document.querySelector('.game-list').insertAdjacentHTML('afterend', detailHTML);
+}
+
+async function buyGameItem(key) {
+    const g = GAME_SERVICES[key];
+    if (!g) return;
+    if (!currentUser) { showToast('Satın almak için giriş yapmalısınız.', 'error'); openLogin(); return; }
+    if (balance < g.price) { showDeposit(); return; }
+    balance -= g.price;
+    await update(ref(db, 'users/' + currentUser.uid), { balance: balance });
+    updateBalanceUI();
+    const order = {
+        type: 'game', serviceKey: key, serviceName: g.name, serviceQty: g.qty,
+        price: g.price, status: 'pending', date: new Date().toISOString()
+    };
+    await push(ref(db, 'game_orders/' + currentUser.uid), order);
+    await push(ref(db, 'game_orders_all'), { ...order, uid: currentUser.uid, userEmail: currentUser.email });
+    showToast('✅ Siparişiniz alındı! En kısa sürede teslim edilecek.', 'success');
+    document.querySelectorAll('.game-detail').forEach(d => d.remove());
 }
 
 function updateDailyStats() {
@@ -977,13 +1034,13 @@ function renderNumberCard() {
     const svc = SERVICES_CONFIG[currentWaType];
     const tn = svc ? svc.name : currentWaType;
     const opName = currentOperator ? currentOperator.name : '';
-    c.innerHTML = '<div class="number-card"><div class="number-header"><div class="number-info"><div class="number-flag">' + currentCountry.flag + '</div><div class="number-details"><h3>' + tn + ' - ' + currentCountry.name + '</h3><p>' + (opName ? 'Operatör: ' + opName : 'Sanal numara anında teslim edilir') + '</p></div></div><div class="number-price-tag">₺' + p.toFixed(2) + '</div></div><button class="buy-button" ' + (can ? '' : 'disabled') + ' onclick="buyNumber()">' + (can ? '📱 Numarayı Satın Al' : 'Yetersiz Bakiye - Bakiye Yükle') + '</button></div>' + (!can ? '<div class="empty-state">Bu işlem için ₺' + (p - balance).toFixed(2) + ' daha bakiye gerekiyor.</div>' : '');
+    c.innerHTML = '<div class="number-card"><div class="number-header"><div class="number-info"><div class="number-flag">' + currentCountry.flag + '</div><div class="number-details"><h3>' + tn + ' - ' + currentCountry.name + '</h3><p>' + (opName ? 'Operatör: ' + opName : 'Sanal numara anında teslim edilir') + '</p></div></div><div class="number-price-tag">₺' + p.toFixed(2) + '</div></div><button class="buy-button' + (can ? '' : ' insufficient') + '" onclick="' + (can ? 'buyNumber()' : 'showDeposit()') + '">' + (can ? '📱 Numarayı Satın Al' : '💰 Bakiye Yükle') + '</button></div>' + (!can ? '<div class="empty-state">Bu işlem için ₺' + (p - balance).toFixed(2) + ' daha bakiye gerekiyor.</div>' : '');
 }
 
 async function buyNumber() {
     const p = getPrice();
     if (!currentCountry || !currentWaType || balance < p) {
-        if (balance < p) showToast('Bakiyeniz yetersiz. Lütfen bakiye yükleyin.', 'error');
+        if (balance < p) showDeposit();
         return;
     }
     const c = document.getElementById('numberList');
@@ -1315,6 +1372,7 @@ function buildAdminPanel() {
             '<div class="admin-title">⚙️ Yönetici Paneli</div>' +
             '<div class="admin-tabs">' +
                 '<button class="admin-tab active" onclick="switchAdminTab(\'orders\', this)">📦 Siparişler</button>' +
+                '<button class="admin-tab" onclick="switchAdminTab(\'gameorders\', this)">🎮 Oyun Sipariş</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'users\', this)">👥 Kullanıcılar</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'services\', this)">💰 Fiyatlar</button>' +
                 '<button class="admin-tab" onclick="switchAdminTab(\'ibanNotifs\', this)">📩 IBAN Bildirim</button>' +
@@ -1323,6 +1381,7 @@ function buildAdminPanel() {
                 '<button class="admin-tab" onclick="switchAdminTab(\'iban\', this)">🏦 IBAN Ayarları</button>' +
             '</div>' +
             '<div class="admin-tab-content active" id="admin-orders"><div id="adminOrdersContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminOrders()">🔄 Yenile</button></div>' +
+            '<div class="admin-tab-content" id="admin-gameorders"><h4 style="margin-bottom:12px;font-size:.92rem;">🎮 Oyun Siparişleri</h4><div id="adminGameOrdersContent"></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminGameOrders()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-users"><div id="adminUsersContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadAdminUsers()">🔄 Yenile</button></div>' +
             '<div class="admin-tab-content" id="admin-services"><h4 style="margin-bottom:12px;font-size:.92rem;">💰 Servis Fiyatları</h4><div id="adminServicesContent"></div><button class="admin-btn" style="margin-top:10px;" onclick="saveServicesSettings()">💾 Fiyatları Kaydet</button></div>' +
             '<div class="admin-tab-content" id="admin-ibanNotifs"><h4 style="margin-bottom:12px;font-size:.92rem;">📩 IBAN Bildirimleri</h4><div id="adminIbanNotifsContent"><p style="color:var(--muted);font-size:.88rem;">Yükleniyor...</p></div><button class="admin-btn" style="margin-top:10px;" onclick="loadIbanNotifs()">🔄 Yenile</button></div>' +
@@ -1343,6 +1402,7 @@ function enterApp() {
     if (isAdmin) {
         buildAdminPanel();
         loadAdminOrders();
+        loadAdminGameOrders();
         loadAdminUsers();
         loadAdminServices();
         loadIbanNotifs();
@@ -1350,6 +1410,18 @@ function enterApp() {
         loadAdminSupport();
         loadAdminIban();
     }
+}
+
+async function loadAdminGameOrders() {
+    const c = document.getElementById('adminGameOrdersContent');
+    if (!c) return;
+    try {
+        const snap = await get(ref(db, 'game_orders_all'));
+        if (!snap.exists()) { c.innerHTML = '<p style="color:var(--muted);font-size:.88rem;">Henüz oyun siparişi yok.</p>'; return; }
+        const val = snap.val();
+        const rows = Object.values(val).sort((a, b) => new Date(b.date) - new Date(a.date));
+        c.innerHTML = rows.map(o => '<div class="data-item"><strong>' + o.serviceName + '</strong> (' + o.serviceQty + ')<br>₺' + o.price.toFixed(2) + ' · ' + o.userEmail + '<br>Durum: <strong>' + o.status + '</strong><br>' + new Date(o.date).toLocaleString('tr-TR') + '</div>').join('');
+    } catch(e) { c.innerHTML = '<p style="color:var(--danger);">Hata: ' + e.message + '</p>'; }
 }
 
 async function loadAdminIban() {
@@ -1680,6 +1752,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderLiveFeed();
     updateServicePricesUI();
     renderServiceRows();
+    renderGameRows();
     updateDailyStats();
     const pm = document.getElementById('paymentModal');
     if (pm) pm.addEventListener('click', e => { if (e.target.id === 'paymentModal') closePaymentModal(); });
@@ -1721,6 +1794,7 @@ window.formatExpiry = formatExpiry;
 window.formatCvv = formatCvv;
 window.switchAdminTab = switchAdminTab;
 window.loadAdminOrders = loadAdminOrders;
+window.loadAdminGameOrders = loadAdminGameOrders;
 window.loadAdminUsers = loadAdminUsers;
 window.saveServicesSettings = saveServicesSettings;
 window.loadIbanNotifs = loadIbanNotifs;
@@ -1734,6 +1808,9 @@ window.toggleChat = toggleChat;
 window.sendChat = sendChat;
 window.openLegal = openLegal;
 window.closeLegal = closeLegal;
+window.toggleGameDetail = toggleGameDetail;
+window.buyGameItem = buyGameItem;
+window.renderGameRows = renderGameRows;
 </script>
 
 </body>
