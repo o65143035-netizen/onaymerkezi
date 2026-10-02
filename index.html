@@ -476,9 +476,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     <div class="deposit-card">
         <label class="form-label">Yüklenecek Tutar</label>
         <div class="amount-selector">
-            <button class="amount-btn selected" onclick="selectAmount(100, this)">₺100</button>
-            <button class="amount-btn" onclick="selectAmount(200, this)">₺200</button>
-            <button class="amount-btn" onclick="selectAmount(500, this)">₺500</button>
+            <button class="amount-btn selected" onclick="selectAmount(500, this)">₺500</button>
             <button class="amount-btn" onclick="selectAmount(1000, this)">₺1000</button>
             <button class="amount-btn" onclick="selectAmount(2000, this)">₺2000</button>
             <button class="amount-btn" onclick="selectAmount(5000, this)">₺5000</button>
@@ -490,7 +488,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
             <button class="copy-btn" style="margin-top:10px;" onclick="copyIban()">📋 IBAN'ı Kopyala</button>
         </div>
         <div class="provider-note">ℹ️ <strong>Güvenli Ödeme:</strong> Kart ile ödemek için butona basın. IBAN için havale yapıp dekontu gönderin.</div>
-        <button class="pay-button" onclick="payWithCard()"><span>🔒</span> <span>Kart ile Öde (₺<span id="selectedAmountLabel">100</span>)</span></button>
+        <button class="pay-button" onclick="payWithCard()"><span>🔒</span> <span>Kart ile Öde (₺<span id="selectedAmountLabel">500</span>)</span></button>
         <button class="pay-button" style="background:linear-gradient(135deg,#f59e0b,#d97706);margin-top:10px;" onclick="notifyIbanPayment()"><span>🏦</span> <span>IBAN ile Ödedim, Bildir</span></button>
         <div class="error-message" id="errorMessage"></div>
         <div class="success-message" id="successMessage"></div>
@@ -664,7 +662,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         <div class="payment-provider"><span>iyzico</span> <span style="opacity:.6;">ile korunmaktadır</span></div>
         <div class="payment-amount">
             <div class="payment-amount-label">Ödenecek Tutar</div>
-            <div class="payment-amount-value" id="paymentAmountDisplay">₺100</div>
+            <div class="payment-amount-value" id="paymentAmountDisplay">₺500</div>
         </div>
         <div class="card-preview">
             <div class="card-chip">💳</div>
@@ -699,7 +697,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
                 <label>Kart Üzerindeki İsim</label>
                 <input type="text" id="payCardName" placeholder="AD SOYAD" oninput="document.getElementById('cardNamePreview').textContent=this.value.toUpperCase()||'AD SOYAD'">
             </div>
-            <button class="payment-submit" id="paymentSubmitBtn" onclick="submitPayment()">🔒 ₺<span id="paymentSubmitAmount">100</span> Öde</button>
+            <button class="payment-submit" id="paymentSubmitBtn" onclick="submitPayment()">🔒 ₺<span id="paymentSubmitAmount">500</span> Öde</button>
             <div class="payment-secure">🔐 256-bit SSL ile şifrelenmiş · PCI-DSS uyumlu</div>
             <div class="payment-error" id="paymentError"></div>
         </div>
@@ -793,7 +791,7 @@ const OPERATORS_FAKE = [
 let currentWaType = null;
 let currentCountry = null;
 let currentOperator = null;
-let selectedDepositAmount = 100;
+let selectedDepositAmount = 500;
 let currentUser = null;
 let balance = 0;
 let orderHistory = [];
