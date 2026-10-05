@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Onay Merkezi">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Onay Merkezi | Türkiye 68 TL">
+<meta name="twitter:title" content="Onay Merkezi | Sanal Numara Al - Türkiye 68 TL">
 <meta name="twitter:description" content="WhatsApp, Telegram, Instagram için sanal numara al.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -305,6 +305,14 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .chat-footer input:focus{border-color:var(--primary)}
 .chat-footer button{background:var(--primary);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
 .chat-footer button:disabled{opacity:.6;cursor:not-allowed}
+.game-detail{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px}
+.game-detail h5{font-size:.92rem;font-weight:700;margin-bottom:12px;color:var(--text)}
+.game-detail-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.game-detail-row:last-of-type{border-bottom:none}
+.game-detail-row .qty{color:var(--muted);font-weight:600}
+.game-detail-row .price{font-weight:800;color:var(--primary)}
+.game-buy-btn{width:100%;padding:13px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.92rem;cursor:pointer;margin-top:12px}
+.game-buy-btn.insufficient{background:var(--warning)}
 </style>
 </head>
 <body>
@@ -474,12 +482,18 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     <div class="section-header"><div class="section-title">Bakiye Yükle</div></div>
     <div class="sync-status" id="syncStatus">🌐 Bağlantı kuruluyor...</div>
     <div class="deposit-card">
-        <label class="form-label">Yüklenecek Tutar</label>
+        <div style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border-radius:12px;padding:14px;margin-bottom:18px;text-align:center;">
+            <div style="font-size:.95rem;font-weight:800;margin-bottom:4px;">🎉 İNDİRİM FIRSATI!</div>
+            <div style="font-size:.82rem;line-height:1.5;">₺250 yatırana <strong>%30 İNDİRİM</strong> · ₺500 yatırana <strong>%35 İNDİRİM</strong></div>
+        </div>
+        <label class="form-label">Yüklenecek Tutar (Min. ₺100)</label>
         <div class="amount-selector">
-            <button class="amount-btn selected" onclick="selectAmount(500, this)">₺500</button>
-            <button class="amount-btn" onclick="selectAmount(1000, this)">₺1000</button>
-            <button class="amount-btn" onclick="selectAmount(2000, this)">₺2000</button>
-            <button class="amount-btn" onclick="selectAmount(5000, this)">₺5000</button>
+            <button class="amount-btn selected" onclick="selectAmount(100, this)">₺100</button>
+            <button class="amount-btn" onclick="selectAmount(250, this)">₺250 <span style="font-size:.65rem;color:#10b981;font-weight:800;">%30</span></button>
+            <button class="amount-btn" onclick="selectAmount(500, this)">₺500 <span style="font-size:.65rem;color:#10b981;font-weight:800;">%35</span></button>
+            <button class="amount-btn" onclick="selectAmount(1000, this)">₺1000 <span style="font-size:.65rem;color:#10b981;font-weight:800;">%35</span></button>
+            <button class="amount-btn" onclick="selectAmount(2000, this)">₺2000 <span style="font-size:.65rem;color:#10b981;font-weight:800;">%35</span></button>
+            <button class="amount-btn" onclick="selectAmount(5000, this)">₺5000 <span style="font-size:.65rem;color:#10b981;font-weight:800;">%35</span></button>
         </div>
         <div class="iban-box">
             <div class="iban-label">IBAN ile Havale/EFT</div>
@@ -488,7 +502,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
             <button class="copy-btn" style="margin-top:10px;" onclick="copyIban()">📋 IBAN'ı Kopyala</button>
         </div>
         <div class="provider-note">ℹ️ <strong>Güvenli Ödeme:</strong> Kart ile ödemek için butona basın. IBAN için havale yapıp dekontu gönderin.</div>
-        <button class="pay-button" onclick="payWithCard()"><span>🔒</span> <span>Kart ile Öde (₺<span id="selectedAmountLabel">500</span>)</span></button>
+        <button class="pay-button" onclick="payWithCard()"><span>🔒</span> <span>Kart ile Öde (₺<span id="selectedAmountLabel">100</span>)</span></button>
         <button class="pay-button" style="background:linear-gradient(135deg,#f59e0b,#d97706);margin-top:10px;" onclick="notifyIbanPayment()"><span>🏦</span> <span>IBAN ile Ödedim, Bildir</span></button>
         <div class="error-message" id="errorMessage"></div>
         <div class="success-message" id="successMessage"></div>
@@ -662,7 +676,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         <div class="payment-provider"><span>iyzico</span> <span style="opacity:.6;">ile korunmaktadır</span></div>
         <div class="payment-amount">
             <div class="payment-amount-label">Ödenecek Tutar</div>
-            <div class="payment-amount-value" id="paymentAmountDisplay">₺500</div>
+            <div class="payment-amount-value" id="paymentAmountDisplay">₺100</div>
         </div>
         <div class="card-preview">
             <div class="card-chip">💳</div>
@@ -697,7 +711,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
                 <label>Kart Üzerindeki İsim</label>
                 <input type="text" id="payCardName" placeholder="AD SOYAD" oninput="document.getElementById('cardNamePreview').textContent=this.value.toUpperCase()||'AD SOYAD'">
             </div>
-            <button class="payment-submit" id="paymentSubmitBtn" onclick="submitPayment()">🔒 ₺<span id="paymentSubmitAmount">500</span> Öde</button>
+            <button class="payment-submit" id="paymentSubmitBtn" onclick="submitPayment()">🔒 ₺<span id="paymentSubmitAmount">100</span> Öde</button>
             <div class="payment-secure">🔐 256-bit SSL ile şifrelenmiş · PCI-DSS uyumlu</div>
             <div class="payment-error" id="paymentError"></div>
         </div>
@@ -791,7 +805,7 @@ const OPERATORS_FAKE = [
 let currentWaType = null;
 let currentCountry = null;
 let currentOperator = null;
-let selectedDepositAmount = 500;
+let selectedDepositAmount = 100;
 let currentUser = null;
 let balance = 0;
 let orderHistory = [];
@@ -1769,17 +1783,64 @@ function openLegal(type) {
 function closeLegal() { document.getElementById('legalModal').classList.remove('active'); }
 
 const liveFeed = [
-    { flag:'🇹🇷', service:'WhatsApp', time:'2 dk önce' },
-    { flag:'🇺🇸', service:'Telegram', time:'4 dk önce' },
-    { flag:'🇩🇪', service:'Instagram', time:'7 dk önce' },
-    { flag:'🇬🇧', service:'Gmail', time:'11 dk önce' },
-    { flag:'🇷🇺', service:'Facebook', time:'14 dk önce' }
+    { flag:'🇹🇷', service:'WhatsApp', time:'1 dk önce' },
+    { flag:'🇺🇸', service:'Telegram', time:'2 dk önce' },
+    { flag:'🇩🇪', service:'Instagram', time:'3 dk önce' },
+    { flag:'🇬🇧', service:'Gmail', time:'1 dk önce' },
+    { flag:'🇷🇺', service:'Facebook', time:'4 dk önce' }
 ];
 function renderLiveFeed() {
     const c = document.getElementById('liveSuccess');
     if (!c) return;
     c.innerHTML = liveFeed.map(f => '<div class="success-item"><div class="success-info"><span class="success-flag">' + f.flag + '</span><span class="success-text">' + f.service + '<span>SMS onay alındı</span></span></div><span class="success-time">✅ ' + f.time + '</span></div>').join('');
 }
+
+/* ====== RASTGELE GÜVEN BİLDİRİMLERİ ====== */
+const TRUST_EVENTS = [
+    { text: '🇹🇷 Türkiye numarası alındı', user: 'Ahmet K.' },
+    { text: '🇹🇷 Türkiye numarası alındı', user: 'Mehmet Y.' },
+    { text: '🇹🇷 Türkiye numarası alındı', user: 'Mustafa D.' },
+    { text: '🇹🇷 Türkiye numarası alındı', user: 'Ali R.' },
+    { text: '💰 Papara jeton alındı', user: 'Emre S.' },
+    { text: '💰 Papara jeton alındı', user: 'Burak T.' },
+    { text: '💰 Papara jeton alındı', user: 'Okan M.' },
+    { text: '💳 Jeton yüklemesi alındı', user: 'Serkan A.' },
+    { text: '💳 Jeton yüklemesi alındı', user: 'Volkan B.' },
+    { text: '📱 Farklı numara alındı', user: 'Hakan Ç.' },
+    { text: '📱 Farklı numara alındı', user: 'Onur B.' },
+    { text: '📱 Farklı numara alındı', user: 'Gökhan T.' },
+    { text: '✅ WhatsApp onayı tamamlandı', user: 'Kerem Ö.' },
+    { text: '✅ Telegram onayı tamamlandı', user: 'Furkan G.' },
+    { text: '✅ Instagram onayı tamamlandı', user: 'Yusuf E.' },
+    { text: '✅ Gmail onayı tamamlandı', user: 'Cem Y.' },
+    { text: '🎯 PUBG jeton alındı', user: 'Barış N.' },
+    { text: '🔥 Free Fire elmas alındı', user: 'Tolga R.' },
+    { text: '💎 Valorant VP alındı', user: 'Cemal U.' }
+];
+
+function showTrustNotification() {
+    const ev = TRUST_EVENTS[Math.floor(Math.random() * TRUST_EVENTS.length)];
+    const el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:160px;left:20px;background:#fff;border:1px solid #e2e8f0;border-left:4px solid #10b981;border-radius:12px;padding:12px 16px;box-shadow:0 6px 24px rgba(0,0,0,.12);z-index:1400;font-size:.82rem;max-width:280px;opacity:0;transform:translateY(20px);transition:all .4s;pointer-events:none;';
+    el.innerHTML = '<div style="display:flex;align-items:center;gap:8px;">' +
+        '<div style="width:32px;height:32px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">✅</div>' +
+        '<div><div style="font-weight:700;color:#1e293b;font-size:.8rem;">' + ev.text + '</div>' +
+        '<div style="font-size:.7rem;color:#64748b;margin-top:2px;">' + ev.user + ' · 1 dakika önce</div></div>' +
+    '</div>';
+    document.body.appendChild(el);
+    setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 50);
+    setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; }, 4500);
+    setTimeout(() => { el.remove(); }, 5000);
+}
+
+function startTrustNotifications() {
+    function scheduleNext() {
+        const delay = 12000 + Math.random() * 13000;
+        setTimeout(() => { showTrustNotification(); scheduleNext(); }, delay);
+    }
+    setTimeout(() => { showTrustNotification(); scheduleNext(); }, 6000);
+}
+/* ====== RASTGELE GÜVEN BİLDİRİMLERİ SON ====== */
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -1887,6 +1948,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderLiveFeed();
     updateServicePricesUI();
     renderServiceRows();
+    startTrustNotifications();
     const pm = document.getElementById('paymentModal');
     if (pm) pm.addEventListener('click', e => { if (e.target.id === 'paymentModal') closePaymentModal(); });
     const lm = document.getElementById('legalModal');
