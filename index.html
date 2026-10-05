@@ -201,7 +201,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .auth-btn{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:10px}
 .auth-btn:disabled{opacity:.6;cursor:not-allowed}
 .auth-error{display:none;background:#fee2e2;color:#991b1b;padding:10px 12px;border-radius:8px;font-size:.82rem;margin-bottom:8px}
-.google-btn{width:100%;padding:13px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;font-weight:600;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
 .divider{text-align:center;color:#94a3b8;font-size:.8rem;margin:8px 0}
 .checkbox-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;padding:10px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)}
 .checkbox-row input[type=checkbox]{margin-top:3px;width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:var(--primary)}
@@ -626,11 +625,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 <div class="auth-modal" id="loginModal">
     <div class="auth-box">
         <h2>🔐 Giriş Yap</h2>
-        <button class="google-btn" onclick="googleLogin()">
-            <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20.4H24v7.2h11.3c-1.6 4.7-6.1 8.1-11.3 8.1-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 12.9 4.8 4 13.7 4 24.8s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.8z"/><path fill="#FF3D00" d="M6.3 14.7l5.9 4.3C13.9 15.1 18.6 12.4 24 12.4c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 16.3 4.8 9.7 9.2 6.3 14.7z"/><path fill="#4CAF50" d="M24 44.8c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.6 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-7.9l-5.9 4.6C10.2 40.5 16.5 44.8 24 44.8z"/><path fill="#1976D2" d="M43.6 20.5H42V20.4H24v7.2h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.2 5.2c-.4.4 6.6-4.8 6.6-13.7 0-1.3-.1-2.6-.4-3.8z"/></svg>
-            Google ile Giriş Yap
-        </button>
-        <div class="divider">veya e-posta ile</div>
         <div class="auth-error" id="loginError"></div>
         <input type="email" class="auth-input" id="loginEmail" placeholder="Email adresiniz">
         <input type="password" class="auth-input" id="loginPassword" placeholder="Şifreniz">
@@ -643,11 +637,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 <div class="auth-modal" id="registerModal">
     <div class="auth-box">
         <h2>📝 Kayıt Ol</h2>
-        <button class="google-btn" onclick="googleLogin()">
-            <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20.4H24v7.2h11.3c-1.6 4.7-6.1 8.1-11.3 8.1-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 12.9 4.8 4 13.7 4 24.8s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.8z"/><path fill="#FF3D00" d="M6.3 14.7l5.9 4.3C13.9 15.1 18.6 12.4 24 12.4c3.1 0 5.9 1.2 8 3.1l5.1-5.1C34 6.6 29.3 4.8 24 4.8 16.3 4.8 9.7 9.2 6.3 14.7z"/><path fill="#4CAF50" d="M24 44.8c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.6 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-7.9l-5.9 4.6C10.2 40.5 16.5 44.8 24 44.8z"/><path fill="#1976D2" d="M43.6 20.5H42V20.4H24v7.2h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.2 5.2c-.4.4 6.6-4.8 6.6-13.7 0-1.3-.1-2.6-.4-3.8z"/></svg>
-            Google ile Kayıt Ol
-        </button>
-        <div class="divider">veya e-posta ile</div>
         <div class="auth-error" id="registerError"></div>
         <input type="text" class="auth-input" id="regName" placeholder="Ad Soyad">
         <input type="email" class="auth-input" id="regEmail" placeholder="Email adresiniz">
@@ -748,7 +737,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 import { getDatabase, ref, set, get, push, update, onValue } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -1406,26 +1395,6 @@ function openLogin() { clearAuthError('login'); document.getElementById('loginMo
 function openRegister() { clearAuthError('register'); document.getElementById('registerModal').classList.add('active'); }
 function closeAuth() { document.getElementById('loginModal').classList.remove('active'); document.getElementById('registerModal').classList.remove('active'); }
 
-async function googleLogin() {
-    try {
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-        const snap = await get(ref(db, 'users/' + user.uid));
-        if (!snap.exists()) {
-            await set(ref(db, 'users/' + user.uid), {
-                name: user.displayName || '', email: user.email, balance: 0, createdAt: Date.now()
-            });
-        }
-        closeAuth();
-        showToast('✅ Google ile giriş yapıldı', 'success');
-    } catch(e) {
-        console.error(e);
-        if (e.code === 'auth/popup-closed-by-user') return;
-        showToast('Google girişi başarısız: ' + (e.message || 'Hata'), 'error');
-    }
-}
-
 async function login() {
     clearAuthError('login');
     const email = document.getElementById('loginEmail').value.trim();
@@ -1954,7 +1923,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.login = login;
 window.register = register;
-window.googleLogin = googleLogin;
 window.logout = logout;
 window.openLogin = openLogin;
 window.openRegister = openRegister;
