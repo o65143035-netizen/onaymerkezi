@@ -486,7 +486,17 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
             <div style="font-size:.82rem;line-height:1.5;">₺250 yatırana <strong>%30 İNDİRİM</strong> · ₺500 yatırana <strong>%35 İNDİRİM</strong></div>
         </div>
         <label class="form-label">Yüklenecek Tutar (Min. ₺100)</label>
-        <div class="amount-selector">
+        <div style="position:relative;margin-bottom:12px;">
+            <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--muted);font-size:1.05rem;">₺</span>
+            <input type="number" id="customAmountInput" placeholder="Tutar girin (min. 100)" min="100" step="1" value="100" oninput="onCustomAmountInput(this)" style="width:100%;padding:16px 16px 16px 40px;border:2px solid var(--primary);border-radius:12px;font-size:1.1rem;font-weight:700;outline:none;">
+        </div>
+        <div id="amountWarning" style="display:none;background:#fee2e2;color:#991b1b;border-radius:10px;padding:12px 14px;font-size:.82rem;font-weight:600;margin-bottom:12px;text-align:center;">
+            ⚠️ Minimum yükleme tutarı <strong>₺100</strong>'dür. Lütfen daha yüksek bir tutar girin.
+        </div>
+        <div id="discountInfo" style="display:none;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border-radius:10px;padding:12px 14px;font-size:.85rem;font-weight:700;margin-bottom:16px;text-align:center;">
+        </div>
+        <div style="font-size:.75rem;color:var(--muted);text-align:center;margin-bottom:16px;">Hızlı seçim:</div>
+        <div class="amount-selector" style="margin-bottom:24px;">
             <button class="amount-btn selected" onclick="selectAmount(100, this)">₺100</button>
             <button class="amount-btn" onclick="selectAmount(250, this)">₺250 <span style="font-size:.65rem;color:#10b981;font-weight:800;">%30</span></button>
             <button class="amount-btn" onclick="selectAmount(500, this)">₺500 <span style="font-size:.65rem;color:#10b981;font-weight:800;">%35</span></button>
@@ -1308,11 +1318,52 @@ function showDeposit() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function closeDeposit() { document.getElementById('depositSection').classList.remove('active'); goToStep(1); }
+const MIN_DEPOSIT = 100;
+
+function getDiscountRate(amount) {
+    if (amount >= 500) return 35;
+    if (amount >= 250) return 30;
+    return 0;
+}
+
+function updateDiscountDisplay(amount) {
+    const info = document.getElementById('discountInfo');
+    if (!info) return;
+    const rate = getDiscountRate(amount);
+    if (rate > 0) {
+        const bonus = (amount * rate / 100).toFixed(2);
+        info.style.display = 'block';
+        info.innerHTML = '🎉 Bu tutara <strong>%' + rate + ' İNDİRİM</strong> uygulanır!<br><span style="font-size:.78rem;opacity:.95;">+₺' + bonus + ' bonus bakiyenize eklenir</span>';
+    } else {
+        info.style.display = 'none';
+    }
+}
+
+function onCustomAmountInput(inp) {
+    const val = parseFloat(inp.value) || 0;
+    const warn = document.getElementById('amountWarning');
+    if (val < MIN_DEPOSIT) {
+        warn.style.display = 'block';
+        inp.style.borderColor = 'var(--danger)';
+    } else {
+        warn.style.display = 'none';
+        inp.style.borderColor = 'var(--primary)';
+    }
+    selectedDepositAmount = val;
+    document.getElementById('selectedAmountLabel').textContent = val || MIN_DEPOSIT;
+    updateDiscountDisplay(val);
+    document.querySelectorAll('.amount-btn').forEach(x => x.classList.remove('selected'));
+}
+
 function selectAmount(a, b) {
     selectedDepositAmount = a;
     document.querySelectorAll('.amount-btn').forEach(x => x.classList.remove('selected'));
     b.classList.add('selected');
+    const inp = document.getElementById('customAmountInput');
+    if (inp) { inp.value = a; inp.style.borderColor = 'var(--primary)'; }
+    document.getElementById('amountWarning').style.display = 'none';
     document.getElementById('selectedAmountLabel').textContent = a;
+    updateDiscountDisplay(a);
 }
 function renderIbanDisplay() {
     const ib = document.getElementById('ibanDisplay');
@@ -1327,6 +1378,11 @@ async function notifyIbanPayment() {
     const err = document.getElementById('errorMessage');
     err.classList.remove('show');
     if (!currentUser) { err.textContent = 'Bildirim için giriş yapmalısınız.'; err.classList.add('show'); return; }
+    if (!selectedDepositAmount || selectedDepositAmount < MIN_DEPOSIT) {
+        err.textContent = 'Minimum yükleme tutarı ₺' + MIN_DEPOSIT + "'dir.";
+        err.classList.add('show');
+        return;
+    }
     await push(ref(db, 'iban_notifications'), {
         userEmail: currentUser.email, userName: currentUser.displayName || '',
         uid: currentUser.uid, amount: selectedDepositAmount,
@@ -1339,6 +1395,12 @@ async function notifyIbanPayment() {
 
 function payWithCard() {
     if (!currentUser) { showToast('Ödeme için giriş yapmalısınız.', 'error'); openLogin(); return; }
+    if (!selectedDepositAmount || selectedDepositAmount < MIN_DEPOSIT) {
+        showToast('⚠️ Minimum yükleme tutarı ₺' + MIN_DEPOSIT + "'dir.", 'error');
+        const warn = document.getElementById('amountWarning');
+        if (warn) warn.style.display = 'block';
+        return;
+    }
     document.getElementById('paymentAmountDisplay').textContent = '₺' + selectedDepositAmount;
     document.getElementById('paymentSubmitAmount').textContent = selectedDepositAmount;
     document.getElementById('paymentError').classList.remove('show');
@@ -1944,6 +2006,7 @@ window.showSupport = showSupport;
 window.showDeposit = showDeposit;
 window.closeDeposit = closeDeposit;
 window.selectAmount = selectAmount;
+window.onCustomAmountInput = onCustomAmountInput;
 window.copyIban = copyIban;
 window.notifyIbanPayment = notifyIbanPayment;
 window.payWithCard = payWithCard;
