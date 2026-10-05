@@ -1801,14 +1801,10 @@ const TRUST_EVENTS = [
     { text: '🇹🇷 Türkiye numarası alındı', user: 'Mehmet Y.' },
     { text: '🇹🇷 Türkiye numarası alındı', user: 'Mustafa D.' },
     { text: '🇹🇷 Türkiye numarası alındı', user: 'Ali R.' },
-    { text: '💰 Papara jeton alındı', user: 'Emre S.' },
-    { text: '💰 Papara jeton alındı', user: 'Burak T.' },
-    { text: '💰 Papara jeton alındı', user: 'Okan M.' },
-    { text: '💳 Jeton yüklemesi alındı', user: 'Serkan A.' },
-    { text: '💳 Jeton yüklemesi alındı', user: 'Volkan B.' },
     { text: '📱 Farklı numara alındı', user: 'Hakan Ç.' },
     { text: '📱 Farklı numara alındı', user: 'Onur B.' },
     { text: '📱 Farklı numara alındı', user: 'Gökhan T.' },
+    { text: '📱 Yeni numara tahsis edildi', user: 'Serkan A.' },
     { text: '✅ WhatsApp onayı tamamlandı', user: 'Kerem Ö.' },
     { text: '✅ Telegram onayı tamamlandı', user: 'Furkan G.' },
     { text: '✅ Instagram onayı tamamlandı', user: 'Yusuf E.' },
@@ -1829,16 +1825,17 @@ function showTrustNotification() {
     '</div>';
     document.body.appendChild(el);
     setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 50);
-    setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; }, 4500);
-    setTimeout(() => { el.remove(); }, 5000);
+    setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; }, 3500);
+    setTimeout(() => { el.remove(); }, 4000);
 }
 
 function startTrustNotifications() {
     function scheduleNext() {
-        const delay = 12000 + Math.random() * 13000;
+        const delay = 3000 + Math.random() * 5000;
         setTimeout(() => { showTrustNotification(); scheduleNext(); }, delay);
     }
-    setTimeout(() => { showTrustNotification(); scheduleNext(); }, 6000);
+    showTrustNotification();
+    scheduleNext();
 }
 /* ====== RASTGELE GÜVEN BİLDİRİMLERİ SON ====== */
 
