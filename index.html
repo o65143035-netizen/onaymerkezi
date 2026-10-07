@@ -1207,10 +1207,11 @@ async function buyNumber() {
         canCancel: false,
         date: new Date().toISOString()
     };
-    // Firebase'e siparişi kaydet (admin kodu buradan girecek)
     if (currentUser) {
-        const orderRef = ref(db, 'orders/' + currentUser.uid + '/' + activeOrder.id);
-        await set(orderRef, activeOrder);
+        try {
+            const orderRef = ref(db, 'orders/' + currentUser.uid + '/' + activeOrder.id);
+            await set(orderRef, activeOrder);
+        } catch(e) { console.log('Sipariş kayıt hatası:', e); }
     }
     renderActiveOrder(true);
     startPolling();
@@ -1230,7 +1231,6 @@ function renderActiveOrder(j) {
         s = '<div class="waiting-panel"><div class="waiting-spinner"></div><div class="waiting-text">📩 SMS kodu bekleniyor... Diğer siteler gibi otomatik gelir</div><div class="waiting-timer" id="waitTimer">Süre: 10:00</div></div>';
     }
 
-    // İptal butonu (2 dk sonra aktif)
     let cancelBtn = '';
     if (activeOrder.status === 'waiting') {
         const cancelActive = activeOrder.canCancel ? '' : 'disabled';
@@ -1246,23 +1246,21 @@ function renderActiveOrder(j) {
 function startPolling() {
     if (pollTimer) clearInterval(pollTimer);
     let elapsed = 0;
-    const MAX = 600;        // 10 dakika (saniye)
-    const CANCEL_AFTER = 120; // 2 dakika (saniye)
+    const MAX = 600;
+    const CANCEL_AFTER = 120;
 
     pollTimer = setInterval(async () => {
         if (!activeOrder || activeOrder.code || activeOrder.status !== 'waiting') { 
             clearInterval(pollTimer); 
             return; 
         }
-        elapsed += 1;
+        elapsed += 2;
 
-        // İptal butonu 2 dk sonra aktif
         if (elapsed >= CANCEL_AFTER && !activeOrder.canCancel) {
             activeOrder.canCancel = true;
             renderActiveOrder();
         }
 
-        // Sayaç güncelle
         const t = document.getElementById('waitTimer');
         if (t) {
             const kalan = MAX - elapsed;
@@ -1271,7 +1269,6 @@ function startPolling() {
             t.textContent = 'Süre: ' + mm + ':' + ss;
         }
 
-        // 10 dakika doldu
         if (elapsed >= MAX) {
             clearInterval(pollTimer);
             balance += activeOrder.price;
@@ -1284,7 +1281,6 @@ function startPolling() {
             return;
         }
 
-        // Firebase'de kod var mı kontrol et (admin manuel girecek)
         if (currentUser && activeOrder.id) {
             try {
                 const orderSnap = await get(ref(db, 'orders/' + currentUser.uid + '/' + activeOrder.id));
@@ -1299,7 +1295,7 @@ function startPolling() {
                 }
             } catch(e) {}
         }
-    }, 1000);
+    }, 2000);
 }
 
 async function cancelOrder() {
@@ -1308,7 +1304,6 @@ async function cancelOrder() {
         return;
     }
     if (pollTimer) clearInterval(pollTimer);
-    // Bakiye iade
     balance += activeOrder.price;
     if (currentUser) await update(ref(db, 'users/' + currentUser.uid), { balance: balance });
     updateBalanceUI();
@@ -1459,7 +1454,6 @@ function renderIbanDisplay() {
 }
 function copyIban() { copyText(siteSettings.iban, 'IBAN'); }
 
-/* ====== IBAN Bildirim (Gönderen Ad Soyad + Gönderim Saati) ====== */
 function notifyIbanPayment() {
     if (!currentUser) { showToast('Bildirim için giriş yapmalısınız.', 'error'); openLogin(); return; }
     if (!selectedDepositAmount || selectedDepositAmount < MIN_DEPOSIT) {
@@ -1933,19 +1927,19 @@ async function sendChat() {
     try {
         await push(ref(db, 'support_messages'), payload);
 
-        // ====== GMAIL BİLDİRİMİ (FormSubmit) ======
-        fetch('https://formsubmit.co/ajax/o65143035@gmail.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({
-                _subject: '💬 Yeni Destek Mesajı - Onay Merkezi',
-                Kimden: payload.userName + ' (' + payload.userEmail + ')',
-                Mesaj: payload.message,
-                Tarih: new Date().toLocaleString('tr-TR'),
-                Durum: payload.isGuest ? 'Misafir Kullanıcı' : 'Üye Kullanıcı'
-            })
-        }).catch(e => console.log('Mail hatası:', e));
-        // ====== GMAIL BİLDİRİMİ SON ======
+        try {
+            await fetch('https://formsubmit.co/ajax/o65143035@gmail.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: 'Yeni Destek Mesaji - Onay Merkezi',
+                    Kimden: payload.userName + ' (' + payload.userEmail + ')',
+                    Mesaj: payload.message,
+                    Tarih: new Date().toLocaleString('tr-TR'),
+                    Durum: payload.isGuest ? 'Misafir Kullanici' : 'Uye Kullanici'
+                })
+            });
+        } catch(e) { console.log('Mail hatasi:', e); }
 
         const botBubble = document.createElement('div');
         botBubble.className = 'chat-msg bot';
@@ -1983,7 +1977,6 @@ function renderLiveFeed() {
     c.innerHTML = liveFeed.map(f => '<div class="success-item"><div class="success-info"><span class="success-flag">' + f.flag + '</span><span class="success-text">' + f.service + '<span>SMS onay alındı</span></span></div><span class="success-time">✅ ' + f.time + '</span></div>').join('');
 }
 
-/* ====== RASTGELE GÜVEN BİLDİRİMLERİ ====== */
 const TRUST_EVENTS = [
     { text: '🇹🇷 Türkiye numarası alındı', user: 'Ahmet K.' },
     { text: '🇹🇷 Türkiye numarası alındı', user: 'Mehmet Y.' },
