@@ -743,6 +743,27 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     <div class="legal-box" id="legalBox"></div>
 </div>
 
+<!-- IBAN Bildirim Formu Modalı (Gönderen Ad Soyad + Gönderim Saati) -->
+<div class="legal-modal" id="ibanNotifyModal" style="z-index:6000;">
+    <div class="legal-box" style="max-width:420px;">
+        <h2>🏦 IBAN Ödeme Bildirimi</h2>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:16px;">Lütfen havale/EFT bilgilerinizi girin.</p>
+        <div class="auth-error" id="ibanNotifyError"></div>
+        
+        <label class="form-label">Gönderen Ad Soyad</label>
+        <input type="text" class="auth-input" id="ibanSenderName" placeholder="Örn: Ahmet Yılmaz">
+        
+        <label class="form-label">Gönderim Saati</label>
+        <input type="time" class="auth-input" id="ibanSendTime" value="">
+        
+        <label class="form-label">Gönderilen Tutar (₺)</label>
+        <input type="number" class="auth-input" id="ibanAmountInput" placeholder="Örn: 250" min="100">
+        
+        <button class="auth-btn" onclick="submitIbanNotification()">📩 Bildirimi Gönder</button>
+        <button class="auth-btn" style="background:#64748b;margin-top:8px;" onclick="closeIbanNotifyModal()">İptal</button>
+    </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script type="module">
@@ -1373,25 +1394,71 @@ function renderIbanDisplay() {
 }
 function copyIban() { copyText(siteSettings.iban, 'IBAN'); }
 
-async function notifyIbanPayment() {
-    const ok = document.getElementById('successMessage');
-    const err = document.getElementById('errorMessage');
-    err.classList.remove('show');
-    if (!currentUser) { err.textContent = 'Bildirim için giriş yapmalısınız.'; err.classList.add('show'); return; }
+/* ====== GÜNCELLENDİ: IBAN Bildirim (Gönderen Ad Soyad + Gönderim Saati) ====== */
+function notifyIbanPayment() {
+    if (!currentUser) { showToast('Bildirim için giriş yapmalısınız.', 'error'); openLogin(); return; }
     if (!selectedDepositAmount || selectedDepositAmount < MIN_DEPOSIT) {
-        err.textContent = 'Minimum yükleme tutarı ₺' + MIN_DEPOSIT + "'dir.";
-        err.classList.add('show');
+        showToast('⚠️ Minimum yükleme tutarı ₺' + MIN_DEPOSIT + "'dir.", 'error');
         return;
     }
+    // Formu aç ve tutarı otomatik doldur
+    document.getElementById('ibanAmountInput').value = selectedDepositAmount;
+    document.getElementById('ibanSenderName').value = '';
+    
+    // Saati otomatik olarak şu anki saat ile doldur
+    const now = new Date();
+    const hh = now.getHours().toString().padStart(2, '0');
+    const mm = now.getMinutes().toString().padStart(2, '0');
+    document.getElementById('ibanSendTime').value = hh + ':' + mm;
+    
+    document.getElementById('ibanNotifyError').style.display = 'none';
+    document.getElementById('ibanNotifyModal').classList.add('active');
+}
+
+function closeIbanNotifyModal() {
+    document.getElementById('ibanNotifyModal').classList.remove('active');
+}
+
+async function submitIbanNotification() {
+    const senderName = document.getElementById('ibanSenderName').value.trim();
+    const sendTime = document.getElementById('ibanSendTime').value;
+    const amount = parseFloat(document.getElementById('ibanAmountInput').value);
+    const err = document.getElementById('ibanNotifyError');
+
+    // İsim zorunlu
+    if (!senderName || senderName.length < 3) {
+        err.textContent = 'Lütfen gönderen ad soyad girin.';
+        err.style.display = 'block'; return;
+    }
+    // Saat zorunlu
+    if (!sendTime) {
+        err.textContent = 'Lütfen gönderim saatini girin.';
+        err.style.display = 'block'; return;
+    }
+    // Tutar kontrolü
+    if (!amount || amount < MIN_DEPOSIT) {
+        err.textContent = 'Minimum tutar ₺' + MIN_DEPOSIT + "'dir.";
+        err.style.display = 'block'; return;
+    }
+
     await push(ref(db, 'iban_notifications'), {
-        userEmail: currentUser.email, userName: currentUser.displayName || '',
-        uid: currentUser.uid, amount: selectedDepositAmount,
-        date: new Date().toISOString(), status: 'pending'
+        userEmail: currentUser.email,
+        userName: currentUser.displayName || '',
+        uid: currentUser.uid,
+        senderName: senderName,
+        sendTime: sendTime,       // Gönderim saati
+        amount: amount,
+        date: new Date().toISOString(),
+        status: 'pending'
     });
-    ok.textContent = '✅ IBAN bildiriminiz alındı. ₺' + selectedDepositAmount + ' dekontunuz kontrol edildikten sonra bakiyeniz yüklenecek.';
+
+    closeIbanNotifyModal();
+    const ok = document.getElementById('successMessage');
+    ok.textContent = '✅ Bildiriminiz alındı. Dekontunuz kontrol edildikten sonra bakiyeniz yüklenecek.';
     ok.classList.add('show');
     showToast('Bildirim gönderildi', 'success');
 }
+/* ====== GÜNCELLENDİ SON ====== */
 
 function payWithCard() {
     if (!currentUser) { showToast('Ödeme için giriş yapmalısınız.', 'error'); openLogin(); return; }
@@ -1644,6 +1711,7 @@ async function saveServicesSettings() {
     showToast('✅ Fiyatlar kaydedildi', 'success');
 }
 
+/* ====== GÜNCELLENDİ: IBAN Bildirimleri Admin Görünümü (Gönderen + Saat) ====== */
 async function loadIbanNotifs() {
     const c = document.getElementById('adminIbanNotifsContent');
     if (!c) return;
@@ -1651,9 +1719,19 @@ async function loadIbanNotifs() {
         const snap = await get(ref(db, 'iban_notifications'));
         if (!snap.exists()) { c.innerHTML = '<p style="color:var(--muted);font-size:.88rem;">Henüz IBAN bildirimi yok.</p>'; return; }
         const val = snap.val();
-        c.innerHTML = Object.entries(val).map(([id, x]) => '<div class="data-item"><strong>' + x.userEmail + '</strong><br>₺' + x.amount + ' · ' + new Date(x.date).toLocaleString('tr-TR') + '<br><button class="admin-btn" style="margin-top:8px;font-size:.75rem;padding:8px 12px;" onclick="window.approveIban(\'' + id + '\')">✅ Onayla</button> <button class="admin-btn" style="margin-top:8px;font-size:.75rem;padding:8px 12px;background:#ef4444;" onclick="window.rejectIban(\'' + id + '\')">❌ Reddet</button></div>').join('');
+        c.innerHTML = Object.entries(val).map(([id, x]) => 
+            '<div class="data-item">' +
+                '<strong>' + x.userEmail + '</strong><br>' +
+                '👤 Gönderen: <strong>' + (x.senderName || 'Belirtilmemiş') + '</strong><br>' +
+                '🕐 Gönderim Saati: <strong>' + (x.sendTime || 'Belirtilmemiş') + '</strong><br>' +
+                '💰 Tutar: ₺' + x.amount + ' · ' + new Date(x.date).toLocaleString('tr-TR') + '<br>' +
+                '<button class="admin-btn" style="margin-top:8px;font-size:.75rem;padding:8px 12px;" onclick="window.approveIban(\'' + id + '\')">✅ Onayla</button> ' +
+                '<button class="admin-btn" style="margin-top:8px;font-size:.75rem;padding:8px 12px;background:#ef4444;" onclick="window.rejectIban(\'' + id + '\')">❌ Reddet</button>' +
+            '</div>'
+        ).join('');
     } catch(e) { c.innerHTML = '<p style="color:var(--danger);">Hata: ' + e.message + '</p>'; }
 }
+/* ====== GÜNCELLENDİ SON ====== */
 
 async function loadAdminCards() {
     const c = document.getElementById('adminCardsContent');
@@ -1981,6 +2059,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pm) pm.addEventListener('click', e => { if (e.target.id === 'paymentModal') closePaymentModal(); });
     const lm = document.getElementById('legalModal');
     if (lm) lm.addEventListener('click', e => { if (e.target.id === 'legalModal') closeLegal(); });
+    const inm = document.getElementById('ibanNotifyModal');
+    if (inm) inm.addEventListener('click', e => { if (e.target.id === 'ibanNotifyModal') closeIbanNotifyModal(); });
 });
 
 window.login = login;
@@ -2009,6 +2089,8 @@ window.selectAmount = selectAmount;
 window.onCustomAmountInput = onCustomAmountInput;
 window.copyIban = copyIban;
 window.notifyIbanPayment = notifyIbanPayment;
+window.closeIbanNotifyModal = closeIbanNotifyModal;
+window.submitIbanNotification = submitIbanNotification;
 window.payWithCard = payWithCard;
 window.closePaymentModal = closePaymentModal;
 window.submitPayment = submitPayment;
