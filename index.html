@@ -319,6 +319,17 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .seo-content ul{margin:8px 0 16px 22px}
 .seo-content li{font-size:.88rem;color:#475569;line-height:1.8;margin-bottom:6px}
 </style>
+<!-- YÖNLENDİRME KODU BAŞLANGIÇ (404 HATASINI ÇÖZER) -->
+<script>
+    (function() {
+        var path = window.location.pathname;
+        var redirects = ['/any/', '/any', '/user/cancel/', '/user/cancel', '/user/check/', '/user/check'];
+        if (redirects.includes(path)) {
+            window.location.replace("https://onaymerkezi.org/");
+        }
+    })();
+</script>
+<!-- YÖNLENDİRME KODU BİTİŞ -->
 </head>
 <body>
 
