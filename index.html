@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<!-- SITEMAP VE ROBOTS.TXT HATASINI ÇÖZEN KOD BAŞLANGICI -->
-<script>
-  (function() {
-    var path = window.location.pathname;
-    if (path === '/sitemap.xml' || path === '/robots.txt') {
-      // Eğer Google sitemap isterse, Vercel'in ana sayfaya atmasını engelle
-      window.location.href = window.location.origin + path; 
-    }
-  })();
-</script>
-<!-- SITEMAP VE ROBOTS.TXT HATASINI ÇÖZEN KOD BİTİŞİ -->
-
 <meta name="google-site-verification" content="6hLaTEhwyzWNaq2i0PdG8HT7xR9eRLZ5ofoAVn_tujo" />
 <meta name="google-site-verification" content="SXAZrJDhLoVGnQ5Eoqv166p1gRSoKpUpT1EUuOQOPj0" />
 <meta charset="UTF-8">
@@ -79,9 +67,13 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .seo-top-menu::-webkit-scrollbar-thumb{background:#93c5fd;border-radius:999px;}
 .seo-top-menu a{color:var(--primary-dark);cursor:pointer;white-space:nowrap;flex-shrink:0;text-decoration:none;background:var(--primary-light);padding:6px 12px;border-radius:8px;transition:all .2s;}
 .seo-top-menu a:hover,.seo-top-menu a.active{background:var(--primary);color:#fff;}
+
+/* KAMPANYA BANTI */
 .campaign-banner{background:linear-gradient(90deg, #ef4444, #f59e0b, #ef4444); color:white; text-align:center; padding:8px 10px; font-size:0.85rem; font-weight:700; overflow:hidden; position:relative; z-index:1001; white-space:nowrap; cursor:pointer;}
 .campaign-banner span{display:inline-block; animation: marquee 15s linear infinite;}
 @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+/* ANA UYGULAMA STİLLERİ */
 .app-header{background:var(--card);padding:20px;border-bottom:1px solid var(--border)}
 .header-title{font-size:1.2rem;font-weight:700;margin-bottom:4px}
 .header-subtitle{font-size:.82rem;color:var(--muted)}
@@ -381,6 +373,8 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .seo-content p{font-size:.88rem;color:#475569;line-height:1.8;margin-bottom:12px}
 .seo-content ul{margin:8px 0 16px 22px}
 .seo-content li{font-size:.88rem;color:#475569;line-height:1.8;margin-bottom:6px}
+
+/* SEO DİNAMİK SAYFA BİLEŞENLERİ */
 .seo-nav-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
 .seo-nav-row .back-button{margin-bottom:0;font-weight:600;color:var(--primary-dark)}
 .seo-cat-badge{background:var(--primary-light);color:var(--primary-dark);font-size:.72rem;font-weight:700;padding:5px 11px;border-radius:999px}
@@ -412,6 +406,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .seo-related-card strong{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.4}
 .seo-related-arrow{font-size:.78rem;font-weight:600;color:var(--primary-dark);margin-top:4px}
 </style>
+<!-- YÖNLENDİRME KODU BAŞLANGIÇ -->
 <script>
     (function() {
         var path = window.location.pathname;
@@ -421,6 +416,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
         }
     })();
 </script>
+<!-- YÖNLENDİRME KODU BİTİŞ -->
 </head>
 <body>
 
@@ -1081,7 +1077,9 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     </div>
 </div>
 
-<div class="toast" id="toast"></div><script type="module">
+<div class="toast" id="toast"></div>
+
+<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 import { getDatabase, ref, set, get, push, update, onValue } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
