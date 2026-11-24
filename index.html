@@ -18,30 +18,68 @@
 <meta property="og:url" content="https://onaymerkezi.org/">
 <meta property="og:site_name" content="Onay Merkezi">
 <meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://onaymerkezi.org/assets/images/seo-whatsapp-dogrulama.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WhatsApp Sanal Numara Al | Onay Merkezi - 15 TL'den Başlayan Fiyatlar">
 <meta name="twitter:description" content="WhatsApp sanal numara al. Anında SMS onay kodu, 60+ ülke.">
+<meta name="twitter:image" content="https://onaymerkezi.org/assets/images/seo-whatsapp-dogrulama.jpg">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "WhatsApp sanal numara nasıl alınır?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Onay Merkezi üzerinden WhatsApp servisini seçip, ülke ve operatör belirleyerek 15 TL'den başlayan fiyatlarla anında sanal numara satın alabilirsiniz."
+      "@type": "Organization",
+      "@id": "https://onaymerkezi.org/#organization",
+      "name": "Onay Merkezi",
+      "url": "https://onaymerkezi.org",
+      "email": "destek@onaymerkezi.org",
+      "logo": "https://onaymerkezi.org/assets/images/seo-whatsapp-dogrulama.jpg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://onaymerkezi.org/#website",
+      "name": "Onay Merkezi",
+      "url": "https://onaymerkezi.org",
+      "inLanguage": "tr-TR",
+      "publisher": {
+        "@id": "https://onaymerkezi.org/#organization"
       }
     },
     {
-      "@type": "Question",
-      "name": "SMS onay kodu gelmezse ne olur?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "10 dakika içinde SMS gelmezse bakiyeniz otomatik olarak iade edilir. Dilerseniz 2 dakika sonra iptal edip yeni numara alabilirsiniz."
+      "@type": "Service",
+      "name": "WhatsApp Sanal Numara ve SMS Onay Hizmeti",
+      "provider": {
+        "@id": "https://onaymerkezi.org/#organization"
+      },
+      "serviceType": "Sanal Numara ve SMS Doğrulama",
+      "areaServed": "TR",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "15",
+        "priceCurrency": "TRY"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "WhatsApp sanal numara nasıl alınır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Onay Merkezi üzerinden WhatsApp servisini seçip, ülke ve operatör belirleyerek 15 TL'den başlayan fiyatlarla anında sanal numara satın alabilirsiniz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "SMS onay kodu gelmezse ne olur?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "10 dakika içinde SMS gelmezse bakiyeniz otomatik olarak iade edilir. Dilerseniz 2 dakika sonra iptal edip yeni numara alabilirsiniz."
+          }
+        }
+      ]
     }
   ]
 }
@@ -64,7 +102,29 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .seo-top-menu::-webkit-scrollbar-track{background:#eff6ff;border-radius:999px;}
 .seo-top-menu::-webkit-scrollbar-thumb{background:#93c5fd;border-radius:999px;}
 .seo-top-menu a{color:var(--primary-dark);cursor:pointer;white-space:nowrap;flex-shrink:0;text-decoration:none;background:var(--primary-light);padding:6px 12px;border-radius:8px;transition:all .2s;}
-.seo-top-menu a:hover{background:var(--primary);color:#fff;}
+.seo-top-menu a:hover,.seo-top-menu a.active{background:var(--primary);color:#fff;}
+.om-inline-kicker{display:inline-block;background:var(--primary-light);color:var(--primary-dark);font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:8px;margin-bottom:10px;}
+.om-inline-lead{background:#eff6ff;border-left:4px solid var(--primary);padding:14px 16px;border-radius:10px;font-size:.92rem;color:#1e293b;line-height:1.65;margin:10px 0 16px;}
+.om-inline-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+.om-inline-btn-primary{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:11px 16px;font-weight:700;font-size:.86rem;cursor:pointer;}
+.om-inline-btn-secondary{background:#fff;color:var(--primary-dark);border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-weight:700;font-size:.86rem;cursor:pointer;}
+.om-inline-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;}
+.om-inline-card h2{margin:0 0 10px;font-size:1.06rem;color:var(--text);}
+.om-inline-card h3{margin:14px 0 6px;font-size:.95rem;color:var(--primary-dark);}
+.om-inline-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.om-inline-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:440px;}
+.om-inline-table th{background:#f1f5f9;color:var(--text);text-align:left;padding:9px 10px;border-bottom:2px solid var(--border);}
+.om-inline-table td{padding:9px 10px;border-bottom:1px solid var(--border);color:#334155;vertical-align:top;}
+.om-inline-steps{display:grid;grid-template-columns:1fr;gap:10px;}
+.om-inline-step{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:12px;}
+.om-inline-step-num{display:inline-block;font-size:.72rem;font-weight:700;color:var(--primary);margin-bottom:4px;}
+.om-inline-step strong{display:block;font-size:.88rem;color:var(--text);margin-bottom:4px;}
+.om-inline-step p{margin:0;font-size:.82rem;color:var(--muted);line-height:1.5;}
+.om-inline-related{display:grid;grid-template-columns:1fr;gap:8px;}
+.om-inline-related a{display:block;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:11px 12px;text-decoration:none;color:var(--text);}
+.om-inline-related a strong{display:block;font-size:.86rem;color:var(--primary-dark);margin-bottom:2px;}
+.om-inline-related a span{font-size:.78rem;color:var(--muted);}
+@media(min-width:640px){.om-inline-steps,.om-inline-related{grid-template-columns:repeat(2,1fr);}}
 
 /* KAMPANYA BANTI */
 .campaign-banner{background:linear-gradient(90deg, #ef4444, #f59e0b, #ef4444); color:white; text-align:center; padding:8px 10px; font-size:0.85rem; font-weight:700; overflow:hidden; position:relative; z-index:1001; white-space:nowrap; cursor:pointer;}
@@ -382,108 +442,14 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 <div class="landing-header" id="landingHeader">
     <div class="landing-logo">📱 Onay Merkezi - Sanal Numara</div>
 
-    <!-- TIKLANABİLİR SEO MENÜSÜ (100 SEO SAYFASI) -->
+    <!-- TIKLANABİLİR SEO MENÜSÜ (6 SEO SAYFASI — TEK DOSYADA SIFIR 404) -->
     <nav class="seo-top-menu" aria-label="SEO Rehber Menüsü">
-        <a href="/whatsapp-sanal-numara">WhatsApp Sanal Numara</a>
-        <a href="/whatsapp-sanal-numara-satin-al">WhatsApp Sanal Numara Satın Al</a>
-        <a href="/whatsapp-sms-onay">WhatsApp SMS Onay</a>
-        <a href="/whatsapp-ikinci-numara">WhatsApp İkinci Numara</a>
-        <a href="/whatsapp-business-sanal-numara">WhatsApp Business Numara</a>
-        <a href="/whatsapp-numara-dogrulama">WhatsApp Numara Doğrulama</a>
-        <a href="/whatsapp-sms-kodu">WhatsApp SMS Kodu</a>
-        <a href="/whatsapp-sanal-numara-fiyatlari">WhatsApp Numara Fiyatları</a>
-        <a href="/whatsapp-numara-alma-rehberi">WhatsApp Numara Alma</a>
-        <a href="/whatsapp-numara-guvenligi">WhatsApp Numara Güvenliği</a>
-        <a href="/sanal-numara-nedir">Sanal Numara Nedir</a>
-        <a href="/sanal-numara-satin-al">Sanal Numara Satın Al</a>
-        <a href="/sanal-numara-fiyatlari">Sanal Numara Fiyatları</a>
-        <a href="/ucuz-sanal-numara">Ucuz Sanal Numara</a>
-        <a href="/gecici-numara">Geçici Numara</a>
-        <a href="/telefon-numarasi-satin-al">Telefon Numarası Al</a>
-        <a href="/yurtdisi-sanal-numara">Yurtdışı Sanal Numara</a>
-        <a href="/turkiye-sanal-numara">Türkiye Sanal Numara</a>
-        <a href="/sanal-numara-kullanimi">Sanal Numara Kullanımı</a>
-        <a href="/sanal-numara-guvenilir-mi">Sanal Numara Güvenilir mi</a>
-        <a href="/sms-onay">SMS Onay</a>
-        <a href="/sms-onay-satin-al">SMS Onay Satın Al</a>
-        <a href="/sms-onay-siteleri">SMS Onay Siteleri</a>
-        <a href="/sms-onay-fiyatlari">SMS Onay Fiyatları</a>
-        <a href="/sms-kodu-alma">SMS Kodu Alma</a>
-        <a href="/mobil-onay">Mobil Onay</a>
-        <a href="/sms-dogrulama">SMS Doğrulama</a>
-        <a href="/sms-onay-guvenligi">SMS Onay Güvenliği</a>
-        <a href="/sms-kodu-gelmiyor">SMS Kodu Gelmiyor</a>
-        <a href="/sms-onay-rehberi">SMS Onay Rehberi</a>
-        <a href="/telegram-sanal-numara">Telegram Sanal Numara</a>
-        <a href="/telegram-sms-onay">Telegram SMS Onay</a>
-        <a href="/instagram-sms-onay">Instagram SMS Onay</a>
-        <a href="/google-sms-onay">Google SMS Onay</a>
-        <a href="/facebook-sms-onay">Facebook SMS Onay</a>
-        <a href="/tiktok-sms-onay">TikTok SMS Onay</a>
-        <a href="/discord-sms-onay">Discord SMS Onay</a>
-        <a href="/x-sms-onay">X SMS Onay</a>
-        <a href="/tinder-sms-onay">Tinder SMS Onay</a>
-        <a href="/gmail-sms-onay">Gmail SMS Onay</a>
-        <a href="/sanal-numara-nasil-alinir">Sanal Numara Nasıl Alınır</a>
-        <a href="/sanal-numara-nasil-satin-alinir">Numara Satın Alma Adımları</a>
-        <a href="/sanal-numara-odeme-yontemleri">Ödeme Yöntemleri</a>
-        <a href="/sanal-numara-iban-ile-odeme">IBAN ile Ödeme</a>
-        <a href="/sms-onay-nasil-calisir">SMS Onay Nasıl Çalışır</a>
-        <a href="/numara-alirken-dikkat-edilmesi-gerekenler">Numara Alırken Dikkat</a>
-        <a href="/sms-onay-iade">SMS Onay İade</a>
-        <a href="/sanal-numara-sss">Sanal Numara SSS</a>
-        <a href="/onay-merkezi-guvenilir-mi">Onay Merkezi Nedir</a>
-        <a href="/onay-merkezi-sanal-numara">Onay Merkezi Sanal Numara</a>
-        <a href="/en-populer-sanal-numara-siteleri">Popüler Sanal Numara Siteleri</a>
-        <a href="/turkiyenin-sanal-numara-saglayicilari">Türkiye Sağlayıcıları</a>
-        <a href="/dunyanin-en-bilinen-sms-onay-siteleri">Global SMS Onay Siteleri</a>
-        <a href="/onay-merkezi-rakipleri-ve-alternatifleri">Onay Merkezi Rakipleri</a>
-        <a href="/smsvar-incelemesi">SMSVAR İncelemesi</a>
-        <a href="/smmsim-incelemesi">SMMSIM İncelemesi</a>
-        <a href="/sms-prime-incelemesi">SMS Prime İncelemesi</a>
-        <a href="/smsvar-alternatifleri">SMSVAR Alternatifleri</a>
-        <a href="/smmsim-alternatifleri">SMMSIM Alternatifleri</a>
-        <a href="/onay-merkezi-karsilastirmasi">Onay Merkezi Karşılaştırması</a>
-        <a href="/5sim-incelemesi">5SIM İncelemesi</a>
-        <a href="/sms-man-incelemesi">SMS-Man İncelemesi</a>
-        <a href="/smspool-incelemesi">SMSPool İncelemesi</a>
-        <a href="/smspva-incelemesi">SMSPVA İncelemesi</a>
-        <a href="/sms-activate-incelemesi">SMS-Activate İncelemesi</a>
-        <a href="/textverified-incelemesi">TextVerified İncelemesi</a>
-        <a href="/herosms-incelemesi">HeroSMS İncelemesi</a>
-        <a href="/onlinesim-incelemesi">OnlineSIM İncelemesi</a>
-        <a href="/quackr-incelemesi">Quackr İncelemesi</a>
-        <a href="/hushed-incelemesi">Hushed İncelemesi</a>
-        <a href="/5sim-alternatifleri">5SIM Alternatifleri</a>
-        <a href="/sms-man-alternatifleri">SMS-Man Alternatifleri</a>
-        <a href="/smspool-alternatifleri">SMSPool Alternatifleri</a>
-        <a href="/smspva-alternatifleri">SMSPVA Alternatifleri</a>
-        <a href="/sms-activate-alternatifleri">SMS-Activate Alternatifleri</a>
-        <a href="/textverified-alternatifleri">TextVerified Alternatifleri</a>
-        <a href="/herosms-alternatifleri">HeroSMS Alternatifleri</a>
-        <a href="/onlinesim-alternatifleri">OnlineSIM Alternatifleri</a>
-        <a href="/quackr-alternatifleri">Quackr Alternatifleri</a>
-        <a href="/sms-onay-siteleri-karsilastirmasi">SMS Onay Karşılaştırması</a>
-        <a href="/sanal-numara-fiyat-karsilastirmasi">Fiyat Karşılaştırması</a>
-        <a href="/en-uygun-sanal-numara-saglayicilari">En Uygun Sağlayıcılar</a>
-        <a href="/ucuz-sms-onay-platformlari">Ucuz SMS Onay</a>
-        <a href="/turk-numarasi-sunan-platformlar">Türk Numarası Platformları</a>
-        <a href="/yabanci-numara-sunan-platformlar">Yabancı Numara Platformları</a>
-        <a href="/whatsapp-numara-saglayicilari-karsilastirmasi">WhatsApp Sağlayıcıları</a>
-        <a href="/telegram-numara-saglayicilari-karsilastirmasi">Telegram Sağlayıcıları</a>
-        <a href="/instagram-sms-onay-saglayicilari">Instagram Sağlayıcıları</a>
-        <a href="/google-sms-onay-saglayicilari">Google Sağlayıcıları</a>
-        <a href="/uzun-sureli-sanal-numara-saglayicilari">Uzun Süreli Sağlayıcılar</a>
-        <a href="/tek-kullanimlik-numara-platformlari">Tek Kullanımlık Platformlar</a>
-        <a href="/sanal-numara-servislerinde-iade-politikalari">İade Politikaları Kıyas</a>
-        <a href="/sanal-numara-servislerinde-odeme-yontemleri">Ödeme Yöntemleri Kıyas</a>
-        <a href="/sms-onay-servislerinde-api-karsilastirmasi">API Karşılaştırması</a>
-        <a href="/sanal-numara-servislerinde-guvenlik-karsilastirmasi">Güvenlik Karşılaştırması</a>
-        <a href="/gercek-sim-ve-voip-numara-karsilastirmasi">Gerçek SIM vs VoIP</a>
-        <a href="/sms-gelmeme-oranlari-ve-servis-guvenilirligi">SMS Gelmeme ve Güvenilirlik</a>
-        <a href="/sanal-numara-satin-alirken-saglayici-secimi">Sağlayıcı Seçim Rehberi</a>
-        <a href="/uluslararasi-sanal-numara-platformlari">Uluslararası Platformlar</a>
-        <a href="/2026-sanal-numara-platformlari-rehberi">2026 Kapsamlı Rehber</a>
+        <a href="/whatsapp-sanal-numara" onclick="return omOpenSeoGuide(event,'whatsapp-sanal-numara')">WhatsApp Sanal Numara</a>
+        <a href="/sanal-numara-fiyatlari" onclick="return omOpenSeoGuide(event,'sanal-numara-fiyatlari')">Sanal Numara Fiyatları</a>
+        <a href="/sms-kodu-gelmiyor" onclick="return omOpenSeoGuide(event,'sms-kodu-gelmiyor')">SMS Kodu Gelmiyor</a>
+        <a href="/sanal-numara-iban-ile-odeme" onclick="return omOpenSeoGuide(event,'sanal-numara-iban-ile-odeme')">IBAN ile Ödeme</a>
+        <a href="/onay-merkezi-guvenilir-mi" onclick="return omOpenSeoGuide(event,'onay-merkezi-guvenilir-mi')">Onay Merkezi Nedir</a>
+        <a href="/sms-onay" onclick="return omOpenSeoGuide(event,'sms-onay')">SMS Onay Sitesi</a>
     </nav>
 
     <div class="auth-buttons" id="authButtons">
@@ -831,6 +797,624 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     <div class="info-card"><strong>🎧 Müşteri Destek Uzmanı</strong><span>Tam Zamanlı · Ofis</span></div>
 </div>
 
+
+<!-- GÖMÜLÜ 6 SEO SAYFASI (TEK HTML DOSYADA ANINDA AÇILIR) -->
+<div id="page-seo-whatsapp-sanal-numara" class="step-section static-page om-inline-seo">
+    <a class="back-button" onclick="omCloseSeoGuide()">← Ana Sayfa</a>
+    <div class="om-inline-kicker">WhatsApp Rehberleri · Onay Merkezi</div>
+    <h1>WhatsApp Sanal Numara Nedir? Nasıl Alınır?</h1>
+    <p class="om-inline-lead">WhatsApp sanal numara, fiziksel bir SIM kart takmanıza gerek kalmadan internet üzerinden tahsis edilen ve yalnızca SMS doğrulama kodu almak için kullanılan geçici telefon numarasıdır. Kişisel numaranızı paylaşmadan ikinci bir hesap açmak veya iş iletişimini ayırmak istediğinizde pratik bir çözüm sunar.</p>
+    <div class="om-inline-actions">
+      <button type="button" class="om-inline-btn-primary" onclick="omCloseSeoGuide()">Hemen Numara Al (Ana Sayfa)</button>
+      <button type="button" class="om-inline-btn-secondary" onclick="showDeposit()">Bakiye Yükle</button>
+    </div>
+    <div class="seo-content" style="margin-top:0;">
+      <div class="om-inline-card">
+        <h2>WhatsApp Sanal Numara Kavramı ve Çalışma Mantığı</h2>
+        <p>Geleneksel mobil hatlarda bir telefon numarasına sahip olmak için operatör bayisinden fiziksel SIM kart almanız gerekir. Sanal numara sisteminde ise telekom altyapısına bağlı numaralar internet paneli üzerinden geçici olarak size tanımlanır. WhatsApp uygulamasında yeni hesap kurulum ekranına bu numarayı yazdığınızda, gönderilen 6 haneli SMS onay kodu doğrudan Onay Merkezi sipariş ekranınıza düşer.</p>
+        <p>Özellikle ikinci el alışveriş platformlarında iletişim kurarken, yurtdışı müşterilere destek verirken veya kişisel numaranızı herkese açık mecralarda gizlemek istediğinizde sanal numara kullanımı büyük kolaylık sağlar.</p>
+        <h3>Tek Kullanımlık Aktivasyon ile Kalıcı Hat Arasındaki Fark</h3>
+        <p>Onay Merkezi üzerinden alınan numaralar 10 dakikalık SMS doğrulama penceresi için tahsis edilen tek kullanımlık aktivasyon numaralarıdır. Hesap doğrulandıktan sonra WhatsApp oturumunuz cihazınızda açık kalır; ancak ileride cihaz değiştirir veya oturumu kapatırsanız aynı numaraya yeniden SMS alamayabilirsiniz. Bu nedenle hesabınızda mutlaka iki adımlı doğrulama PIN kodu tanımlamanız önerilir.</p>
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Kimler WhatsApp İçin Sanal Numara Tercih Eder?</h2>
+        <p>Sanal numara kullanımı yalnızca gizlilik arayan bireysel kullanıcılarla sınırlı değildir. Küçük işletmeler, e-ticaret satıcıları ve freelancer çalışanlar da iş mesajlarını kişisel sohbetlerinden ayırmak için ayrı bir numara tercih eder.</p>
+        
+        <ul>
+          <li>Kişisel telefon numarasını ilan siteleri ve sosyal medya profilleriyle paylaşmak istemeyen bireyler.</li>
+          <li>Aynı telefonda WhatsApp ve WhatsApp Business uygulamalarını iki farklı numarayla çalıştırmak isteyen esnaf ve girişimciler.</li>
+          <li>Yurtdışı alan kodlu (+1, +44, +49 gibi) bir iletişim hattı üzerinden global müşteri iletişimi kurmak isteyen ekipler.</li>
+          <li>Test ve geliştirme amaçlı ikinci bir WhatsApp oturumuna ihtiyaç duyan yazılım geliştiriciler.</li>
+        </ul>
+      </div>
+      <div class="om-inline-card">
+        <h2>Ülke ve Operatör Seçiminin Önemi</h2>
+        <p>Onay Merkezi panelinde Türkiye (+90) dahil 60&#39;tan fazla ülke seçeneği bulunur. Ülke seçimi hem fiyatı hem de numaranın platform tarafından kabul edilme davranışını etkiler. Örneğin Endonezya, Filipinler, Pakistan ve Bangladeş numaraları 15 TL&#39;den başlarken, Türkiye standart WhatsApp numaraları 65 TL ve Türkiye WhatsApp Business numaraları 68 TL&#39;dir.</p>
+        <p>Ülkeyi seçtikten sonra karşınıza Sanal94, Sanal95, Sanal53 gibi operatör seçenekleri çıkar. Her operatörün anlık stok adedi ve fiyatı ekranda şeffaf biçimde gösterilir; böylece bütçenize ve ihtiyacınıza uygun olanı seçebilirsiniz.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>SMS Gelmezse Ne Olur? İptal ve Bakiye İadesi</h2>
+        <p>Bazen seçilen operatörde yoğunluk yaşanabilir veya WhatsApp kodu gecikebilir. Onay Merkezi sisteminde numara alındıktan 2 dakika sonra iptal butonu aktifleşir. 10 dakika içinde SMS kodu ulaşmazsa veya siz 2 dakikanın ardından işlemi iptal ederseniz, ödenen tutar kesintisiz olarak hesap bakiyenize geri döner. Bu sayede farklı bir operatör veya ülke deneyebilirsiniz.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Örnek WhatsApp Sanal Numara Ülke Tarifeleri</h2>
+        <div class="om-inline-table-wrap">
+          <table class="om-inline-table">
+            <thead>
+              <tr><th>Ülke</th><th>Standart WhatsApp</th><th>WhatsApp Business</th><th>Bölge</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Endonezya / Filipinler</td><td>15 TL</td><td>25 TL</td><td>Asya</td></tr>
+              <tr><td>Hindistan / Tayland</td><td>20 TL</td><td>30–35 TL</td><td>Asya</td></tr>
+              <tr><td>Türkiye (+90)</td><td>65 TL</td><td>68 TL</td><td>Popüler</td></tr>
+              <tr><td>Almanya / Fransa / Hollanda</td><td>80 TL</td><td>100 TL</td><td>Avrupa</td></tr>
+              <tr><td>İngiltere (+44)</td><td>85 TL</td><td>110 TL</td><td>Avrupa</td></tr>
+              <tr><td>ABD (+1)</td><td>90 TL</td><td>130 TL</td><td>Amerika</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Onay Merkezi ile WhatsApp Sanal Numara Alma Adımları</h2>
+        <div class="om-inline-steps">
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 1</span>
+            <strong>Hesap Oluşturun ve Bakiye Ekleyin</strong>
+            <p>Kayıt olduktan sonra Bakiye Yükle bölümünden kart veya IBAN ile minimum 100 TL yükleyin.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 2</span>
+            <strong>WhatsApp Servisini Seçin</strong>
+            <p>Ana sayfadaki servis listesinden WhatsApp veya WhatsApp Business seçeneğine tıklayın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 3</span>
+            <strong>Ülke ve Operatör Belirleyin</strong>
+            <p>60+ ülke arasından tercihinizi yapın ve listedeki operatörlerden birini seçin.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 4</span>
+            <strong>Kodu Sipariş Ekranından Alın</strong>
+            <p>Verilen numarayı WhatsApp&#39;a yazın; gelen 6 haneli SMS kodunu 10 dakikalık süre içinde panelden okuyun.</p>
+          </div>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Sık Sorulan Sorular</h2>
+        <div class="faq-item open" onclick="this.classList.toggle('open')"><div class="faq-q">WhatsApp sanal numara almak için fiziksel SIM kart gerekir mi? <span>▼</span></div><div class="faq-a">Hayır. Sanal numaralar internet üzerinden çalışır; telefonunuza ikinci bir SIM kart takmanıza veya eSIM kurmanıza gerek yoktur.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Alınan numara ne kadar süre aktif kalır? <span>▼</span></div><div class="faq-a">Numara tahsis süresi 10 dakikadır. Bu süre içinde SMS doğrulama kodunuzu alıp WhatsApp kurulumunu tamamlamanız gerekir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ücretsiz sanal numara siteleri yerine neden ücretli servis kullanmalıyım? <span>▼</span></div><div class="faq-a">Herkese açık ücretsiz sitelerdeki numaralar yüzlerce kişi tarafından denendiği için WhatsApp tarafından çoğunlukla engellenmiş olur ve gelen kodlar herkesçe görülebilir. Ücretli tahsiste numara işlem süresince yalnızca sizin siparişinize atanır.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">SMS onay kodu gelmezse ücretim yanar mı? <span>▼</span></div><div class="faq-a">Hayır. İşlemden 2 dakika sonra iptal butonunu kullanabilir veya 10 dakikalık sürenin dolmasını bekleyebilirsiniz. Kod gelmeyen siparişlerde tutar bakiyenize iade edilir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">WhatsApp hesabımı kurduktan sonra güvenliği nasıl sağlarım? <span>▼</span></div><div class="faq-a">Doğrulama biter bitmez WhatsApp Ayarlar &gt; Hesap &gt; İki Adımlı Doğrulama menüsünden 6 haneli bir PIN kodu belirlemeniz hesabınızı korumanıza yardımcı olur.</div></div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Diğer Rehberler</h2>
+        <div class="om-inline-related">
+          <a href="/sanal-numara-fiyatlari" onclick="return omOpenSeoGuide(event,'sanal-numara-fiyatlari')"><strong>Sanal Numara Fiyatları</strong><span>Sanal Numara Fiyatları</span></a>
+          <a href="/sms-kodu-gelmiyor" onclick="return omOpenSeoGuide(event,'sms-kodu-gelmiyor')"><strong>SMS Kodu Gelmiyor</strong><span>SMS Kodu Gelmiyor: Nedenleri ve Çözümleri</span></a>
+          <a href="/sanal-numara-iban-ile-odeme" onclick="return omOpenSeoGuide(event,'sanal-numara-iban-ile-odeme')"><strong>IBAN ile Ödeme</strong><span>IBAN ile Bakiye Yükleme Rehberi</span></a>
+          <a href="/onay-merkezi-guvenilir-mi" onclick="return omOpenSeoGuide(event,'onay-merkezi-guvenilir-mi')"><strong>Onay Merkezi Nedir</strong><span>Onay Merkezi Nedir ve Nasıl Çalışır?</span></a>
+          <a href="/sms-onay" onclick="return omOpenSeoGuide(event,'sms-onay')"><strong>SMS Onay Sitesi</strong><span>SMS Onay Sitesi ve Çoklu Uygulama Doğrulama Rehberi</span></a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="page-seo-sanal-numara-fiyatlari" class="step-section static-page om-inline-seo">
+    <a class="back-button" onclick="omCloseSeoGuide()">← Ana Sayfa</a>
+    <div class="om-inline-kicker">Sanal Numara Rehberleri · Onay Merkezi</div>
+    <h1>Sanal Numara Fiyatları</h1>
+    <p class="om-inline-lead">Sanal numara fiyatları sabit bir rakam yerine seçilen platforma, ülke alan koduna ve operatör maliyetlerine göre belirlenir. Onay Merkezi&#39;nde başlangıç fiyatları 15 TL seviyesindedir ve tüm ücretler sipariş onayından önce net şekilde görüntülenir.</p>
+    <div class="om-inline-actions">
+      <button type="button" class="om-inline-btn-primary" onclick="omCloseSeoGuide()">Hemen Numara Al (Ana Sayfa)</button>
+      <button type="button" class="om-inline-btn-secondary" onclick="showDeposit()">Bakiye Yükle</button>
+    </div>
+    <div class="seo-content" style="margin-top:0;">
+      <div class="om-inline-card">
+        <h2>Fiyatlandırmayı Etkileyen 3 Temel Unsur</h2>
+        <p>1. Platform Türü: WhatsApp Business veya TikTok gibi sıkı doğrulama uygulayan servislerin numaraları, standart servislere göre biraz daha yüksek maliyetli olabilir.</p>
+        <p>2. Ülke Popülaritesi: Türkiye (+90), ABD (+1), Kanada (+1) ve İsviçre (+41) gibi ülkelerde numara tedarik maliyeti yüksek olduğu için fiyatlar 65–130 TL bandındadır. Endonezya, Filipinler, Pakistan, Bangladeş ve Vietnam gibi ülkeler ise 15–18 TL aralığındadır.</p>
+        <p>3. Operatör Seçeneği: Aynı ülke içinde Sanal94 veya Sanal53 gibi operatörlerin stok ve iletim maliyetine göre küçük fiyat farkları oluşabilir.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Servis Bazlı Başlangıç Tarifeleri</h2>
+        <p>WhatsApp ve Telegram 15 TL&#39;den, Google/Gmail 18 TL&#39;den, Instagram ve Facebook 20 TL&#39;den, Discord 22 TL&#39;den, TikTok ise 25 TL&#39;den başlayan fiyatlarla sunulmaktadır. İşletme hesabı doğrulamaları için WhatsApp Business tarafında başlangıç 25 TL olup Türkiye için 68 TL olarak belirlenmiştir.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Bakiye Yükleme Bonuslarıyla Birim Maliyeti Düşürmek</h2>
+        <p>Birden fazla hesap doğrulaması yapacak kullanıcılar için Bakiye Yükle ekranındaki kademeli indirim/bonus sistemi önemli bir tasarruf sağlar. 250 TL yüklemeye %30, 500 TL ve üzeri yüklemelere %35 ek bakiye tanımlanır.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Şeffaf Ücret ve İade İlkesi</h2>
+        <p>Onay Merkezi&#39;nde aylık abonelik, gizli yenileme bedeli veya kullanılmayan numaradan kesinti yapılmaz. Yalnızca kodu aldığınız işlemin ücreti düşer; SMS gelmeyen işlemlerde tutar iade edilir.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Bölgelere Göre Sanal Numara Fiyat Aralıkları</h2>
+        <div class="om-inline-table-wrap">
+          <table class="om-inline-table">
+            <thead>
+              <tr><th>Bölge</th><th>Örnek Ülkeler</th><th>Başlangıç Fiyat Aralığı</th><th>Business Aralığı</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Asya (Ekonomik)</td><td>Endonezya, Filipinler, Pakistan, Bangladeş, Vietnam</td><td>15–18 TL</td><td>25–28 TL</td></tr>
+              <tr><td>Asya / Afrika</td><td>Hindistan, Tayland, Nijerya, Kenya</td><td>20–25 TL</td><td>30–40 TL</td></tr>
+              <tr><td>Güney Amerika &amp; BDT</td><td>Brezilya, Arjantin, Ukrayna, Rusya, Azerbaycan</td><td>30–40 TL</td><td>45–60 TL</td></tr>
+              <tr><td>Türkiye &amp; Orta Doğu</td><td>Türkiye (+90), Suudi Arabistan, BAE</td><td>65–75 TL</td><td>68–95 TL</td></tr>
+              <tr><td>Avrupa Birliği</td><td>Almanya, Fransa, Hollanda, İtalya, İspanya</td><td>75–85 TL</td><td>90–110 TL</td></tr>
+              <tr><td>Kuzey Amerika &amp; İsviçre</td><td>ABD, Kanada, İsviçre, Avustralya</td><td>90–95 TL</td><td>120–130 TL</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>En Uygun Fiyatı Bulma Adımları</h2>
+        <div class="om-inline-steps">
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 1</span>
+            <strong>Ülke Zorunluluğunuzu Belirleyin</strong>
+            <p>Özel bir ülke şartınız yoksa Asya sekmesindeki 15–20 TL&#39;lik seçenekleri inceleyin.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 2</span>
+            <strong>Operatör Listesini Karşılaştırın</strong>
+            <p>Ülke içine girerek en ekonomik operatör seçeneğini görün.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 3</span>
+            <strong>Toplu Bakiye Avantajını Kullanın</strong>
+            <p>250 TL veya 500 TL yüklemelerde %30–%35 ek bakiyeden faydalanın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 4</span>
+            <strong>İade Güvencesiyle Deneyin</strong>
+            <p>Kod gelmezse iptal edip bakiyenizi başka bir pakete aktarın.</p>
+          </div>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Sık Sorulan Sorular</h2>
+        <div class="faq-item open" onclick="this.classList.toggle('open')"><div class="faq-q">15 TL&#39;lik sanal numara ile 65 TL&#39;lik numara arasında kalite farkı var mı? <span>▼</span></div><div class="faq-a">Her ikisi de SMS onay kodu almak için çalışır. Temel fark ülkenin alan kodu ve operatör tedarik maliyetidir; örneğin Türkiye (+90) numarası isteyenler 65 TL öder.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Fiyatlar sabit mi yoksa güncellenebilir mi? <span>▼</span></div><div class="faq-a">Yönetici panelinden piyasa ve operatör maliyetlerine göre güncellenebilir; satın alma anında ekranda yazan fiyat geçerlidir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Minimum bakiye yükleme limiti neden 100 TL? <span>▼</span></div><div class="faq-a">Ödeme işlem maliyetlerini optimize etmek ve kullanıcıların birden fazla doğrulama veya operatör denemesini kesintisiz yapabilmesini sağlamak için alt sınır 100 TL&#39;dir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">500 TL yüklersem hesabıma ne kadar bakiye geçer? <span>▼</span></div><div class="faq-a">%35 bonus kampanyası kapsamında 500 TL yüklemede ek 175 TL bonus ile toplam 675 TL kullanılabilir bakiye sunulur.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Kod gelmeyen numaradan ücret kesilir mi? <span>▼</span></div><div class="faq-a">Sipariş anında bakiye bloke edilir; 2 dakika sonra iptal ederseniz veya 10 dakika içinde SMS gelmezse ücret eksiksiz olarak bakiyenize geri döner.</div></div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Diğer Rehberler</h2>
+        <div class="om-inline-related">
+          <a href="/whatsapp-sanal-numara" onclick="return omOpenSeoGuide(event,'whatsapp-sanal-numara')"><strong>WhatsApp Sanal Numara</strong><span>WhatsApp Sanal Numara Nedir? Nasıl Alınır?</span></a>
+          <a href="/sanal-numara-iban-ile-odeme" onclick="return omOpenSeoGuide(event,'sanal-numara-iban-ile-odeme')"><strong>IBAN ile Ödeme</strong><span>IBAN ile Bakiye Yükleme Rehberi</span></a>
+          <a href="/sms-kodu-gelmiyor" onclick="return omOpenSeoGuide(event,'sms-kodu-gelmiyor')"><strong>SMS Kodu Gelmiyor</strong><span>SMS Kodu Gelmiyor: Nedenleri ve Çözümleri</span></a>
+          <a href="/onay-merkezi-guvenilir-mi" onclick="return omOpenSeoGuide(event,'onay-merkezi-guvenilir-mi')"><strong>Onay Merkezi Nedir</strong><span>Onay Merkezi Nedir ve Nasıl Çalışır?</span></a>
+          <a href="/sms-onay" onclick="return omOpenSeoGuide(event,'sms-onay')"><strong>SMS Onay Sitesi</strong><span>SMS Onay Sitesi ve Çoklu Uygulama Doğrulama Rehberi</span></a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="page-seo-sms-kodu-gelmiyor" class="step-section static-page om-inline-seo">
+    <a class="back-button" onclick="omCloseSeoGuide()">← Ana Sayfa</a>
+    <div class="om-inline-kicker">SMS Onay Rehberleri · Onay Merkezi</div>
+    <h1>SMS Kodu Gelmiyor: Nedenleri ve Çözümleri</h1>
+    <p class="om-inline-lead">Sanal numara kullanırken doğrulama kodunun beklenen sürede ekrana düşmemesi sıkça karşılaşılan ve çözümü olan bir durumdur. Nedenin operatörden, numara formatından ya da uygulama içi kısıtlamalardan kaynaklandığını tespit ederek sorunu birkaç dakikada aşabilirsiniz.</p>
+    <div class="om-inline-actions">
+      <button type="button" class="om-inline-btn-primary" onclick="omCloseSeoGuide()">Hemen Numara Al (Ana Sayfa)</button>
+      <button type="button" class="om-inline-btn-secondary" onclick="showDeposit()">Bakiye Yükle</button>
+    </div>
+    <div class="seo-content" style="margin-top:0;">
+      <div class="om-inline-card">
+        <h2>SMS Kodu Neden Gelmez? 5 Yaygın Sebep</h2>
+        <p>Kodun panele ulaşmamasının en yaygın nedenleri şunlardır:</p>
+        
+        <ul>
+          <li>Operatör Yoğunluğu: Seçilen operatörün SMS geçidinde anlık gecikme veya tıkanıklık yaşanıyor olabilir.</li>
+          <li>Hatalı Numara Formatı: Uygulamada ülke kodu zaten seçiliyken numarayı tekrar ülke koduyla veya başında 0 ile yazmak mesajın gitmesini engeller.</li>
+          <li>Cihaz İçi Sık Deneme Kilidi: Aynı cihazdan dakikalar içinde art arda çok fazla doğrulama istemek uygulamanın SMS gönderimini durdurmasına yol açar.</li>
+          <li>Sesli Arama Seçilmesi: &#39;Beni Ara&#39; seçeneği yerine mutlaka &#39;SMS Gönder&#39; seçeneği kullanılmalıdır.</li>
+          <li>Platform Filtresi: İlgili ülke veya numara serisi o uygulama tarafından geçici olarak kısıtlanmış olabilir.</li>
+        </ul>
+      </div>
+      <div class="om-inline-card">
+        <h2>Onay Merkezi&#39;nde İptal ve İade ile Hızlı Çözüm</h2>
+        <p>Sipariş ekranında 10 dakikalık geri sayım başlar. İlk 2 dakika dolduğunda &#39;İptal Et ve İade Al&#39; butonu aktifleşir. Kod hala düşmediyse bu butona basarak ödediğiniz tutarı anında bakiyenize geri alabilirsiniz. 10 dakika sonunda kod gelmezse iade otomatik gerçekleşir.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Operatör ve Ülke Değiştirme Stratejisi</h2>
+        <p>İade aldığınız bakiyeyle aynı numarayı zorlamak yerine önce aynı ülke altındaki farklı bir operatörü (örneğin Sanal94 yerine Sanal95 veya Sanal53) deneyin. Yine sonuç alamazsanız farklı bir ülke alan koduna geçmek genellikle sorunu hemen çözer.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Uygulama ve Tarayıcı Tarafında Alınacak Önlemler</h2>
+        <p>Özellikle Google, Instagram veya WhatsApp gibi platformlarda art arda başarısız denemelerden sonra uygulama önbelleğini temizlemek, VPN&#39;i kapatmak veya temiz bir tarayıcı sekmesinden ilerlemek doğrulama isteğinin kabul edilme olasılığını artırır.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>SMS Kodu Gelmeme Durumuna Göre Hızlı Müdahale</h2>
+        <div class="om-inline-table-wrap">
+          <table class="om-inline-table">
+            <thead>
+              <tr><th>Durum</th><th>Yapılmaması Gereken</th><th>Doğru Çözüm</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>2 dakikadır kod yok</td><td>Aynı numarayı 5 kez tekrar istemek</td><td>2 dk sonunda iptal edip başka operatör seçin</td></tr>
+              <tr><td>&#39;Beni Ara&#39; uyarısı çıktı</td><td>Sesli arama beklemek</td><td>SMS seçeneği yoksa iptal edip farklı ülke deneyin</td></tr>
+              <tr><td>Numara yanlış uyarısı</td><td>Tekrar tekrar aynı şekilde girmek</td><td>Ülke kodunu ve baştaki 0&#39;ı kontrol edin</td></tr>
+              <tr><td>Süre 10 dakikaya ulaştı</td><td>Panik yapmak</td><td>Sistem bakiyeyi otomatik iade eder, yeniden sipariş verin</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Kod Gelmediğinde İzlenecek 4 Adım</h2>
+        <div class="om-inline-steps">
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 1</span>
+            <strong>Numara Girişini Gözden Geçirin</strong>
+            <p>Ülke kodu ve rakamların eksiksiz girildiğini doğrulayın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 2</span>
+            <strong>2 Dakikalık Süreyi Bekleyin</strong>
+            <p>Sipariş panelindeki sayacın 2 dakikayı geçmesini bekleyin.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 3</span>
+            <strong>İptal Et ve İade Al&#39;a Basın</strong>
+            <p>Aktifleşen kırmızı iptal butonuyla bakiyenizi kesintisiz geri alın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 4</span>
+            <strong>Başka Operatör/Ülke Deneyin</strong>
+            <p>Farklı bir operatör veya alternatif ülke seçerek tekrar sipariş verin.</p>
+          </div>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Sık Sorulan Sorular</h2>
+        <div class="faq-item open" onclick="this.classList.toggle('open')"><div class="faq-q">SMS kodu neden bazen 5 dakika sonra gelir? <span>▼</span></div><div class="faq-a">Uluslararası operatör yönlendirmelerinde anlık yoğunluğa bağlı olarak mesajın panele düşmesi birkaç dakika sürebilir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">2 dakika dolmadan iptal edebilir miyim? <span>▼</span></div><div class="faq-a">İlk 2 dakika SMS&#39;in ulaşması için ayrılan standart süredir; bu nedenle iptal butonu tam 2. dakikada aktifleşir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">İptal ettiğimde bakiyemden komisyon kesilir mi? <span>▼</span></div><div class="faq-a">Hayır. Sipariş için ödediğiniz tutarın tamamı bakiyenize geri eklenir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Kod gelmediği için canlı desteğe yazmam gerekir mi? <span>▼</span></div><div class="faq-a">Standart iadeler 2 dakika sonrası iptal butonuyla veya 10 dakika sonunda otomatik yapılır; ek bir sorun yaşarsanız Canlı Destek&#39;e yazabilirsiniz.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">VPN açıkken kod gelmemesi normal mi? <span>▼</span></div><div class="faq-a">Bazı uygulamalar şüpheli VPN IP&#39;lerinden gelen kod isteklerini sessizce engelleyebilir. Mümkünse normal bağlantıyla deneyin.</div></div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Diğer Rehberler</h2>
+        <div class="om-inline-related">
+          <a href="/whatsapp-sanal-numara" onclick="return omOpenSeoGuide(event,'whatsapp-sanal-numara')"><strong>WhatsApp Sanal Numara</strong><span>WhatsApp Sanal Numara Nedir? Nasıl Alınır?</span></a>
+          <a href="/sanal-numara-fiyatlari" onclick="return omOpenSeoGuide(event,'sanal-numara-fiyatlari')"><strong>Sanal Numara Fiyatları</strong><span>Sanal Numara Fiyatları</span></a>
+          <a href="/sanal-numara-iban-ile-odeme" onclick="return omOpenSeoGuide(event,'sanal-numara-iban-ile-odeme')"><strong>IBAN ile Ödeme</strong><span>IBAN ile Bakiye Yükleme Rehberi</span></a>
+          <a href="/onay-merkezi-guvenilir-mi" onclick="return omOpenSeoGuide(event,'onay-merkezi-guvenilir-mi')"><strong>Onay Merkezi Nedir</strong><span>Onay Merkezi Nedir ve Nasıl Çalışır?</span></a>
+          <a href="/sms-onay" onclick="return omOpenSeoGuide(event,'sms-onay')"><strong>SMS Onay Sitesi</strong><span>SMS Onay Sitesi ve Çoklu Uygulama Doğrulama Rehberi</span></a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="page-seo-sanal-numara-iban-ile-odeme" class="step-section static-page om-inline-seo">
+    <a class="back-button" onclick="omCloseSeoGuide()">← Ana Sayfa</a>
+    <div class="om-inline-kicker">Satın Alma &amp; Ödeme · Onay Merkezi</div>
+    <h1>IBAN ile Bakiye Yükleme Rehberi</h1>
+    <p class="om-inline-lead">Kredi veya banka kartı bilgilerinizi paylaşmadan bakiye yüklemek istiyorsanız IBAN ile Havale/EFT/FAST yöntemi en sade seçenektir. Güncel IBAN bilgisini panelden kopyalayıp transferinizi tamamladıktan sonra ödeme bildirimi formunu doldurmanız yeterlidir.</p>
+    <div class="om-inline-actions">
+      <button type="button" class="om-inline-btn-primary" onclick="omCloseSeoGuide()">Hemen Numara Al (Ana Sayfa)</button>
+      <button type="button" class="om-inline-btn-secondary" onclick="showDeposit()">Bakiye Yükle</button>
+    </div>
+    <div class="seo-content" style="margin-top:0;">
+      <div class="om-inline-card">
+        <h2>Güncel IBAN ve Hesap Sahibi Bilgisini Kontrol Etme</h2>
+        <p>Ödeme yapmadan önce mutlaka Bakiye Yükle sayfasında ekranda görünen güncel IBAN numarasını ve hesap sahibi adını kontrol edin. &#39;IBAN&#39;ı Kopyala&#39; butonunu kullanarak numarayı hatasız şekilde panoya alabilirsiniz. Eski tarihli veya başka kaynaklardan alınmış IBAN numaralarına transfer yapmayın.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Havale / EFT / FAST Gönderiminde Dikkat Edilecekler</h2>
+        <p>Mobil bankacılık uygulamanızdan transfer yaparken minimum tutarın 100 TL olduğunu unutmayın. FAST sistemiyle 7/24 anında transfer yapılabilse de, gönderdiğiniz tutarın bildirim formuna yazdığınız rakamla birebir aynı olması kontrol sürecini hızlandırır.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>&#39;IBAN ile Ödedim, Bildir&#39; Formunu Doldurma</h2>
+        <p>Banka transferini tamamladıktan hemen sonra sitedeki turuncu &#39;IBAN ile Ödedim, Bildir&#39; butonuna tıklayın. Açılan formda şu üç bilgi istenir:</p>
+        
+        <ul>
+          <li>Gönderen Ad Soyad: Banka hesabının sahibi olan kişinin adı ve soyadı (en az 3 karakter).</li>
+          <li>Gönderim Saati: Transferi gerçekleştirdiğiniz saat ve dakika bilgisi.</li>
+          <li>Gönderilen Tutar (₺): En az 100 TL olmak üzere gönderdiğiniz tam tutar.</li>
+        </ul>
+      </div>
+      <div class="om-inline-card">
+        <h2>Bildirim Sonrası Bakiye Tanımlama Süreci</h2>
+        <p>Bildirimi gönderdiğinizde kaydınız yönetici onay ekranına düşer. Dekont/transfer eşleşmesi doğrulandığında bakiyeniz hesabınıza eklenir ve varsa %30–%35 bonus avantajıyla birlikte tüm servislerde hemen kullanılabilir hale gelir.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>IBAN Ödeme Bildirimi Alanları</h2>
+        <div class="om-inline-table-wrap">
+          <table class="om-inline-table">
+            <thead>
+              <tr><th>Form Alanı</th><th>Nasıl Doldurulur?</th><th>Örnek</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Gönderen Ad Soyad</td><td>Transferi yapan banka hesabının sahibi</td><td>Ahmet Yılmaz</td></tr>
+              <tr><td>Gönderim Saati</td><td>Dekonttaki saat bilgisi</td><td>14:35</td></tr>
+              <tr><td>Gönderilen Tutar</td><td>Transfer edilen net TL tutarı (Min. 100)</td><td>250</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>4 Adımda IBAN ile Bakiye Yükleme</h2>
+        <div class="om-inline-steps">
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 1</span>
+            <strong>IBAN&#39;ı Kopyalayın</strong>
+            <p>Bakiye Yükle sayfasındaki güncel IBAN ve alıcı adını kopyalayın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 2</span>
+            <strong>Bankadan Transfer Yapın</strong>
+            <p>En az 100 TL tutarında Havale, EFT veya FAST gönderin.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 3</span>
+            <strong>Bildirim Formunu Açın</strong>
+            <p>&#39;IBAN ile Ödedim, Bildir&#39; butonuna tıklayıp 3 alanı doldurun.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 4</span>
+            <strong>Onayı Bekleyin</strong>
+            <p>Kontrol tamamlandığında bakiyeniz üst barda otomatik güncellenir.</p>
+          </div>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Sık Sorulan Sorular</h2>
+        <div class="faq-item open" onclick="this.classList.toggle('open')"><div class="faq-q">Başkasının banka hesabından IBAN ödemesi yapabilir miyim? <span>▼</span></div><div class="faq-a">Evet, ancak ödeme bildirim formundaki &#39;Gönderen Ad Soyad&#39; kısmına mutlaka parayı gönderen hesabın sahibinin adını yazmalısınız.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">IBAN ödemesinde minimum tutar nedir? <span>▼</span></div><div class="faq-a">Minimum bakiye yükleme tutarı 100 TL&#39;dir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">EFT veya Havale hafta sonu da geçer mi? <span>▼</span></div><div class="faq-a">Bankanızın FAST limiti dahilinde 7/24 gönderim yapabilirsiniz; normal EFT işlemleri ilk iş gününde hesaba geçer.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Bildirim yapmayı unutursam ne olur? <span>▼</span></div><div class="faq-a">Sağ alttaki Canlı Destek penceresinden veya Bakiye Yükle ekranındaki bildirim formundan bilgilerinizi hemen iletebilirsiniz.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">IBAN ile 500 TL yüklersem %35 bonus alır mıyım? <span>▼</span></div><div class="faq-a">Evet, kampanya koşulları dahilinde 250 TL ve 500 TL üzeri yüklemelerde bonus fırsatları geçerlidir.</div></div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Diğer Rehberler</h2>
+        <div class="om-inline-related">
+          <a href="/sanal-numara-fiyatlari" onclick="return omOpenSeoGuide(event,'sanal-numara-fiyatlari')"><strong>Sanal Numara Fiyatları</strong><span>Sanal Numara Fiyatları</span></a>
+          <a href="/whatsapp-sanal-numara" onclick="return omOpenSeoGuide(event,'whatsapp-sanal-numara')"><strong>WhatsApp Sanal Numara</strong><span>WhatsApp Sanal Numara Nedir? Nasıl Alınır?</span></a>
+          <a href="/sms-kodu-gelmiyor" onclick="return omOpenSeoGuide(event,'sms-kodu-gelmiyor')"><strong>SMS Kodu Gelmiyor</strong><span>SMS Kodu Gelmiyor: Nedenleri ve Çözümleri</span></a>
+          <a href="/onay-merkezi-guvenilir-mi" onclick="return omOpenSeoGuide(event,'onay-merkezi-guvenilir-mi')"><strong>Onay Merkezi Nedir</strong><span>Onay Merkezi Nedir ve Nasıl Çalışır?</span></a>
+          <a href="/sms-onay" onclick="return omOpenSeoGuide(event,'sms-onay')"><strong>SMS Onay Sitesi</strong><span>SMS Onay Sitesi ve Çoklu Uygulama Doğrulama Rehberi</span></a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="page-seo-onay-merkezi-guvenilir-mi" class="step-section static-page om-inline-seo">
+    <a class="back-button" onclick="omCloseSeoGuide()">← Ana Sayfa</a>
+    <div class="om-inline-kicker">Satın Alma &amp; Ödeme · Onay Merkezi</div>
+    <h1>Onay Merkezi Nedir ve Nasıl Çalışır?</h1>
+    <p class="om-inline-lead">Onay Merkezi (onaymerkezi.org), WhatsApp, Telegram, Instagram, Google/Gmail, Facebook, TikTok ve Discord gibi dijital platformlar için 60&#39;tan fazla ülkeden tek kullanımlık SMS onay ve sanal numara hizmeti sunan çevrimiçi bir platformdur.</p>
+    <div class="om-inline-actions">
+      <button type="button" class="om-inline-btn-primary" onclick="omCloseSeoGuide()">Hemen Numara Al (Ana Sayfa)</button>
+      <button type="button" class="om-inline-btn-secondary" onclick="showDeposit()">Bakiye Yükle</button>
+    </div>
+    <div class="seo-content" style="margin-top:0;">
+      <div class="om-inline-card">
+        <h2>Onay Merkezi Hangi Hizmetleri Sunar?</h2>
+        <p>Platformun ana odağı, kullanıcıların kişisel telefon numaralarını paylaşmadan hızlı biçimde SMS doğrulaması yapabilmesidir. Ana sayfada 8 temel sosyal medya/mesajlaşma servisinin yanı sıra PUBG, Free Fire, Valorant, Mobile Legends ve Steam için Oyun Jetonları kategorisi de yer alır.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Şeffaflık, İade ve Müşteri Desteği İlkeleri</h2>
+        <p>Kullanıcıların bir platformu değerlendirirken baktığı en önemli başlıklar şeffaflık ve ulaşılabilirliktir:</p>
+        
+        <ul>
+          <li>Net Fiyat Gösterimi: Her servis ve ülke için fiyatlar (15 TL&#39;den başlayan) satın alma öncesinde ekranda açıkça yer alır.</li>
+          <li>Kod Gelmezse İade: 2 dakika sonra aktifleşen iptal butonu ve 10 dakika zaman aşımı sonrası bakiye iadesi uygulanır.</li>
+          <li>Çoklu Ödeme Alternatifi: Kart ile ödeme arayüzünün yanında IBAN ile Havale/EFT bildirimi seçeneği de mevcuttur.</li>
+          <li>İletişim ve Yasal Metinler: Canlı Destek sohbet penceresi, destek@onaymerkezi.org adresi, Gizlilik Politikası, Kullanım Koşulları ve KVKK Aydınlatma Metni herkese açıktır.</li>
+        </ul>
+      </div>
+      <div class="om-inline-card">
+        <h2>Sipariş Geçmişi ve Kayıt Takibi</h2>
+        <p>Üyelik hesabınıza giriş yaptığınızda alt menüden geçmiş siparişlerinizi, aldığınız numaraları, işlem tarihlerini ve gelen SMS kodlarını istediğiniz zaman görüntüleyebilirsiniz.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Sorumlu ve Bilinçli Kullanım Çerçevesi</h2>
+        <p>Onay Merkezi yalnızca yasal gizlilik, ikinci hat oluşturma ve yazılım test ihtiyaçları için hizmet verir. Herhangi bir garanti veya sınırsız kalıcılık iddiası yerine, sistemin nasıl çalıştığını ve sınırlarını açıkça paylaşmayı esas alır.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Onay Merkezi Platform Özellikleri</h2>
+        <div class="om-inline-table-wrap">
+          <table class="om-inline-table">
+            <thead>
+              <tr><th>Özellik</th><th>Detay</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Web Adresi</td><td>https://onaymerkezi.org</td></tr>
+              <tr><td>Destek E-postası</td><td>destek@onaymerkezi.org</td></tr>
+              <tr><td>Ülke Kapsamı</td><td>60+ ülke (Popüler, Avrupa, Asya, Amerika, Afrika, Orta Doğu)</td></tr>
+              <tr><td>Desteklenen Servisler</td><td>WhatsApp, WA Business, Telegram, Gmail, Instagram, Facebook, TikTok, Discord</td></tr>
+              <tr><td>Ödeme Seçenekleri</td><td>IBAN Havale/EFT bildirimi ve Kart ile ödeme (Min. 100 TL)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Onay Merkezi Nasıl Çalışır?</h2>
+        <div class="om-inline-steps">
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 1</span>
+            <strong>Üye Olun</strong>
+            <p>Kullanım Koşulları ve KVKK onayıyla hesabınızı açın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 2</span>
+            <strong>Bakiye Yükleyin</strong>
+            <p>IBAN veya kartla en az 100 TL bakiye tanımlayın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 3</span>
+            <strong>Servis ve Ülke Seçin</strong>
+            <p>İhtiyacınız olan servisi, ülkeyi ve operatörü seçin.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 4</span>
+            <strong>Numara Alıp Onaylayın</strong>
+            <p>10 dakikalık sürede SMS kodunu alın; kod gelmezse iade hakkını kullanın.</p>
+          </div>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Sık Sorulan Sorular</h2>
+        <div class="faq-item open" onclick="this.classList.toggle('open')"><div class="faq-q">Onay Merkezi ile nasıl iletişime geçebilirim? <span>▼</span></div><div class="faq-a">Site içindeki Canlı Destek sohbet penceresinden veya destek@onaymerkezi.org e-posta adresinden ulaşabilirsiniz.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Kod gelmediğinde bakiyem kesin iade edilir mi? <span>▼</span></div><div class="faq-a">Evet. 2 dakika dolduğunda iptal butonunu kullanabilir veya 10 dakikalık sürenin bitiminde otomatik bakiye iadesi alabilirsiniz.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ücretsiz deneme numarası veriliyor mu? <span>▼</span></div><div class="faq-a">Hayır. Ücretsiz numaralar güvenlik ve spam riski taşıdığı için yalnızca üyelere özel bakiye sistemiyle (15 TL&#39;den başlayan fiyatlarla) tahsis yapılır.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Kişisel verilerim nasıl korunur? <span>▼</span></div><div class="faq-a">Tüm işlemler Gizlilik Politikası ve 6698 sayılı KVKK Aydınlatma Metni ilkelerine göre yürütülür.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Onay Merkezi&#39;ni mobil cihazımdan kullanabilir miyim? <span>▼</span></div><div class="faq-a">Evet, mobil uyumlu arayüz sayesinde telefonunuzdan kolayca işlem yapabilirsiniz.</div></div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Diğer Rehberler</h2>
+        <div class="om-inline-related">
+          <a href="/whatsapp-sanal-numara" onclick="return omOpenSeoGuide(event,'whatsapp-sanal-numara')"><strong>WhatsApp Sanal Numara</strong><span>WhatsApp Sanal Numara Nedir? Nasıl Alınır?</span></a>
+          <a href="/sanal-numara-fiyatlari" onclick="return omOpenSeoGuide(event,'sanal-numara-fiyatlari')"><strong>Sanal Numara Fiyatları</strong><span>Sanal Numara Fiyatları</span></a>
+          <a href="/sms-kodu-gelmiyor" onclick="return omOpenSeoGuide(event,'sms-kodu-gelmiyor')"><strong>SMS Kodu Gelmiyor</strong><span>SMS Kodu Gelmiyor: Nedenleri ve Çözümleri</span></a>
+          <a href="/sanal-numara-iban-ile-odeme" onclick="return omOpenSeoGuide(event,'sanal-numara-iban-ile-odeme')"><strong>IBAN ile Ödeme</strong><span>IBAN ile Bakiye Yükleme Rehberi</span></a>
+          <a href="/sms-onay" onclick="return omOpenSeoGuide(event,'sms-onay')"><strong>SMS Onay Sitesi</strong><span>SMS Onay Sitesi ve Çoklu Uygulama Doğrulama Rehberi</span></a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="page-seo-sms-onay" class="step-section static-page om-inline-seo">
+    <a class="back-button" onclick="omCloseSeoGuide()">← Ana Sayfa</a>
+    <div class="om-inline-kicker">SMS Onay Rehberleri · Onay Merkezi</div>
+    <h1>SMS Onay Sitesi ve Çoklu Uygulama Doğrulama Rehberi</h1>
+    <p class="om-inline-lead">Onay Merkezi (onaymerkezi.org), tek bir panel üzerinden WhatsApp, WhatsApp Business, Telegram, Instagram, Google/Gmail, Facebook, TikTok ve Discord için saniyeler içinde tek kullanımlık sanal numara ve SMS onay kodu sunan Türkiye merkezli doğrulama platformudur.</p>
+    <div class="om-inline-actions">
+      <button type="button" class="om-inline-btn-primary" onclick="omCloseSeoGuide()">Hemen Numara Al (Ana Sayfa)</button>
+      <button type="button" class="om-inline-btn-secondary" onclick="showDeposit()">Bakiye Yükle</button>
+    </div>
+    <div class="seo-content" style="margin-top:0;">
+      <div class="om-inline-card">
+        <h2>Tek Panelde Geniş Çoklu Uygulama SMS Onay Kataloğu</h2>
+        <p>Kaliteli bir SMS onay sitesi kullanırken en önemli beklenti, ihtiyacınız olan her platform için ayrı site aramadan tek bakiye üzerinden hızlı doğrulama yapabilmektir. Onay Merkezi panelinde mesajlaşma, sosyal medya ve e-posta platformları tek bir sade katalog altında toplanmıştır.</p>
+        <p>Ana ekrandaki servis listesinden uygulama seçimi yaptığınızda sistem o servise ait güncel ülke ve operatör stoklarını anında ekrana getirir.</p>
+        
+        <ul>
+          <li>Mesajlaşma Uygulamaları: WhatsApp (15 TL&#39;den başlayan), WhatsApp Business (25 TL&#39;den başlayan) ve Telegram (15 TL&#39;den başlayan) için yüksek teslimat oranlı sanal numaralar.</li>
+          <li>Sosyal Medya Hesapları: Instagram (20 TL+), Facebook (20 TL+), TikTok (25 TL+) ve Discord (22 TL+) hesap doğrulamaları için özel hat seçenekleri.</li>
+          <li>E-Posta ve Bulut Doğrulaması: Google ve Gmail hesap açılışlarında telefon doğrulaması (18 TL+) için çoklu ülke alternatifi.</li>
+          <li>Oyun Jetonları ve Dijital Servisler: PUBG, Free Fire, Valorant, Mobile Legends ve Steam için tek panel üzerinden hızlı erişim.</li>
+        </ul>
+      </div>
+      <div class="om-inline-card">
+        <h2>Türkiye (+90) Numara Stoğu ve 60+ Uluslararası Ülke</h2>
+        <p>Kullanıcıların bir kısmı yalnızca yerel hesaplar için +90 Türkiye sanal numarası ararken, bir kısmı da ekonomik Asya hatlarını veya Avrupa ve Amerika alan kodlarını tercih eder. Onay Merkezi her iki ihtiyacı da aynı panelde karşılar.</p>
+        <p>Türkiye (+90) WhatsApp numaraları 65 TL, Türkiye WhatsApp Business numaraları ise 68 TL olarak sunulur. Daha düşük bütçeli veya global doğrulama senaryolarında ise Endonezya, Filipinler, Pakistan, Bangladeş ve Vietnam 15–18 TL aralığında; Almanya, Fransa, Hollanda, İngiltere ve ABD numaraları ise 75–130 TL bandında listelenir.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Anlık SMS Teslimatı ve Kod Gelmezse Kesintisiz İade</h2>
+        <p>SMS onay sürecinde hız kadar iade güvencesi de belirleyicidir. Numarayı seçtiğiniz anda sistem 10 dakikalık aktif bir onay penceresi açar ve gelen SMS kodu otomatik olarak sipariş ekranına yansır.</p>
+        <p>Operatör yoğunluğu nedeniyle mesaj gecikirse 2. dakikanın sonunda iptal butonu açılır; tek tıkla işlemi iptal edip bakiyenizi geri alabilir, farklı bir operatör (Sanal94, Sanal95, Sanal53 gibi) veya başka bir ülke deneyebilirsiniz. 10 dakika içinde kod ulaşmazsa bakiye iadesi sistem tarafından otomatik gerçekleştirilir.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>7/24 IBAN / Havale / EFT, Kart Ödeme ve %35&#39;e Varan Bonus</h2>
+        <p>Türk kullanıcıların döviz veya karmaşık cüzdanlarla uğraşmadan işlem yapabilmesi için Onay Merkezi tamamen Türk lirası (₺) altyapısıyla çalışır. Bakiye Yükle ekranında minimum 100 TL olmak üzere banka/kredi kartı ya da 7/24 IBAN/Havale/EFT bildirimi yöntemlerinden dilediğinizi seçebilirsiniz.</p>
+        <p>Düzenli veya çoklu numara ihtiyacı olan kullanıcılar için 250 TL ve üzeri bakiye yüklemelerinde %30, 500 TL ve üzeri bakiye yüklemelerinde %35 ek bakiye bonusu tanımlanır; böylece birim doğrulama maliyeti ciddi ölçüde düşer.</p>
+        
+        
+      </div>
+      <div class="om-inline-card">
+        <h2>Onay Merkezi Desteklenen Servis ve Başlangıç Tarifeleri</h2>
+        <div class="om-inline-table-wrap">
+          <table class="om-inline-table">
+            <thead>
+              <tr><th>Servis / Platform</th><th>Başlangıç Fiyatı</th><th>Türkiye (+90) / Öne Çıkan Bölge</th><th>Tahsis &amp; İade</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>WhatsApp</td><td>15 TL</td><td>TR 65 TL · Asya 15–20 TL · AB/ABD 75–90 TL</td><td>10 dk süre · 2 dk sonrası iptal</td></tr>
+              <tr><td>WhatsApp Business</td><td>25 TL</td><td>TR 68 TL · Asya 25–35 TL · AB/ABD 90–130 TL</td><td>10 dk süre · Kod yoksa oto iade</td></tr>
+              <tr><td>Telegram</td><td>15 TL</td><td>60+ ülke aktif stok</td><td>Anlık panel kodu</td></tr>
+              <tr><td>Google / Gmail</td><td>18 TL</td><td>Asya, Avrupa ve Amerika seçenekleri</td><td>Tek kullanımlık SMS onay</td></tr>
+              <tr><td>Instagram &amp; Facebook</td><td>20 TL</td><td>Çoklu operatör ve ülke desteği</td><td>Kesintisiz bakiye iadesi</td></tr>
+              <tr><td>Discord &amp; TikTok</td><td>22–25 TL</td><td>Global doğrulama hatları</td><td>7/24 canlı stok ekranı</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Onay Merkezi ile 4 Adımda Hızlı SMS Onay</h2>
+        <div class="om-inline-steps">
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 1</span>
+            <strong>Üye Olun ve Giriş Yapın</strong>
+            <p>Saniyeler içinde hesabınızı oluşturun ve kullanıcı paneline girin.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 2</span>
+            <strong>TL Bakiye Yükleyin</strong>
+            <p>Kart veya 7/24 IBAN/Havale/EFT ile minimum 100 TL yükleyin; 250 TL+ %30, 500 TL+ %35 bonus kazanın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 3</span>
+            <strong>Uygulama, Ülke ve Operatör Seçin</strong>
+            <p>WhatsApp, Telegram, Instagram, Google veya diğer servisler arasından +90 TR ya da 60+ ülkeden seçim yapın.</p>
+          </div>
+          <div class="om-inline-step">
+            <span class="om-inline-step-num">Adım 4</span>
+            <strong>SMS Kodunuzu Okuyun</strong>
+            <p>Numarayı ilgili uygulamaya girin; gelen 6 haneli onay kodunu anında sipariş ekranından alın.</p>
+          </div>
+        </div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Sık Sorulan Sorular</h2>
+        <div class="faq-item open" onclick="this.classList.toggle('open')"><div class="faq-q">Onay Merkezi üzerinden hangi uygulamalar için SMS onay alabilirim? <span>▼</span></div><div class="faq-a">WhatsApp, WhatsApp Business, Telegram, Google/Gmail, Instagram, Facebook, TikTok ve Discord başta olmak üzere çoklu uygulama doğrulamaları için sanal numara alabilirsiniz.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Türkiye (+90) sanal numara stoğu bulunuyor mu? <span>▼</span></div><div class="faq-a">Evet. Onay Merkezi panelinde Türkiye (+90) standart WhatsApp 65 TL, WhatsApp Business 68 TL olarak sunulmakta ve anlık stok durumu doğrudan operatör listesinde gösterilmektedir.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Aldığım numaraya SMS gelmezse bakiyem iade edilir mi? <span>▼</span></div><div class="faq-a">Evet. Numara tahsisinden 2 dakika sonra iptal butonunu kullanabilir veya 10 dakikalık süre sonunda kod gelmezse otomatik bakiye iadesi alabilirsiniz.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ödeme için kredi kartı şart mı, IBAN geçerli mi? <span>▼</span></div><div class="faq-a">Hayır, kart şartı yoktur. Kart ödemesinin yanında 7/24 IBAN ile Havale, EFT veya FAST gönderip &#39;IBAN ile Ödedim, Bildir&#39; formunu doldurabilirsiniz.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Bakiye yükleme bonusu nasıl çalışır? <span>▼</span></div><div class="faq-a">250 TL ve üzeri yüklemelerde %30, 500 TL ve üzeri yüklemelerde %35 ek bakiye avantajı uygulanır. Örneğin 500 TL yüklemede toplam 675 TL bakiye kullanabilirsiniz.</div></div>
+      </div>
+      <div class="om-inline-card">
+        <h2>Diğer Rehberler</h2>
+        <div class="om-inline-related">
+          <a href="/whatsapp-sanal-numara" onclick="return omOpenSeoGuide(event,'whatsapp-sanal-numara')"><strong>WhatsApp Sanal Numara</strong><span>WhatsApp Sanal Numara Nedir? Nasıl Alınır?</span></a>
+          <a href="/sanal-numara-fiyatlari" onclick="return omOpenSeoGuide(event,'sanal-numara-fiyatlari')"><strong>Sanal Numara Fiyatları</strong><span>Sanal Numara Fiyatları</span></a>
+          <a href="/sms-kodu-gelmiyor" onclick="return omOpenSeoGuide(event,'sms-kodu-gelmiyor')"><strong>SMS Kodu Gelmiyor</strong><span>SMS Kodu Gelmiyor: Nedenleri ve Çözümleri</span></a>
+          <a href="/sanal-numara-iban-ile-odeme" onclick="return omOpenSeoGuide(event,'sanal-numara-iban-ile-odeme')"><strong>IBAN ile Ödeme</strong><span>IBAN ile Bakiye Yükleme Rehberi</span></a>
+          <a href="/onay-merkezi-guvenilir-mi" onclick="return omOpenSeoGuide(event,'onay-merkezi-guvenilir-mi')"><strong>Onay Merkezi Nedir</strong><span>Onay Merkezi Nedir ve Nasıl Çalışır?</span></a>
+        </div>
+      </div>
+    </div>
+</div>
+
 </div>
 
 <footer class="site-footer">
@@ -851,10 +1435,12 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
                 <a onclick="goHome()">WhatsApp Sanal Numara</a>
                 <a onclick="showDeposit()">Bakiye Yükle</a>
                 <a onclick="showHistory()">Siparişlerim</a>
-                <a onclick="showPage('rehber')">Sanal Numara Rehberi</a>
-                <a onclick="showPage('sms-onay')">SMS Kodu Gelmezse</a>
-                <a onclick="showPage('fiyatlar')">Fiyat Tarifesi</a>
-                <a onclick="showPage('guvenlik')">Güvenli mi?</a>
+                <a href="/whatsapp-sanal-numara" onclick="return omOpenSeoGuide(event,'whatsapp-sanal-numara')">WhatsApp Sanal Numara</a>
+                <a href="/sanal-numara-fiyatlari" onclick="return omOpenSeoGuide(event,'sanal-numara-fiyatlari')">Sanal Numara Fiyatları</a>
+                <a href="/sms-kodu-gelmiyor" onclick="return omOpenSeoGuide(event,'sms-kodu-gelmiyor')">SMS Kodu Gelmiyor</a>
+                <a href="/sanal-numara-iban-ile-odeme" onclick="return omOpenSeoGuide(event,'sanal-numara-iban-ile-odeme')">IBAN ile Ödeme</a>
+                <a href="/onay-merkezi-guvenilir-mi" onclick="return omOpenSeoGuide(event,'onay-merkezi-guvenilir-mi')">Onay Merkezi Nedir</a>
+                <a href="/sms-onay" onclick="return omOpenSeoGuide(event,'sms-onay')">SMS Onay Sitesi</a>
             </div>
             <div class="footer-col">
                 <h4>Kurumsal</h4>
@@ -2462,7 +3048,41 @@ window.buyGameItem = buyGameItem;
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded',function(){var m=document.querySelector('.seo-top-menu');if(m){m.addEventListener('wheel',function(e){if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();m.scrollLeft+=e.deltaY;}},{passive:false});}});
+window.omOpenSeoGuide = function (e, slug) {
+  var el = document.getElementById('page-seo-' + slug);
+  if (el && typeof window.showPage === 'function') {
+    if (e && e.preventDefault) e.preventDefault();
+    window.showPage('seo-' + slug);
+    document.querySelectorAll('.seo-top-menu a').forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '/' + slug);
+    });
+    try { history.replaceState(null, '', '#rehber-' + slug); } catch (_) {}
+    return false;
+  }
+  return true;
+};
+window.omCloseSeoGuide = function () {
+  document.querySelectorAll('.seo-top-menu a').forEach(function (a) { a.classList.remove('active'); });
+  try { history.replaceState(null, '', window.location.pathname || '/'); } catch (_) {}
+  if (typeof window.goHome === 'function') window.goHome();
+};
+document.addEventListener('DOMContentLoaded', function () {
+  var m = document.querySelector('.seo-top-menu');
+  if (m) {
+    m.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        m.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+  }
+  if (window.location.hash && window.location.hash.indexOf('#rehber-') === 0) {
+    var s = window.location.hash.slice('#rehber-'.length);
+    if (document.getElementById('page-seo-' + s)) {
+      window.omOpenSeoGuide(null, s);
+    }
+  }
+});
 </script>
 </body>
 </html>
