@@ -1,8 +1,0 @@
-# Onay Merkezi robots.txt
-User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /api/
-Disallow: /#admin
-
-Sitemap: https://onaymerkezi.org/sitemap.xml
