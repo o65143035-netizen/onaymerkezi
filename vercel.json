@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/whatsapp-sanal-numara", "destination": "/index.html" },
+    { "source": "/sanal-numara-fiyatlari", "destination": "/index.html" },
+    { "source": "/sms-kodu-gelmiyor", "destination": "/index.html" },
+    { "source": "/sanal-numara-iban-ile-odeme", "destination": "/index.html" },
+    { "source": "/onay-merkezi-guvenilir-mi", "destination": "/index.html" },
+    { "source": "/sms-onay", "destination": "/index.html" }
+  ]
+}
