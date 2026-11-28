@@ -1,10 +1,14 @@
 {
   "rewrites": [
-    { "source": "/whatsapp-sanal-numara", "destination": "/index.html" },
-    { "source": "/sanal-numara-fiyatlari", "destination": "/index.html" },
-    { "source": "/sms-kodu-gelmiyor", "destination": "/index.html" },
-    { "source": "/sanal-numara-iban-ile-odeme", "destination": "/index.html" },
-    { "source": "/onay-merkezi-guvenilir-mi", "destination": "/index.html" },
-    { "source": "/sms-onay", "destination": "/index.html" }
+    { "source": "/whatsapp-sanal-numara/", "destination": "/whatsapp-sanal-numara.html" },
+    { "source": "/sanal-numara-fiyatlari/", "destination": "/sanal-numara-fiyatlari.html" },
+    { "source": "/sms-kodu-gelmiyor/", "destination": "/sms-kodu-gelmiyor.html" },
+    { "source": "/onay-merkezi-guvenilir-mi/", "destination": "/onay-merkezi-guvenilir-mi.html" },
+    { "source": "/sanal-numara-iban-ile-odeme/", "destination": "/sanal-numara-iban-ile-odeme.html" },
+    { "source": "/sms-onay/", "destination": "/sms-onay.html" },
+    { "source": "/turkiye-sanal-numara/", "destination": "/turkiye-sanal-numara.html" },
+    { "source": "/whatsapp-business-sanal-numara/", "destination": "/whatsapp-business-sanal-numara.html" },
+    { "source": "/telegram-instagram-sms-onay/", "destination": "/telegram-instagram-sms-onay.html" },
+    { "source": "/ucretsiz-vs-ucretli-sanal-numara/", "destination": "/ucretsiz-vs-ucretli-sanal-numara.html" }
   ]
 }
